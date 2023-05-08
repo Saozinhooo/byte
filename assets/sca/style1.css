@@ -1,0 +1,96 @@
+.container{
+    width: 90%;
+    height: auto;
+}
+.rounded {
+    border-radius: 1rem;
+}
+
+.nav-pills .nav-link {
+    color: #555
+}
+
+.nav-pills .nav-link.active {
+    color: white
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+.bold {
+    font-weight: bold;
+}
+.col-25 {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+  display: inline-block;
+    width: 100%;
+}
+
+span.price {
+    float: right;
+    color: grey;
+}
+.col-25,.col-50,.col-75 {
+    padding: 0 40px;
+    width: 100%;
+}
+
+.icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+}
+label {
+    margin-bottom: 10px;
+    display: block;
+}
+
+
+.col-25 {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+    display: inline-grid;
+    width: 500px;
+}
+
+.col-50 {
+    -ms-flex: 50%; /* IE10 */
+    flex: 50%;
+    display: inline-grid;
+}
+
+.col-75 {
+    -ms-flex: 75%; /* IE10 */
+    flex: 75%;
+  
+}
+
+.col-25,.col-50,.col-75 {
+    padding: 0 16px;
+  
+}
+
+@media (max-width: 900px) {
+    .row {
+        flex-direction: column-reverse;
+    }
+    .col-25 {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .col-75{
+        align-items: center;
+        width: 130%;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .container{
+        width: 100%;
+    }
+    .input{
+        width: 150%;
+    }
+}
+

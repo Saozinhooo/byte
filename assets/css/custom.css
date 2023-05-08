@@ -1,0 +1,39 @@
+
+.add-new-btn{
+    border: solid #000 1px;
+}
+
+.add-new-btn:hover{
+    background-color: #000;
+    color: #fff;
+}
+
+.publish-btn{
+  background-color: #087990;
+  color: #fff;
+}
+
+.card-header-c{
+  background-color: #214761;
+  color: #fff;
+}
+
+.pager-btn-custom{
+  background-color: #214761;
+  color: #fff;
+}
+
+.pager-btn-active a{
+  background-color: #fff;
+  color: #000;
+  border: none;
+}
+
+#dropdown a{
+  color: #000;
+}
+
+#dropdown a:hover{
+  color: #214761;
+  background-color: #CCCCCC;
+}
