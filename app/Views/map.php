@@ -47,7 +47,7 @@ window.initMap = initMap;
       </div>
       <div class="col-md-1"></div>
       <div class="col-md-6 heading-section ftco-animate">
-        <h2 class="mb-4 pb-3">Search your destination</h2>
+        <h2 class="mb-4 pb-3">Address</h2>
      <!--   <form>
           <input class="russel" type="text" name="search" placeholder="Search..">
         </form> -->

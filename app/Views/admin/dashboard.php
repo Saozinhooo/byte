@@ -31,17 +31,7 @@
 
               <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                   <div class="div-square">
-                       <a href="/admin/post" >
-<i class="fas fa-thumbtack fa-5x"></i>
-                  <h4>Posts</h4>
-                  </a>
-                  </div>
-
-
-              </div>
-              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                  <div class="div-square">
-                       <a href="/admin/comments" >
+                       <a href="admin/comments/package" >
  <i class="fa fa-comment fa-5x"></i>
                   <h4>Comments</h4>
                   </a>

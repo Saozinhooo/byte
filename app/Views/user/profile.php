@@ -28,31 +28,19 @@
         <table id="bookingHistory" class="table table-hover table-dark">
             <thead>
                 <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Test</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
                 </tr>
             </thead>
             <tbody>
+                <?php if(isset($packageData)): ?>
+                <?php foreach($packageData as $i => $package): ?>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <td><?= $package[1] ?></td>
+                    <td>P<?= number_format($package[2], 2, '.', ',') ?></td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
+                <?php endforeach ?>
+                <?php endif; ?>
             </tbody>
         </table>
     </main>

@@ -39,7 +39,7 @@
 							</span>
             	   </div>
             	</div>
-                <a href="login/register">Register</a>
+                <a href="/register">Register</a>
             	<a href="#">Forgot Password?</a>
                 
             	<input type="submit" class="btn" value="Login">

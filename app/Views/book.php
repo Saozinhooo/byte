@@ -14,20 +14,20 @@
             <div class="fields">
               <div class="form-group">
                 <input type="text" style="border-radius: 50px;" class="form-control"
-                  placeholder="1 to 8 Pax" name="cust_qty" required>
+                  placeholder="1 to 8 Pax" name="cust_qty" required autocomplete="off">
               </div>
 
               <div class="form-group">
                 <input type="text" style="border-radius: 50px;" id="checkin_date"
-                  class="form-control checkin_date" placeholder="Date of Tour" name="checkin_date" required>
+                  class="form-control checkin_date" placeholder="Date of Tour" name="checkin_date" required autocomplete="off">
               </div>
               <div class="form-group">
                 <input type="text" style="border-radius: 50px;" id="checkin_date" name="checkout_date"
-                  class="form-control checkout_date" placeholder="Time of Arrival" required>
+                  class="form-control checkout_date" placeholder="Time of Arrival" required autocomplete="off">
               </div>
               <div class="form-group">
                 <input type="text" style="border-radius: 50px;" name="contact_no"
-                  class="form-control contact_no" placeholder="Contact Number" required>
+                  class="form-control contact_no" placeholder="Contact Number" required autocomplete="off">
               </div>
 
               <div class="form-group">
@@ -48,7 +48,7 @@
         <div class="owl-carousel set-date-package">
           <?php if($packages): ?>
           <?php foreach($packages as $package): ?>
-          <label class="option_item">
+          <label class="option_item" style="width: 100%;">
             <input type="checkbox" class="checkbox package_checkbox" name="package_data[]" id="package_check" value="<?= $package['id'] ?>,<?= $package['title'] ?>,<?= $package['price'] ?>,<?= $package['package_img'] ?>">
 
             <div class="option_inner package">

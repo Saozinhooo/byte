@@ -9,7 +9,20 @@ class Login extends BaseController
 
     public function index(){
 
+         // User type = user
+         $session = session();
+         $is_user = $session->is_user;
+         if($is_user){
+            return redirect()->to('/user/'.$user_id.'');
+         }else{
+             $this->logout();
+         }
+
+    }
+
+    public function login(){
         echo view('login/login');
+       
 
     }
 
@@ -28,17 +41,18 @@ class Login extends BaseController
                     'fname'     => $data['fname'],
 					'lname'     => $data['lname'],
                     'email'    => $data['email'],
-                    'logged_in'     => TRUE
+                    'logged_in' => TRUE,
+                    'is_user' => TRUE
                 ];
                 $session->set($ses_data);
                 return redirect()->to('/user/'.$data['id'].'');
             }else{
                 $session->setFlashdata('msg', 'Wrong Password');
-                return redirect()->to('login/register');
+                return redirect()->to('login/login');
             }
         }else{
             $session->setFlashdata('msg', 'Email not Found');
-            return redirect()->to('/');
+            return redirect()->to('login/login');
         }
     }
 
@@ -55,11 +69,11 @@ class Login extends BaseController
         helper(['form']);
         //set rules validation form
         $rules = [
-            'fname'          => 'required|min_length[3]|max_length[20]',
-            'lname'          => 'required|min_length[3]|max_length[20]',
-            'email'         => 'required|min_length[6]|max_length[50]|valid_email|is_unique[customer_login.email]',
-            'password'      => 'required|min_length[6]|max_length[200]',
-            'confirm'  => 'matches[password]'
+            'fname' => 'required|min_length[3]|max_length[20]',
+            'lname' => 'required|min_length[3]|max_length[20]',
+            'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[customer_login.email]',
+            'password' => 'required|min_length[6]|max_length[200]',
+            'confirm' => 'matches[password]'
         ];
 
         if($this->validate($rules)){
@@ -72,7 +86,7 @@ class Login extends BaseController
             ];
             $model->save($data);
             $session->setFlashdata('success', 'You have been registered!');
-            return redirect()->to('login/register');
+            return redirect()->to('/login');
         }else{
             $data['validation'] = $this->validator;
             echo view('login/register', $data);

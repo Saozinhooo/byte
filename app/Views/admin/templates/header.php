@@ -19,6 +19,7 @@
    <link rel="stylesheet" href="<?= base_url('assets/css/tabs.css'); ?>">
    <link rel="stylesheet" href="<?= base_url('assets/css/custom.css'); ?>">
    <link rel="stylesheet" href="<?= base_url('assets/loader/loader.css'); ?>">
+   <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/r-2.4.1/sb-1.4.2/datatables.min.css" rel="stylesheet"/>
 
 </head>
 <body>
@@ -92,29 +93,20 @@
                     </div>
                     <div class="col-md-12">
                       <div class="dropdown dropend">
-                        <a href="#posts" class="<?php if(uri_string() == "admin/post" || uri_string() == "admin/post/add_post"){ echo "active-link"; } ?> nav-link" id="post_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-thumbtack"></i> Posts  <span class="badge"></span></a>
+                        <a href="#comments" class="<?php if(uri_string() == "admin/comments/blog" || uri_string() == "admin/comments/package"){ echo "active-link"; } ?> nav-link" id="comments_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-comment"></i> Comments</a>
                         <ul class="dropdown-menu" aria-labelledby="post_dropdown" style="width: 100%;">
                           <li class="nav-item side-link">
-                              <a class="nav-link" href="<?php echo site_url('admin/post'); ?>">All Posts  <span class="badge"></span></a>
-                          </li>
-                          <li class="nav-item side-link">
-                              <a class="nav-link" href="<?php echo site_url('admin/post/add_post'); ?>">Add New  <span class="badge"></span></a>
-                          </li>
-                          <li class="nav-item side-link">
-                              <a class="nav-link" href="<?php echo site_url('admin/post/categories'); ?>">Categories  <span class="badge"></span></a>
+                              <a class="nav-link" href="<?php echo site_url('admin/comments/package'); ?>"><i class="fa fa-comment"></i> Package Comments</a>
                           </li>
                         </ul>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="dropdown dropend">
-                        <a href="#comments" class="<?php if(uri_string() == "admin/comments/blog" || uri_string() == "admin/comments/package"){ echo "active-link"; } ?> nav-link" id="comments_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-comment"></i> Comments</a>
+                        <a href="#comments" class="<?php if(uri_string() == "admin/transaction_history"){ echo "active-link"; } ?> nav-link" id="comments_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-comment"></i> Transaction History</a>
                         <ul class="dropdown-menu" aria-labelledby="post_dropdown" style="width: 100%;">
                           <li class="nav-item side-link">
-                              <a class="nav-link" href="<?php echo site_url('admin/comments/blog'); ?>"><i class="fa fa-comment"></i> Blog Comments</a>
-                          </li>
-                          <li class="nav-item side-link">
-                              <a class="nav-link" href="<?php echo site_url('admin/comments/package'); ?>"><i class="fa fa-comment"></i> Package Comments</a>
+                              <a class="nav-link" href="<?php echo site_url('admin/transaction_history'); ?>"><i class="fa fa-comment"></i> Transaction History</a>
                           </li>
                         </ul>
                       </div>

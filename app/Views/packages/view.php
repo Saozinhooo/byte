@@ -13,11 +13,19 @@
                <h3>Leave a comment:</h3>
        <div class="contact-col">
          <form action="<?= site_url('package/acceptComment') ?>" method="post"  id="comment_form">
+         <div id="rating-stars" style="margin-bottom: 10px;">
+          <span class="star" data-rating="1"><i class="icon-star"></i></span>
+          <span class="star" data-rating="2"><i class="icon-star" ></i></span>
+          <span class="star" data-rating="3"><i class="icon-star"></i></span>
+          <span class="star" data-rating="4"><i class="icon-star"></i></span>
+          <span class="star" data-rating="5"><i class="icon-star"></i></span>
+        </div>
            <input type="text" name="cmnt_name" placeholder="Enter your name" required>
            <input type="email" name="cmnt_email" placeholder="Enter email address" required>
            <textarea id="body" rows="8" name="cmnt" placeholder="message " required></textarea>
            <input type="hidden" name="package_id" value="<?= $packages['id']; ?>">
            <input type="hidden" name="package_title" value="<?= $packages['slug']; ?>">
+           <input type="hidden" id="rating-input" name="rating" value="">
            <button type="button" class="btn cta-btn" id="comment_btn">Submit</button>
          </form>
        </div>

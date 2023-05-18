@@ -20,7 +20,6 @@ class Package_model extends Model
       'visibility',
       'price',
       'updated',
-      'rating',
       'featured',
       'activity'
 

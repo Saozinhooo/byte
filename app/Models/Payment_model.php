@@ -16,6 +16,8 @@ class Payment_model extends Model
       'customer_name',
       'customer_email',
       'customer_contact',
-      'status'
+      'status',
+      'packageDetails',
+      'create_date'
     ];
 }

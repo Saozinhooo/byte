@@ -14,14 +14,14 @@ class Package extends BaseController
 		helper('text');
 		$data = [
 
-			'packages' => $packagemodel->orderBy('id', 'DESC')->paginate(10,'package_overview'),
+			'packages' => $packagemodel->select('packages.*, package_comments.body as comment_body')->join('package_comments', 'packages.id = package_comments.package_id','left')->orderBy('packages.id', 'DESC')->paginate(10,'package_overview'),
       		'currentPage' => $packagemodel->pager->getCurrentPage('package_overview'), // The current page number
       		'totalPages'  => $packagemodel->pager->getPageCount('package_overview'),   // The total page count
       		'pager' => $packagemodel->pager
 
 
 		];
-
+		
 		$data['title'] = "Packages";
 
 		echo view('packages/templates/header', $data);
@@ -66,7 +66,8 @@ function acceptComment(){
 		'name' => $this->request->getPost('cmnt_name'),
 		'body' => $this->request->getPost('cmnt'),
 		'package_id' => $this->request->getPost('package_id'),
-		'pending' => $pending
+		'pending' => $pending,
+		'rating' => $this->request->getPost('rating')
 
 	];
 

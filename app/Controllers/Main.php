@@ -12,7 +12,7 @@ use App\Models\Payment_model;
 class Main extends BaseController
 {
 	public function index(){
-
+		
 		$packagemodel = new Package_model();
 		$postmodel = new Post_model();
 		$session = session();
@@ -20,12 +20,24 @@ class Main extends BaseController
 
 		$data = [
 
-			'packages' => $packagemodel->orderBy('rating', 'DESC')->limit(4)->find(),
+			'packages' => $packagemodel
+			->orderBy('packages.id', 'DESC')
+			->limit(4)
+			->groupBy('packages.id')
+			->find(),
 			'featured' => $packagemodel->where('featured', '1')->limit(8)->find(),
 			'posts' => $postmodel->orderBy('id', 'DESC')->limit(8)->find(),
+			'packages_blog' => $packagemodel->join('package_comments', 'packages.id = package_comments.package_id','left')
+			->select('packages.*')
+			->selectAvg('package_comments.rating')
+			->orderBy('package_comments.rating', 'DESC')
+			->limit(4)
+			->groupBy('packages.id')
+			->find(),
 
 
 		];
+
 
 		$ses_data = [
 
@@ -88,7 +100,14 @@ class Main extends BaseController
 		$auth_token = 'cadac9babf081246673da7cbd3b5d8ec';
 		$twilio_number = "+18565796109";
 		$client = new Client($account_sid, $auth_token);
-		dd($this->request->getPost('transaction_id'));
+		$packageData = $this->request->getPost('packageDetails');
+		$packageData = json_decode($packageData);
+		foreach($packageData as $packageInfo){
+			$package[] = explode(',', $packageInfo);
+		}
+
+		var_dump($package);exit();
+		
 
 		$data = [
 
@@ -99,6 +118,7 @@ class Main extends BaseController
 			'customer_contact' => $this->request->getPost('contact_no'),
 			'status' => $this->request->getPost('status'),
 			'customer_id' => session()->id,
+			'packageDetails' => json_encode($package),
 		];
 
 		$paymentmodel->insert($data);

@@ -7,10 +7,30 @@ class Login extends BaseController
 {
 	public function index()
 	{
-		helper(['form']);
-    echo view('admin/login2');
+
+        echo view('admin/login2');
+		
 
 	}
+
+
+    public function login(){
+
+        
+        
+        // User type = admin
+        $session = session();
+        $is_user = $session->is_admin;
+        if($is_admin){
+            helper(['form']);
+            echo view('admin/login2');
+        }else{
+            $this->logout();
+        }
+
+    }
+
+
 
 	public function auth(){
         $session = session();
@@ -27,7 +47,8 @@ class Login extends BaseController
                     'fname'     => $data['fname'],
 										'lname'     => $data['lname'],
                     'user_email'    => $data['user_email'],
-                    'logged_in'     => TRUE
+                    'logged_in'     => TRUE,
+                    'is_admin' => TRUE
                 ];
                 $session->set($ses_data);
                 return redirect()->to('/admin');

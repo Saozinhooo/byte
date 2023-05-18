@@ -233,6 +233,33 @@
 			}
 		})
 	</script>
+
+  <script>
+
+// Add a click event listener to the stars
+$('.star').click(function() {
+  
+  var rating = $(this).data('rating');
+  $('#rating-input').val(rating);
+  console.log(rating);
+  updateStars(rating);
+});
+
+function updateStars(selectedRating) {
+  $('.star').each(function() {
+    var rating = $(this).data('rating');
+    if (rating <= selectedRating) {
+      $(this).addClass('selected');
+    } else {
+      $(this).removeClass('selected');
+    }
+  });
+}
+
+
+
+
+  </script>
 </body>
 
 </html>

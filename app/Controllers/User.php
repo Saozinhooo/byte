@@ -2,6 +2,7 @@
 
 use App\Controllers\BaseController;
 use App\Models\Customer_model;
+use App\Models\Payment_model;
 
 class User extends BaseController
 {
@@ -10,14 +11,22 @@ class User extends BaseController
     public function index($userid){
 
 
-        $model = new Customer_model();
+        $customer_model = new Customer_model();
+        $payment_model = new Payment_model();
+
+        $packageDetails = $payment_model->where('customer_id', $userid)->find();
+        $packageData = array();
+        foreach($packageDetails as $package){
+            array_push($packageData, json_decode($package['packageDetails']));
+        }
 
         $data = [
             
-            'user' => $model->where('id', $userid)->find(),
-        
-        
+            'user' =>  $customer_model->where('id', $userid)->find(),
+            'packageData' => $packageData
+
         ];
+
 
         echo view('user/profile', $data);
 

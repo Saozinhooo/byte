@@ -186,7 +186,7 @@ $( document ).ready(function() {
             packageDetails: packageDetails
           },
           success: function(data){
-            console.log("succes?");
+            // window.location.href = "/";
           },
         });
 

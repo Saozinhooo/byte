@@ -24,6 +24,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script src="<?php echo base_url('assets/dropzone/dist/dropzone.js'); ?>"></script>
 <script src="<?php echo base_url('assets/imgCheckbox/jquery.imgcheckbox.js'); ?>"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-1.13.4/r-2.4.1/sb-1.4.2/datatables.min.js"></script>
 <script>
   CKEDITOR.replace( 'ckeditor1', {
         height: 650,
@@ -387,6 +388,17 @@ $(function(){
       });
   });
 });
+</script>
+
+
+
+
+<script>
+
+$(document).ready(function() {
+    var table = $('#TransactionHistory').DataTable();
+});
+
 </script>
 
 
