@@ -36,7 +36,7 @@ class Register extends Controller
             ];
             $model->save($data);
             $session->setFlashdata('success', 'You have been registered!');
-            return redirect()->to('/admin/login');
+            return redirect()->to('/admin');
         }else{
             $data['validation'] = $this->validator;
             echo view('admin/register', $data);

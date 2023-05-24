@@ -8,6 +8,8 @@ use App\Models\Package_model;
 use App\Models\Post_model;
 use App\Models\Comment_model;
 use App\Models\Payment_model;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class Main extends BaseController
 {
@@ -119,7 +121,18 @@ class Main extends BaseController
 		];
 
 		$paymentmodel->insert($data);
-
+		$email = \Config\Services::email();
+		$email->setFrom('clevermonteros9@gmail.com', 'Dave Oporto');
+		$email->setTo('clevermonteros@gmail.com');
+		$email->setSubject('Email Test');
+		$email->setMessage('katong niaging gabie, giinvite mo ug birthday, sa party may handang butete');
+		if ($email->send()) {
+			dd('Email sent successfully.');
+        } else {
+			$error = $email->printDebugger(['headers']);
+			print_r($error);
+			exit();
+		}
 	}
 
 	public function test()
@@ -155,11 +168,15 @@ class Main extends BaseController
 
 		$email = \Config\Services::email();
 		$email->setFrom('davevincentoporto@gmail.com', 'Dave Oporto');
-		$email->setTo('davevincentoporto@yahoo.com');
+		$email->setTo('clevermonteros@gmail.com');
 		$email->setSubject('Email Test');
 		$email->setMessage('katong niaging gabie, giinvite mo ug birthday, sa party may handang butete');
-		$email->send();
-
+		if ($email->send()) {
+			dd('Email sent successfully.');
+        } else {
+			$error = $email->printDebugger(['headers']);
+			dd($error);
+		}
 	}
 
 	public function test_email(){
@@ -210,6 +227,41 @@ class Main extends BaseController
 
 	  echo "updated";
 	}
+
+	public function send_email() {
+        
+        $mail = new PHPMailer(true);  
+		try {
+		    
+		    $mail->isSMTP();  
+		    $mail->Host         = 'smtp.google.com'; //smtp.google.com
+		    $mail->SMTPAuth     = true;     
+		    $mail->Username     = 'davevincentoporto@gmail.com';  
+		    $mail->Password     = 'Oportodave42';
+			$mail->SMTPSecure   = 'tls';  
+			$mail->Port         = 587;  
+			$mail->Subject      = 'TEST';
+			$mail->Body         = 'katong niaging gabie, giinvite mo ug birthday, sa party may handang butete';
+			$mail->setFrom('davevincentoporto@gmail.com', 'Deibu');
+			
+			$mail->addAddress('clevermonteros@gmail.com');  
+			$mail->isHTML(true);      
+			
+			if(!$mail->send()) {
+			    echo "Something went wrong. Please try again.";
+				exit();
+			}
+		    else {
+			    echo "Email sent successfully.";
+				exit();
+		    }
+		    
+		} catch (Exception $e) {
+		    echo "Something went wrong. Please try again.";
+			exit();
+		}
+        
+    }
 
 	//--------------------------------------------------------------------
 

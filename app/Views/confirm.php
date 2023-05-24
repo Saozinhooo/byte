@@ -186,7 +186,7 @@ $( document ).ready(function() {
             packageDetails: packageDetails
           },
           success: function(data){
-            // window.location.href = "/";
+            //window.location.href = "/";
           },
         });
 

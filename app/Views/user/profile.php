@@ -30,14 +30,16 @@
                 <tr>
                 <th scope="col">Package Name</th>
                 <th scope="col">Price</th>
+                <th scope="col">Activities</th>
                 </tr>
             </thead>
             <tbody>
                 <?php if(isset($packageData)): ?>
                 <?php foreach($packageData as $package): ?>
                 <tr>
-                    <td><?= $package['title'] ?></td>
-                    <td>P<?= $package['price'] ?></td>
+                    <td><?= $package[0]['title'] ?></td>
+                    <td>P<?= $package[0]['price'] ?></td>
+                    <td><?= $package[0]['activity'] ?></td>
                 </tr>
                 <?php endforeach ?>
                 <?php endif; ?>

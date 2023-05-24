@@ -38,6 +38,8 @@ $routes->get('/blog/(:segment)', 'Blog::view/$1');
 $routes->get('/package/(:segment)', 'Package::view/$1');
 $routes->get('user/(:num)', 'User::index/$1');
 $routes->get('admin/transaction_history', 'Admin/Transaction::index');
+$routes->add('email/compose', 'Email::compose');
+$routes->post('email/send-email', 'Email::send_email');
 
 
 /**

@@ -19,16 +19,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($packageData as $packages): ?>
+                        <?php foreach($packageData as $i =>$packages): ?>
+                            <?php foreach($packages[0] as $row): ?>
                         <tr>
-                            <td><?= $packages['packageInfo'][1] ?></td>
-                            <td>P<?= number_format($packages['packageInfo'][2], 2, '.', ',') ?></td>
+                            <td><?= $row[1] ?></td>
+                            <td>P<?= number_format(floatval($row[2]), 2, '.', ',') ?></td>
                             <td><?= ucwords($packages['customer_name']) ?></td>
                             <td><?= $packages['customer_email'] ?></td>
                             <td><?php if($packages['status'] == "COMPLETED"){
                                 echo "Paid";
                             } ?></td>
                         </tr>
+                            <?php endforeach ?>
                         <?php endforeach ?>
                     </tbody>
                 </table>
