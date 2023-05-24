@@ -106,9 +106,6 @@ class Main extends BaseController
 			$package[] = explode(',', $packageInfo);
 		}
 
-		var_dump($package);exit();
-		
-
 		$data = [
 
 			'transaction_id' => $this->request->getPost('transaction_id'),

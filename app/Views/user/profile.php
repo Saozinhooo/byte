@@ -28,16 +28,16 @@
         <table id="bookingHistory" class="table table-hover table-dark">
             <thead>
                 <tr>
-                <th scope="col">Name</th>
+                <th scope="col">Package Name</th>
                 <th scope="col">Price</th>
                 </tr>
             </thead>
             <tbody>
                 <?php if(isset($packageData)): ?>
-                <?php foreach($packageData as $i => $package): ?>
+                <?php foreach($packageData as $package): ?>
                 <tr>
-                    <td><?= $package[1] ?></td>
-                    <td>P<?= number_format($package[2], 2, '.', ',') ?></td>
+                    <td><?= $package['title'] ?></td>
+                    <td>P<?= $package['price'] ?></td>
                 </tr>
                 <?php endforeach ?>
                 <?php endif; ?>

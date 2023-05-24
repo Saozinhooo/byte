@@ -10,9 +10,9 @@
 				<div class="row d-flex">
 					<?php if($packages_blog): ?>
 					<?php foreach($packages_blog as $package): ?>
-					<div class="col-lg-3 d-flex ftco-animate" style="width: 100%;" >
+					<div class="col d-flex ftco-animate">
 						<div class="blog-entry align-self-stretch">
-							<a href="#" class="block-20">
+							<a href="#" class="block-20" style="width: 100%;">
 								<img src="public/uploads/images/<?= $package['package_img']; ?>" alt="" style="width: 100%; height: 100%; object-fit: cover;">
 							</a>
 							<div class="text p-5">
@@ -57,13 +57,13 @@
 					<?php endforeach; ?>
 					<?php endif; ?>
 				</div>
-				<div class="row mt-5">
+			</div>
+			<div class="row mt-5">
 					<div class="col text-center">
 						<a class="btn cta-btn" href="<?= site_url("package") ?>">Read More</a>
 						<div class="form-group">
 					</div>
 				</div>
-			</div>
 				</div>
 			</div>
 		</div>
