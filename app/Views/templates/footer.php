@@ -92,23 +92,23 @@
 
 
 
-	<script src="<?php echo base_url('assets/sca/js/jquery.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery-migrate-3.0.1.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/popper.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/bootstrap.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.easing.1.3.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.waypoints.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.stellar.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/owl.carousel.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.magnific-popup.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/aos.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.animateNumber.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/bootstrap-datepicker.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.timepicker.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/scrollax.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/jquery.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/jquery-migrate-3.0.1.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/popper.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/bootstrap.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/jquery.easing.1.3.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/jquery.waypoints.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/jquery.stellar.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/owl.carousel.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/jquery.magnific-popup.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/aos.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/jquery.animateNumber.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/bootstrap-datepicker.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/jquery.timepicker.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/scrollax.min.js'); ?>"></script>
 	<script>src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"</script>
-	<script src="<?php echo base_url('assets/sca/js/google-map.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/main.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/google-map.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/main.js'); ?>"></script>
 	<script>
 		var modal = document.getElementById("myModal");
 

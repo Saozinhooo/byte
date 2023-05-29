@@ -1,7 +1,7 @@
 <!--Start Nav-->
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container ">
-			<a class="navbar-brand" href="index.html"><img src="<?php echo base_url('assets/sca/images/travel.jpg'); ?>" href="index.html"
+			<a class="navbar-brand" href="/"><img src="<?php echo base_url('assets/photo/images/travel.jpg'); ?>"
 					style="width: 80px; padding-top: 0%;"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">

@@ -102,9 +102,9 @@
              <div class="form-group">
                <label for="cardNumber">
                <div class="img-padala">
-              <img src="<?= base_url('assets/sca/img/palawan.jpg') ?>" alt="" style="width: 150px; height: 150px; margin: 0 2px;"></label>
-              <img src="<?= base_url('assets/sca/img/m-lhuiller-logo.jpg') ?>" alt="" style="width: 150px; height: 150px; margin: 0 2px;"></label>
-              <img src="<?= base_url('assets/sca/img/Send-Money-to-Your-Loved-Ones-through-Cebuana-Lhuilliers-Authorized-Pera-Padala-Agents.png') ?>" alt="" style="width: 150px; height: 150px; margin: 0 10px;">
+              <img src="<?= base_url('assets/photo/img/palawan.jpg') ?>" alt="" style="width: 150px; height: 150px; margin: 0 2px;"></label>
+              <img src="<?= base_url('assets/photo/img/m-lhuiller-logo.jpg') ?>" alt="" style="width: 150px; height: 150px; margin: 0 2px;"></label>
+              <img src="<?= base_url('assets/photo/img/Send-Money-to-Your-Loved-Ones-through-Cebuana-Lhuilliers-Authorized-Pera-Padala-Agents.png') ?>" alt="" style="width: 150px; height: 150px; margin: 0 10px;">
               </label></div>
          </label>
          <hr>

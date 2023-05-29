@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.js"></script>
 
     <!-- style css -->
-    <link rel="stylesheet" href="<?= base_url('assets/sca/payment.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/photo/payment.css') ?>">
 </head>
 <body>
     <div class="tab">

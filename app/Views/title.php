@@ -1,6 +1,6 @@
 <!--Start title-->
 	<div class="hero-wrap js-fullheight" id="home"
-		style="background-image: url('<?php echo base_url('assets/sca/images/bantayan.jpg'); ?>');
+		style="background-image: url('<?php echo base_url('assets/photo/images/bantayan.jpg'); ?>');
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;

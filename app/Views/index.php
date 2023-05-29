@@ -9,29 +9,29 @@
 	<link rel="icon" href="images/travel.jpg">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
-	<link rel="stylesheet" href="<?php echo base_url('assets/sca/css/open-iconic-bootstrap.min.css'); ?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/sca/css/animate.css'); ?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/sca/css/owl.carousel.min.css'); ?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/sca/css/owl.theme.default.min.css'); ?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/sca/css/magnific-popup.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/photo/css/open-iconic-bootstrap.min.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/photo/css/animate.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/photo/css/owl.carousel.min.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/photo/css/owl.theme.default.min.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/photo/css/magnific-popup.css'); ?>">
 	<script src="https://kit.fontawesome.com/96591aa17d.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="<?php echo base_url('assets/sca/css/aos.css'); ?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/sca/css/ionicons.min.css'); ?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/sca/css/bootstrap-datepicker.css'); ?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/sca/css/jquery.timepicker.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/photo/css/aos.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/photo/css/ionicons.min.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/photo/css/bootstrap-datepicker.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/photo/css/jquery.timepicker.css'); ?>">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="<?php echo base_url('assets/sca/css/flaticon.css'); ?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/sca/css/icomoon.css'); ?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/sca/css/style.css'); ?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/sca/css/star.css'); ?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/sca/css/style2.css'); ?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/sca/styles.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/photo/css/flaticon.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/photo/css/icomoon.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/photo/css/style.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/photo/css/star.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/photo/css/style2.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/photo/styles.css'); ?>">
 
 <body>
 <!--Start Nav-->
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container ">
-			<a class="navbar-brand" href="index.html"><img src="<?php echo base_url('assets/sca/images/travel.jpg'); ?>" href="index.html"
+			<a class="navbar-brand" href="index.html"><img src="<?php echo base_url('assets/photo/images/travel.jpg'); ?>" href="index.html"
 					style="width: 80px; padding-top: 0%;"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +52,7 @@
 <!--end nav-->
 <!--Start title-->
 	<div class="hero-wrap js-fullheight" id="home"
-		style="background-image: url('<?php echo base_url('assets/sca/images/bantayan.jpg'); ?>');
+		style="background-image: url('<?php echo base_url('assets/photo/images/bantayan.jpg'); ?>');
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -838,23 +838,23 @@
 				stroke="black" /></svg></div>-->
 
 
-	<script src="<?php echo base_url('assets/sca/js/jquery.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery-migrate-3.0.1.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/popper.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/bootstrap.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.easing.1.3.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.waypoints.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.stellar.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/owl.carousel.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.magnific-popup.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/aos.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.animateNumber.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/bootstrap-datepicker.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.timepicker.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/s/scrollax.min.js'); ?>j"></script>
+	<script src="<?php echo base_url('assets/photo/js/jquery.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/jquery-migrate-3.0.1.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/popper.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/bootstrap.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/jquery.easing.1.3.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/jquery.waypoints.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/jquery.stellar.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/owl.carousel.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/jquery.magnific-popup.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/aos.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/jquery.animateNumber.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/bootstrap-datepicker.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/jquery.timepicker.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/s/scrollax.min.js'); ?>j"></script>
 	<script>src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"</script>
-	<script src="<?php echo base_url('assets/sca/js/google-map.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/main.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/google-map.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/photo/js/main.js'); ?>"></script>
 	<script>
 		var modal = document.getElementById("myModal");
 

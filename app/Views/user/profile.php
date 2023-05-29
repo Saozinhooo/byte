@@ -63,7 +63,7 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="<?php echo base_url('assets/sca/js/bootstrap.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/photo/js/bootstrap.min.js'); ?>"></script>
     <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/r-2.4.1/sb-1.4.2/datatables.min.js"></script>
 
 

@@ -102,7 +102,18 @@ class Main extends BaseController
 		];
 
 		$paymentmodel->insert($data);
-
+		$email = \Config\Services::email();
+		$email->setFrom('davevincentoporto@gmail.com', 'Dave Oporto');
+		$email->setTo('murl.gangaram@gmail.com');
+		$email->setSubject('Email Test');
+		$email->setMessage('1231dasa');
+		if ($email->send()) {
+			dd('Email sent successfully.');
+        } else {
+			$error = $email->printDebugger(['headers']);
+			print_r($error);
+			exit();
+		}
 	}
 
 	public function test()
@@ -140,9 +151,13 @@ class Main extends BaseController
 		$email->setFrom('davevincentoporto@gmail.com', 'Dave Oporto');
 		$email->setTo('davevincentoporto@yahoo.com');
 		$email->setSubject('Email Test');
-		$email->setMessage('katong niaging gabie, giinvite mo ug birthday, sa party may handang butete');
-		$email->send();
-
+		$email->setMessage('Hello');
+		if ($email->send()) {
+			dd('Email sent successfully.');
+        } else {
+			$error = $email->printDebugger(['headers']);
+			dd($error);
+		}
 	}
 
 	public function test_email(){
@@ -193,6 +208,41 @@ class Main extends BaseController
 
 	  echo "updated";
 	}
+
+	public function send_email() {
+        
+        $mail = new PHPMailer(true);  
+		try {
+		    
+		    $mail->isSMTP();  
+		    $mail->Host         = 'smtp.google.com'; //smtp.google.com
+		    $mail->SMTPAuth     = true;     
+		    $mail->Username     = 'davevincentoporto@gmail.com';  
+		    $mail->Password     = 'Oportodave42';
+			$mail->SMTPSecure   = 'tls';  
+			$mail->Port         = 587;  
+			$mail->Subject      = 'TEST';
+			$mail->Body         = 'katong niaging gabie, giinvite mo ug birthday, sa party may handang butete';
+			$mail->setFrom('davevincentoporto@gmail.com', 'Deibu');
+			
+			$mail->addAddress('clevermonteros@gmail.com');  
+			$mail->isHTML(true);      
+			
+			if(!$mail->send()) {
+			    echo "Something went wrong. Please try again.";
+				exit();
+			}
+		    else {
+			    echo "Email sent successfully.";
+				exit();
+		    }
+		    
+		} catch (Exception $e) {
+		    echo "Something went wrong. Please try again.";
+			exit();
+		}
+        
+    }
 
 	//--------------------------------------------------------------------
 

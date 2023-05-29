@@ -13,7 +13,7 @@
 <body>
 	<div class="container">
 		<div class="img">
-			<img src="<?= base_url('assets/final-login/img/sca.png') ?>">
+			<img src="<?= base_url('assets/final-login/img/travel.png') ?>">
 		</div>
 		<div class="login-content">
 			<form id="login_form" method="post" action="<?php echo site_url("admin/login/auth"); ?>">
@@ -24,7 +24,7 @@
            		   </div>
            		   <div class="div">
            		   		<h5>Email</h5>
-           		   		<input type="text" class="input" name="email" required>
+           		   		<input type="text" class="input" name="email" required >
            		   </div>
            		</div>
            		<div class="input-div pass">

@@ -13,7 +13,7 @@
 <body>
 	<div class="container">
 		<div class="img">
-			<img src="<?= base_url('assets/final-login/img/sca.png') ?>">
+			<img src="<?= base_url('assets/final-login/img/travel.png') ?>">
 		</div>
 		<div class="login-content">
 			<form id="login_form" method="post" action="<?php echo site_url("login/auth"); ?>">
