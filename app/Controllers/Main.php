@@ -8,11 +8,13 @@ use App\Models\Package_model;
 use App\Models\Post_model;
 use App\Models\Comment_model;
 use App\Models\Payment_model;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class Main extends BaseController
 {
 	public function index(){
-
+		
 		$packagemodel = new Package_model();
 		$postmodel = new Post_model();
 		$session = session();
@@ -20,12 +22,24 @@ class Main extends BaseController
 
 		$data = [
 
-			'packages' => $packagemodel->orderBy('rating', 'DESC')->limit(4)->find(),
+			'packages' => $packagemodel
+			->orderBy('packages.id', 'DESC')
+			->limit(4)
+			->groupBy('packages.id')
+			->find(),
 			'featured' => $packagemodel->where('featured', '1')->limit(8)->find(),
 			'posts' => $postmodel->orderBy('id', 'DESC')->limit(8)->find(),
+			'packages_blog' => $packagemodel->join('package_comments', 'packages.id = package_comments.package_id','left')
+			->select('packages.*')
+			->selectAvg('package_comments.rating')
+			->orderBy('package_comments.rating', 'DESC')
+			->limit(4)
+			->groupBy('packages.id')
+			->find(),
 
 
 		];
+
 
 		$ses_data = [
 
@@ -88,7 +102,11 @@ class Main extends BaseController
 		$auth_token = 'cadac9babf081246673da7cbd3b5d8ec';
 		$twilio_number = "+18565796109";
 		$client = new Client($account_sid, $auth_token);
-		dd($this->request->getPost('transaction_id'));
+		$packageData = $this->request->getPost('packageDetails');
+		$packageData = json_decode($packageData);
+		foreach($packageData as $packageInfo){
+			$package[] = explode(',', $packageInfo);
+		}
 
 		$data = [
 
@@ -99,10 +117,22 @@ class Main extends BaseController
 			'customer_contact' => $this->request->getPost('contact_no'),
 			'status' => $this->request->getPost('status'),
 			'customer_id' => session()->id,
+			'packageDetails' => json_encode($package),
 		];
 
 		$paymentmodel->insert($data);
-
+		$email = \Config\Services::email();
+		$email->setFrom('clevermonteros9@gmail.com', 'Dave Oporto');
+		$email->setTo('clevermonteros@gmail.com');
+		$email->setSubject('Email Test');
+		$email->setMessage('katong niaging gabie, giinvite mo ug birthday, sa party may handang butete');
+		if ($email->send()) {
+			dd('Email sent successfully.');
+        } else {
+			$error = $email->printDebugger(['headers']);
+			print_r($error);
+			exit();
+		}
 	}
 
 	public function test()
@@ -138,11 +168,15 @@ class Main extends BaseController
 
 		$email = \Config\Services::email();
 		$email->setFrom('davevincentoporto@gmail.com', 'Dave Oporto');
-		$email->setTo('davevincentoporto@yahoo.com');
+		$email->setTo('clevermonteros@gmail.com');
 		$email->setSubject('Email Test');
 		$email->setMessage('katong niaging gabie, giinvite mo ug birthday, sa party may handang butete');
-		$email->send();
-
+		if ($email->send()) {
+			dd('Email sent successfully.');
+        } else {
+			$error = $email->printDebugger(['headers']);
+			dd($error);
+		}
 	}
 
 	public function test_email(){
@@ -193,6 +227,41 @@ class Main extends BaseController
 
 	  echo "updated";
 	}
+
+	public function send_email() {
+        
+        $mail = new PHPMailer(true);  
+		try {
+		    
+		    $mail->isSMTP();  
+		    $mail->Host         = 'smtp.google.com'; //smtp.google.com
+		    $mail->SMTPAuth     = true;     
+		    $mail->Username     = 'davevincentoporto@gmail.com';  
+		    $mail->Password     = 'Oportodave42';
+			$mail->SMTPSecure   = 'tls';  
+			$mail->Port         = 587;  
+			$mail->Subject      = 'TEST';
+			$mail->Body         = 'katong niaging gabie, giinvite mo ug birthday, sa party may handang butete';
+			$mail->setFrom('davevincentoporto@gmail.com', 'Deibu');
+			
+			$mail->addAddress('clevermonteros@gmail.com');  
+			$mail->isHTML(true);      
+			
+			if(!$mail->send()) {
+			    echo "Something went wrong. Please try again.";
+				exit();
+			}
+		    else {
+			    echo "Email sent successfully.";
+				exit();
+		    }
+		    
+		} catch (Exception $e) {
+		    echo "Something went wrong. Please try again.";
+			exit();
+		}
+        
+    }
 
 	//--------------------------------------------------------------------
 

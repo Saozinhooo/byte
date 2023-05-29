@@ -11,7 +11,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-7 heading-section ftco-animate">
-        <h2 class="mb-4"><strong>Blogs</strong> & Feedback</h2>
+        <h2 class="mb-4"><strong>Blogs & Feedback</strong> </h2>
         </div>
         <div class="col-md-7 heading-section ftco-animate">
 
@@ -27,7 +27,7 @@
                       <hr>
                 </div>
                <small><?php $db = $package['created']; $timestamp = strtotime($db); echo date("F j, Y", $timestamp); ?></small>
-               <p class="blog-post-text"><?= word_limiter($package['body'],50) ?> <a href="/package/<?= esc($package['slug'], 'url'); ?>">Read More</a></p>
+               <p class="blog-post-text"><?php echo $package['body'] != null ? word_limiter($package['body'],50) : "";  ?> <a href="/package/<?= esc($package['slug'], 'url'); ?>">Read More</a></p>
                <br>
                <hr>
                <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">

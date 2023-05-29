@@ -12,8 +12,7 @@ class Packages extends BaseController{
   function index(){
     $packagemodel = new Package_model();
 		$data = [
-            // 'packages' => $packagemodel->orderBy('id', 'DESC')->paginate(5),
-            'packages' => $packagemodel->join('admin_login', 'admin_login.user_id = packages.user_id')->orderBy('id', 'DESC')->paginate(5,'group1'),
+            'packages' => $packagemodel->join('admin_login', 'packages.user_id = admin_login.user_id', 'left')->orderBy('id', 'DESC')->paginate(5,'group1'),
             'currentPage' => $packagemodel->pager->getCurrentPage('group1'), // The current page number
             'totalPages'  => $packagemodel->pager->getPageCount('group1'),   // The total page count
             'pager' => $packagemodel->pager
@@ -26,7 +25,6 @@ class Packages extends BaseController{
   function active_packages(){
     $packagemodel = new Package_model();
     $data = [
-            // 'packages' => $packagemodel->orderBy('id', 'DESC')->paginate(5),
             'packages' => $packagemodel->join('admin_login', 'admin_login.user_id = packages.user_id')->orderBy('id', 'DESC')->paginate(5,'group1'),
             'currentPage' => $packagemodel->pager->getCurrentPage('group1'), // The current page number
             'totalPages'  => $packagemodel->pager->getPageCount('group1'),   // The total page count

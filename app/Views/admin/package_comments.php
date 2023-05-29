@@ -2,7 +2,7 @@
     <div id="page-inner">
         <div class="row">
             <div class="col-md-12">
-             <h2>Posts <a class="btn btn-light add-new-btn" href="post/add_post">Add New</a></h2>
+             <h2>Package Comments</h2>
             </div>
         </div>
           <hr />
@@ -46,6 +46,14 @@
                      <td><?php echo $comment['email']; ?></td>
                      <td><?php echo $comment['body']; ?></td>
                      <td><?php echo $comment['created']; ?></td>
+                     <td><?php if( $comment['pending'] == true){
+                        echo "Pending";
+
+                     }elseif($comment['pending'] == false){
+
+                          echo "Posted";
+                        }
+                       ?></td>
                    </tr>
                  <?php endforeach; ?>
                  <?php endif; ?>

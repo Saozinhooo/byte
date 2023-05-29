@@ -20,7 +20,7 @@
             <img class="img-fluid" src="<?php echo base_url("assets/images/output-onlinepngtools.png"); ?>" alt="sca_logo" style="width: 40%;">
           </div>
           <div class="card">
-            <div class="card-header text-light" style="background: #214761;"><h3 class="card-title">Login</h3></div>
+            <div class="card-header text-light" style="background: #214761;"><h3 class="card-title">Login1</h3></div>
             <?php if(session()->getFlashdata('msg')):?>
                     <div class="alert alert-danger"><?= session()->getFlashdata('msg') ?></div>
                 <?php endif;?>
@@ -31,7 +31,7 @@
               <form id="login_form" method="post" action="<?php echo site_url("admin/login/auth"); ?>">
                 <div class="form-floating mb-3">
                   <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
-                  <label for="email">Email Address</label>
+                  <label for="email">Email Address#admin</label>
                 </div>
                 <div class="form-floating mb-3">
                   <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>

@@ -8,17 +8,17 @@
 			</div>
 			<div class="container">
 				<div class="row d-flex">
-					<?php if($packages): ?>
-					<?php foreach($packages as $package): ?>
-					<div class="col-md-3 d-flex ftco-animate">
+					<?php if($packages_blog): ?>
+					<?php foreach($packages_blog as $package): ?>
+					<div class="col d-flex ftco-animate">
 						<div class="blog-entry align-self-stretch">
-							<a href="#" class="block-20">
+							<a href="#" class="block-20" style="width: 100%;">
 								<img src="public/uploads/images/<?= $package['package_img']; ?>" alt="" style="width: 100%; height: 100%; object-fit: cover;">
 							</a>
-							<div class="text p-3">
+							<div class="text p-5">
 								<div class="d-flex">
 									<div class="one">
-										<h3><a href="#"><?= $package['title']; ?></a></h3>
+										<h3><a href="/package/<?= esc($package['slug'], 'url'); ?>"><?= $package['title']; ?></a></h3>
 										<p class="rate">
 											<?php
 												$rating = $package['rating'];
@@ -40,7 +40,16 @@
 										</p>
 									</div>
 								</div>
-								<p><?= $package['body']; ?></p>
+								<p style="word-break: break-all;">
+								<?php 
+								if (mb_strlen($package['body']) > 20) {
+									$package['body'] = mb_substr($package['body'], 0, 20) . '<br/>...';
+								}
+								echo $package['body'];
+								
+								
+								?>
+							</p>
 								<p class="days"><span>1 to 3 hours</span></p>
 							</div>
 						</div>
@@ -48,13 +57,13 @@
 					<?php endforeach; ?>
 					<?php endif; ?>
 				</div>
-				<!--<div class="row mt-5">
+			</div>
+			<div class="row mt-5">
 					<div class="col text-center">
 						<a class="btn cta-btn" href="<?= site_url("package") ?>">Read More</a>
 						<div class="form-group">
-					</div> -->
+					</div>
 				</div>
-			</div>
 				</div>
 			</div>
 		</div>

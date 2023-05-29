@@ -47,7 +47,7 @@
                   <label for="pass_confirm">Confirm Password</label>
                 </div>
                 <small></small>
-                <a class="float-start btn btn-outline-info" href="<?php echo site_url('admin/login'); ?>">Back</a>
+                <a class="float-start btn btn-outline-info" href="<?php echo site_url('/admin'); ?>">Back</a>
                 <button type="submit" class="float-end btn btn-outline-info">Submit</button>
               </form>
             </div>

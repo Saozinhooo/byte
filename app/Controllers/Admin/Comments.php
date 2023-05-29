@@ -35,14 +35,12 @@ function Package(){
 
   $data = [
 
-    'comments' => $commentmodel->select("packages.id, packages.title, package_comments.*")->join('packages', 'packages.id = package_comments.package_id')->orderBy('package_comments.id', 'DESC')->paginate(10,'package_comments'),
+    'comments' => $commentmodel->select("packages.id, packages.title, package_comments.*")->join('packages', 'package_comments.package_id = packages.id')->orderBy('package_comments.id', 'DESC')->paginate(10,'package_comments'),
     'currentPage' => $commentmodel->pager->getCurrentPage('package_comments'), // The current page number
     'totalPages'  => $commentmodel->pager->getPageCount('package_comments'),   // The total page count
     'pager' => $commentmodel->pager
 
   ];
-
-
 
 
 echo view('admin/templates/header');
@@ -57,7 +55,7 @@ public function changeCommentStatus(){
   $comment_model = new Comment_model();
   $email = \Config\Services::email();
 
-  $email->setFrom('clevermonteros@gmail.com', 'SouthernCebuAdventure');
+  $email->setFrom('dave@gmail.com', 'Travel and Tours');
   $email->setSubject('Comment Posted');
 	$body = "You're comment has been posted!";
 	$email->setMessage($body);
@@ -100,7 +98,7 @@ function changePackageCommentStatus(){
   $comment_model = new Comment_package_model();
   $email = \Config\Services::email();
 
-  $email->setFrom('clevermonteros@gmail.com', 'SouthernCebuAdventure');
+  $email->setFrom('dave@gmail.com', 'Travel and Tours');
   $email->setSubject('Comment Posted');
   $body = "You're comment has been posted!";
   $email->setMessage($body);

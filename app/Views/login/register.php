@@ -28,7 +28,7 @@
               <form id="register_form" method="post" action="<?php echo site_url("login/save"); ?>">
                 <div class="form-floating mb-3">
                   <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required autofocus>
-                  <label for="fname">First Name</label>
+                  <label for="fname">First Name#user</label>
                 </div>
                 <div class="form-floating mb-3">
                   <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" required>
