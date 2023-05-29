@@ -21,15 +21,14 @@ class User extends BaseController
         foreach($packageDetails as $package){
             array_push($packageData, json_decode($package['packageDetails']));
         }
-
         
 
+        
         foreach($packageData as $package){
             foreach($package as $row){
                  array_push($transactionHistory, $package_model->where('id',$row[0])->orderBy('id', 'desc')->find());
             }
         }
-
         $data = [
             
             'user' =>  $customer_model->where('id', $userid)->find(),

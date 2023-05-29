@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controllers;
-require __DIR__ . '\twilio-php-main\src\Twilio\autoload.php';
 use Twilio\Rest\Client;
 
 use App\Models\Package_model;
@@ -102,6 +101,9 @@ class Main extends BaseController
 		$auth_token = 'cadac9babf081246673da7cbd3b5d8ec';
 		$twilio_number = "+18565796109";
 		$client = new Client($account_sid, $auth_token);
+		$payer_email = $this->request->getPost('payer_email');
+		$payer_contact = $this->request->getPost('contact_no');
+		$payer_contact = '+639185476330'; // testing only
 		$packageData = $this->request->getPost('packageDetails');
 		$packageData = json_decode($packageData);
 		foreach($packageData as $packageInfo){
@@ -113,155 +115,46 @@ class Main extends BaseController
 			'transaction_id' => $this->request->getPost('transaction_id'),
 			'amount_paid' => $this->request->getPost('payment'),
 			'customer_name' => $this->request->getPost('fullname'),
-			'customer_email' => $this->request->getPost('payer_email'),
-			'customer_contact' => $this->request->getPost('contact_no'),
+			'customer_email' => $payer_email,
+			'customer_contact' => $payer_contact,
 			'status' => $this->request->getPost('status'),
 			'customer_id' => session()->id,
 			'packageDetails' => json_encode($package),
 		];
 
-		$paymentmodel->insert($data);
-		$email = \Config\Services::email();
-		$email->setFrom('clevermonteros9@gmail.com', 'Dave Oporto');
-		$email->setTo('clevermonteros@gmail.com');
-		$email->setSubject('Email Test');
-		$email->setMessage('katong niaging gabie, giinvite mo ug birthday, sa party may handang butete');
-		if ($email->send()) {
-			dd('Email sent successfully.');
-        } else {
-			$error = $email->printDebugger(['headers']);
-			print_r($error);
-			exit();
-		}
-	}
-
-	public function test()
-	{
-		helper(['url', 'form']);
-		echo view('index');
-	}
-
-	public function paypal()
-	{
-		echo view('paypal');
-	}
-
-	public function notify_url()
-	{
-
-		echo view('notify_url');
-	}
-
-	public function success(){
-
-		echo view('success');
-	}
-
-	public function paypal_test(){
+		$body = "You order has been confirmed." . "Transaction #" . $data['transaction_id'];
+		$body .= "<br/>Amount paid: ". $data['amount_paid'];
 
 
 
-		echo view('paypal_test');
-	}
-
-	function send_mail(){
-
-		$email = \Config\Services::email();
-		$email->setFrom('davevincentoporto@gmail.com', 'Dave Oporto');
-		$email->setTo('clevermonteros@gmail.com');
-		$email->setSubject('Email Test');
-		$email->setMessage('katong niaging gabie, giinvite mo ug birthday, sa party may handang butete');
-		if ($email->send()) {
-			dd('Email sent successfully.');
-        } else {
-			$error = $email->printDebugger(['headers']);
-			dd($error);
-		}
-	}
-
-	public function test_email(){
-
-
-
-	  $comment_model = new Comment_model();
-	  $ID = 0;
-	  $i = 1;
-		$o = 1;
-		$result = "";
-	  $email = \Config\Services::email();
-
-	$email->setFrom('clevermonteros@gmail.com', 'SouthernCebuAdventure');
-
-
-
-	$email->setSubject('Comment Posted');
-
-	$body = "You're comment has been posted!";
-	$email->setMessage($body);
-	$action_data = ['40','41','42','43','44'];
-
-
-	  $comment_id = $action_data;
-
-
-
-		foreach($comment_id as $id){
-
-	    $testemail[$i++] = $comment_model->select("email")->where("id", $id)->findAll();
-
-	  }
-
-
-
-		foreach($testemail as $v){
-
-			var_dump(explode(',',$testemail[$o][0]['email']));
-
-			$o++;
-
-		}
-
-		exit();
-	  $email->setTo('someone@example.com');
-	  $email->send();
-
-	  echo "updated";
-	}
-
-	public function send_email() {
-        
-        $mail = new PHPMailer(true);  
-		try {
-		    
-		    $mail->isSMTP();  
-		    $mail->Host         = 'smtp.google.com'; //smtp.google.com
-		    $mail->SMTPAuth     = true;     
-		    $mail->Username     = 'davevincentoporto@gmail.com';  
-		    $mail->Password     = 'Oportodave42';
-			$mail->SMTPSecure   = 'tls';  
-			$mail->Port         = 587;  
-			$mail->Subject      = 'TEST';
-			$mail->Body         = 'katong niaging gabie, giinvite mo ug birthday, sa party may handang butete';
-			$mail->setFrom('davevincentoporto@gmail.com', 'Deibu');
-			
-			$mail->addAddress('clevermonteros@gmail.com');  
-			$mail->isHTML(true);      
-			
-			if(!$mail->send()) {
-			    echo "Something went wrong. Please try again.";
-				exit();
+		$result = $paymentmodel->insert($data);
+		if($result){
+			$sid    = "AC4865a3bae57f33fd3734f7cd5511551c";
+			$token  = "7d49e9c5d72081f83c2e4f1cfa694580";
+			$twilio = new Client($sid, $token);
+		
+			$message = $twilio->messages
+			->create($payer_contact, // to
+				array(
+						"body" => "Welcome to jamrock"
+				)
+			);
+		
+			print($message->sid);
+			$email = \Config\Services::email();
+			$email->setFrom('clevermonteros9@gmail.com', 'Dave Oporto');
+			$email->setTo($payer_email);
+			$email->setSubject('Confirmation');
+			$email->setMessage($body);
+			if ($email->send()) {
+				dd('Email sent successfully.');
+			} else {
+				$error = $email->printDebugger(['headers']);
+				print_r($error);
 			}
-		    else {
-			    echo "Email sent successfully.";
-				exit();
-		    }
-		    
-		} catch (Exception $e) {
-		    echo "Something went wrong. Please try again.";
-			exit();
 		}
-        
-    }
+		
+	}
 
 	//--------------------------------------------------------------------
 
