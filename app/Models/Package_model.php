@@ -1,11 +1,12 @@
 <?php
+
 namespace App\Models;
+
 use CodeIgniter\Model;
 
 class Package_model extends Model
 {
     protected $table = 'packages';
-
     protected $primaryKey = 'id';
 
     protected $allowedFields = [
@@ -22,7 +23,6 @@ class Package_model extends Model
       'updated',
       'featured',
       'activity'
-
     ];
 
     public function getPackage($slug = false){
@@ -30,11 +30,8 @@ class Package_model extends Model
       if ($slug === false){
         return $this->findAll();
       }
-
         return $this->asArray()
                 ->where(['slug' => $slug])
                 ->first();
     }
-
-
 }

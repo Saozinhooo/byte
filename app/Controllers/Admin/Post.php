@@ -10,6 +10,7 @@ use App\Models\Image_model;
 class Post extends BaseController{
 
   function index(){
+
     $blogmodel = new Post_model();
 		$data = [
             // 'packages' => $packagemodel->orderBy('id', 'DESC')->paginate(5),
@@ -22,6 +23,7 @@ class Post extends BaseController{
             'currentPage' => $blogmodel->pager->getCurrentPage('posts'), // The current page number
             'totalPages'  => $blogmodel->pager->getPageCount('posts'),   // The total page count
         ];
+
     echo view('admin/templates/header');
     echo view('admin/blogs', $data);
     echo view('admin/templates/footer');
@@ -31,41 +33,51 @@ class Post extends BaseController{
 
     $categorymodel = new Category_model();
     $imagemodel = new Image_model();
+
     $data = [
       'categories' => $categorymodel->orderBy('id', 'DESC')->findAll(),
       'images' => $imagemodel->orderBy('id','DESC')->findAll(),
     ];
+
     echo view("admin/templates/header");
     echo view("admin/blogs/add_post", $data);
     echo view("admin/templates/footer");
   }
 
   function categories(){
+
       $categorymodel = new Category_model();
+
       $data = [
         'categories' => $categorymodel->orderBy('id', 'DESC')->paginate(20, 'categories'),
         'pager' => $categorymodel->pager,
         'currentPage' => $categorymodel->pager->getCurrentPage('categories'), // The current page number
         'totalPages'  => $categorymodel->pager->getPageCount('categories'),   // The total page count
       ];
+
       echo view("admin/templates/header");
       echo view("admin/blogs/categories", $data);
       echo view("admin/templates/footer");
   }
 
-
   public function insert_category(){
+
 		$categorymodel = new Category_model();
     $created = date('Y/m/d H:i:s',time());
+
 		$data = [
       'name' => $this->request->getVar('category'),
       'user_id' => $this->request->getVar('user_id'),
       'created_at' => $created
     ];
+
 		$categorymodel->insert($data);
     $categories = $categorymodel->find();
+
     if($categories){
+    
       foreach($categories as $category){
+
         $html = '
         <input class="form-check-input" type="radio" value="'.$category['name'].'" name="category" id="category'.$category['id'].'">
         <label class="form-check-label" style="font-weight: 100;" for="category'.$category['id'].'">
@@ -74,18 +86,22 @@ class Post extends BaseController{
         <br>
         ';
       }
+
       echo $html;
     }
 	}
 
   function insert_category_a(){
+
     $categorymodel = new Category_model();
     $created = date('Y/m/d H:i:s',time());
+
 		$data = [
       'name' => $this->request->getVar('category_name'),
       'user_id' => $this->request->getVar('user_id'),
       'created_at' => $created
     ];
+
 		$categorymodel->insert($data);
 
     return redirect()->to('/admin/post/categories');
@@ -99,6 +115,7 @@ class Post extends BaseController{
     $delete = $this->request->getPost('action_data');
 
     foreach($delete as $id){
+
       $categorymodel->where('id', $id)->delete($id);
     }
 
@@ -123,7 +140,9 @@ class Post extends BaseController{
   function upload_img(){
 
     $blogmodel = new Post_model();
+
     if($img = $this->request->getFile('ft_img')){
+
 			if($img->isValid() && ! $img->hasMoved()){
 
 				$newName = $img->getRandomName();
@@ -137,7 +156,6 @@ class Post extends BaseController{
 
   }
 
-
   public function insert_post(){
 
     $session = session();
@@ -145,7 +163,9 @@ class Post extends BaseController{
     $created = date('Y/m/d H:i:s',time());
 		$title = $this->request->getVar('post_title');
 		$slug = $this->fixForUri($title);
+
     if($img = $this->request->getVar('ft_img')){
+    
       $data = [
               'title' => $this->request->getVar('post_title'),
               'body'  => $this->request->getVar('ckeditor1'),
@@ -235,11 +255,4 @@ class Post extends BaseController{
 
 	return $slug;
 	}
-
-
-
-
-
-
-
 }

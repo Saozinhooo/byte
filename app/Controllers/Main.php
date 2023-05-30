@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Controllers;
-use Twilio\Rest\Client;
 
+use Twilio\Rest\Client;
 use App\Models\Package_model;
 use App\Models\Post_model;
 use App\Models\Comment_model;
@@ -18,9 +18,7 @@ class Main extends BaseController
 		$postmodel = new Post_model();
 		$session = session();
 		
-
 		$data = [
-
 			'packages' => $packagemodel
 			->orderBy('packages.id', 'DESC')
 			->limit(4)
@@ -35,50 +33,42 @@ class Main extends BaseController
 			->limit(4)
 			->groupBy('packages.id')
 			->find(),
-
-
 		];
 
-
 		$ses_data = [
-
 			'id' => $session->id,
 			'logged_in' => $session->logged_in,
 			'name' => $session->fname,
-
 		];
-
 
 		echo view('templates/header');
 		echo view('nav', $ses_data);
 		echo view('title');
 		echo view('map');
 		echo view('packages', $data);
-		//echo view('blogs', $data);
 		echo view('about');
 		echo view('book',$data);
 		echo view('templates/footer');
+		//echo view('blogs', $data);
 	}
 
 	function bookConfirm(){
-
 		$checkout = $this->request->getPost('checkout_date');
 		$checkin = $this->request->getPost('checkin_date');
 		$datediff = strtotime($checkout) - strtotime($checkin);
 		$package_id = array();
 		$package_data = $this->request->getPost('package_data');
+
 		if($package_data){
+
 			foreach($package_data as $check) {
 				$package_id[] = $check; //echoes the value set in the HTML form for each checked checkbox.
 							 //so, if I were to check 1, 3, and 5 it would echo value 1, value 3, value 5.
 							 //in your case, it would echo whatever $row['Report ID'] is equivalent to.
 			}
 		}
-		
-
 
 		$data = [
-
 			'schedule' => $datediff,
 			'pax' => $this->request->getPost('cust_qty'),
 			'price' => $this->request->getPost('package_price'),
@@ -90,22 +80,21 @@ class Main extends BaseController
 		];
 
 		echo view('confirm', $data);
-
-
 	}
 
 	function savePayerDetails(){
+
 		$paymentmodel = new Payment_model();
 		$payer_email = $this->request->getPost('payer_email');
 		$payer_contact = $this->request->getPost('contact_no');
 		$packageData = $this->request->getPost('packageDetails');
 		$packageData = json_decode($packageData);
+
 		foreach($packageData as $packageInfo){
 			$package[] = explode(',', $packageInfo);
 		}
 
 		$data = [
-
 			'transaction_id' => $this->request->getPost('transaction_id'),
 			'amount_paid' => $this->request->getPost('payment'),
 			'customer_name' => $this->request->getPost('fullname'),
@@ -119,8 +108,6 @@ class Main extends BaseController
 		$body = "You order has been confirmed." . "Transaction #" . $data['transaction_id'];
 		$body .= "<br/>Amount paid: ". $data['amount_paid'];
 
-
-
 		$result = $paymentmodel->insert($data);
 
 		if($result){
@@ -129,7 +116,6 @@ class Main extends BaseController
 			$token  = "29bfcb28df45aa51630013510b47bd6d";
 			$twilio_number = "+13157125259";
 			$twilio = new Client($sid, $token);
-		
 			$message = $twilio->messages
 			->create($payer_contact, // to
 				array(
@@ -144,6 +130,7 @@ class Main extends BaseController
 			$email->setTo($payer_email);
 			$email->setSubject('Confirmation');
 			$email->setMessage($body);
+
 			if ($email->send()) {
 				dd('Email sent successfully.');
 			} else {
@@ -155,6 +142,7 @@ class Main extends BaseController
 	}
 
 	public function send_email_faq(){
+
 		$set_from = $this->request->getPost('sender_email');
 		$body = $this->request->getPost('inquiry_body');
 		$email = \Config\Services::email();
@@ -162,6 +150,7 @@ class Main extends BaseController
 		$email->setTo('davevincentoporto@gmail.com');
 		$email->setSubject('Inquiry');
 		$email->setMessage($body);
+
 		if ($email->send()) {
 			print('Email sent successfully.');
 			return redirect()->to('/');
@@ -169,9 +158,5 @@ class Main extends BaseController
 			$error = $email->printDebugger(['headers']);
 			print_r($error);
 		}
-
 	}
-
-	//--------------------------------------------------------------------
-
 }

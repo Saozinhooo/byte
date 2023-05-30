@@ -15,12 +15,10 @@ class Blog extends BaseController
 		$data = [
 
 	'posts' => $postmodel->orderBy('id', 'DESC')->paginate(10,'blogs'),
-      'currentPage' => $postmodel->pager->getCurrentPage('blogs'), // The current page number
-      'totalPages'  => $postmodel->pager->getPageCount('blogs'),   // The total page count
-      'pager' => $postmodel->pager
-
-
-		];
+    'currentPage' => $postmodel->pager->getCurrentPage('blogs'), // The current page number
+    'totalPages'  => $postmodel->pager->getPageCount('blogs'),   // The total page count
+    'pager' => $postmodel->pager
+	];
 
 		$data['title'] = "Blog";
 
@@ -30,13 +28,11 @@ class Blog extends BaseController
 	}
 
 	public function view($slug = NULL){
+
 	$postmodel = new Post_model();
 	$commentmodel = new Comment_model();
 
-
 	$data = [
-
-
 		'posts' => $postmodel->getPost($slug),
 		'related' => $postmodel->orderBy('id', 'RANDOM')->limit(4)->find(),
 		'comments' => $commentmodel->orderBy('id', 'DESC')->where('pending', false)->find(),
@@ -55,6 +51,7 @@ class Blog extends BaseController
 }
 
 function acceptComment(){
+
 	helper('url');
 
 	$comment_model = new Comment_model();
@@ -74,9 +71,4 @@ function acceptComment(){
 
 	return redirect()->to(previous_url());
 }
-
-
-
-	//--------------------------------------------------------------------
-
 }

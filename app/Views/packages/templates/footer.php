@@ -4,6 +4,7 @@
       <div class="back-to-top">
         <a href="#home"><i class="fas fa-chevron-up"></i></a>
     </div>
+
       <div class="row mb-5">
         <div class="col-md">
           <div class="ftco-footer-widget mb-4">
@@ -16,6 +17,7 @@
             </ul>
           </div>
         </div>
+
         <div class="col-md">
           <div class="ftco-footer-widget mb-4 ml-md-5">
             <h2 class="ftco-heading-2" style="color: white;">Information</h2>
@@ -26,6 +28,7 @@
             </ul>
           </div>
         </div>
+
         <div class="col-md">
           <div class="ftco-footer-widget mb-4">
             <h2 class="ftco-heading-2" style="color: white;">Customer Support</h2>
@@ -36,6 +39,7 @@
             </ul>
           </div>
         </div>
+
         <div class="col-md">
           <div class="ftco-footer-widget mb-4" style="color: white;">
             <h2 class="ftco-heading-2" style="color: white;">Have a Questions?</h2>
@@ -54,21 +58,22 @@
       </div>
     </div>
   </footer>
+
   <div class="slider-modal">
     <div class="slide-header"></div>
-
     <div class="slide-body terms-conditions">
-       Travel and Tours customer needs to pay atleast 500php for booking reservation.<br>
-       Non refundable upon cancellation after 1 month.<br>
-       The full payment of the tour will take place in <strong>Badian</strong>.<br>
-       Failure to show up during the scheduled day of the tour will result in an automatic cancellation of the tour and no refund will occur.<br>
+      Travel and Tours customer needs to pay atleast 500php for booking reservation.<br>
+      Non refundable upon cancellation after 1 month.<br>
+      The full payment of the tour will take place in <strong>Badian</strong>.<br>
+      Failure to show up during the scheduled day of the tour will result in an automatic cancellation of the tour and no refund will occur.<br>
       Customer pays the full payment during the first day of Tour.<br>
-       If there is indeed an unfortunate circumstances(Bad weather, Flood, Accidents etc.).<br>
-       During the tour, guest are obliged to listen and comply to the guide for instructions and safety measures. Otherwise, the guide or the company will not be held responsible of any unfortunate events.<br>
+      If there is indeed an unfortunate circumstances(Bad weather, Flood, Accidents etc.).<br>
+      During the tour, guest are obliged to listen and comply to the guide for instructions and safety measures. Otherwise, the guide or the company will not be held responsible of any unfortunate events.<br>
     </div>
     <div class="slide-body privacy-policy">
       this is privacy and policy
     </div>
+
     <div class="slide-body faq">
       <form>
         <div class="form-group">
@@ -83,6 +88,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+
     <div class="slide-body payment-option">
       Step 1: Hello <br>
       Step 2: Hello <br>
@@ -92,13 +98,6 @@
     </div>
   </div>
 <!--footer end-->
-
-
-
-
-
-
-
 
 	<script src="<?php echo base_url('assets/sca/js/jquery.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/sca/js/jquery-migrate-3.0.1.min.js'); ?>"></script>
@@ -119,8 +118,8 @@
 	<script src="<?php echo base_url('assets/sca/js/main.js'); ?>"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 
-
   <script type="text/javascript">
+
     $("#comment_btn",).on("click", function(){
       $.confirm({
           title: 'Comment pending',
@@ -132,16 +131,17 @@
           }
       });
     });
+
   </script>
 	<script>
+
 		var modal = document.getElementById("myModal");
-
-
 		var img = document.getElementById("myImg");
 		var modalImg = document.getElementById("img01");
 		var captionText = document.getElementById("caption");
 
 		if(img != undefined){
+
 			img.onclick = function(){
 				modal.style.display = "block";
 				modalImg.src = this.src;
@@ -152,12 +152,14 @@
 		var span = document.getElementsByClassName("close")[0];
 
 		if(span != undefined){
+
 			span.onclick = function() {
 				modal.style.display = "none";
 			}
 		}
 
 		setTimeout(function(){
+
 			$(document).ready(function(){
 				$(window).scrollTop(0)
 				$('.nav-link').unbind('click')
@@ -195,6 +197,7 @@
 
 				$('.slider-modal-trigger').unbind('click')
 				$('.slider-modal-trigger').click(function(){
+
 					var text = $(this).text();
 					$('.slider-modal').css({
 						left: '0'
@@ -211,15 +214,12 @@
 					}else if(text.toLowerCase() == "payment option"){
 						$('.slider-modal').find('.payment-option').css({display: 'block'})
 					}
-
-
 				})
-
-
 			})
 		}, 300);
 
 		$(document).ready(function(){
+
 			if($(window).width() <= 767){
 				$(".set-date-package").owlCarousel({
 					margin: 20,
@@ -233,7 +233,6 @@
 			}
 		})
 	</script>
-
   <script>
 
 // Add a click event listener to the stars
@@ -246,7 +245,9 @@ $('.star').click(function() {
 });
 
 function updateStars(selectedRating) {
+
   $('.star').each(function() {
+
     var rating = $(this).data('rating');
     if (rating <= selectedRating) {
       $(this).addClass('selected');
@@ -256,10 +257,6 @@ function updateStars(selectedRating) {
   });
 }
 
-
-
-
   </script>
 </body>
-
 </html>

@@ -4,6 +4,7 @@
       <div class="back-to-top">
         <a href="#home"><i class="fas fa-chevron-up"></i></a>
     </div>
+
       <div class="row mb-5">
         <div class="col-md">
           <div class="ftco-footer-widget mb-4">
@@ -16,6 +17,7 @@
             </ul>
           </div>
         </div>
+
         <div class="col-md">
           <div class="ftco-footer-widget mb-4 ml-md-5">
             <h2 class="ftco-heading-2" style="color: white;">Information</h2>
@@ -36,6 +38,7 @@
             </ul>
           </div>
         </div>
+
         <div class="col-md">
           <div class="ftco-footer-widget mb-4" style="color: white;">
             <h2 class="ftco-heading-2" style="color: white;">Have a Questions?</h2>
@@ -57,7 +60,7 @@
     <div class="slide-header"></div>
 
     <div class="slide-body terms-conditions">
-      •Travel and tourscustomer needs to pay atleast 500php for booking reservation.<br>
+      •Travel and tours customer needs to pay atleast 500php for booking reservation.<br>
       • Non refundable upon cancellation after 1 month.<br>
       • The full payment of the tour will take place in <strong>Badian</strong>.<br>
       • Failure to show up during the scheduled day of the tour will result in an automatic cancellation of the tour and no refund will occur.<br>
@@ -92,13 +95,6 @@
   </div>
 <!--footer end-->
 
-
-
-
-
-
-
-
 	<script src="<?php echo base_url('assets/sca/js/jquery.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/sca/js/jquery-migrate-3.0.1.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/sca/js/popper.min.js'); ?>"></script>
@@ -118,7 +114,6 @@
 	<script src="<?php echo base_url('assets/sca/js/main.js'); ?>"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 
-
   <script type="text/javascript">
     $("#comment_btn",).on("click", function(){
       $.confirm({
@@ -133,9 +128,8 @@
     });
   </script>
 	<script>
+
 		var modal = document.getElementById("myModal");
-
-
 		var img = document.getElementById("myImg");
 		var modalImg = document.getElementById("img01");
 		var captionText = document.getElementById("caption");
@@ -157,11 +151,13 @@
 		}
 
 		setTimeout(function(){
+
 			$(document).ready(function(){
 				$(window).scrollTop(0)
 				$('.nav-link').unbind('click')
 
 				$(window).scroll(function() {
+
 					var top_of_element = $("footer").offset().top;
 					var bottom_of_element = $("footer").offset().top + $("footer").outerHeight();
 					var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
@@ -193,6 +189,7 @@
 				});
 
 				$('.slider-modal-trigger').unbind('click')
+
 				$('.slider-modal-trigger').click(function(){
 					var text = $(this).text();
 					$('.slider-modal').css({
@@ -211,15 +208,15 @@
 						$('.slider-modal').find('.payment-option').css({display: 'block'})
 					}
 
-
 				})
-
 
 			})
 		}, 300);
 
 		$(document).ready(function(){
+
 			if($(window).width() <= 767){
+
 				$(".set-date-package").owlCarousel({
 					margin: 20,
 					items:1
@@ -233,5 +230,4 @@
 		})
 	</script>
 </body>
-
 </html>

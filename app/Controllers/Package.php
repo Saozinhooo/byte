@@ -12,14 +12,12 @@ class Package extends BaseController
 
 		$packagemodel = new Package_model();
 		helper('text');
-		$data = [
 
-			'packages' => $packagemodel->select('packages.*, package_comments.body as comment_body')->join('package_comments', 'packages.id = package_comments.package_id','left')->orderBy('packages.id', 'DESC')->paginate(10,'package_overview'),
-      		'currentPage' => $packagemodel->pager->getCurrentPage('package_overview'), // The current page number
-      		'totalPages'  => $packagemodel->pager->getPageCount('package_overview'),   // The total page count
-      		'pager' => $packagemodel->pager
-
-
+	$data = [
+		'packages' => $packagemodel->select('packages.*, package_comments.body as comment_body')->join('package_comments', 'packages.id = package_comments.package_id','left')->orderBy('packages.id', 'DESC')->paginate(10,'package_overview'),
+    	'currentPage' => $packagemodel->pager->getCurrentPage('package_overview'), // The current page number
+    	'totalPages'  => $packagemodel->pager->getPageCount('package_overview'),   // The total page count
+    	// 'pager' => $packagemodel->pager
 		];
 		
 		$data['title'] = "Packages";
@@ -33,10 +31,7 @@ class Package extends BaseController
 	$packagemodel = new Package_model();
 	$commentmodel = new Comment_package_model();
 
-
 	$data = [
-
-
 		'packages' => $packagemodel->getPackage($slug),
 		'related' => $packagemodel->orderBy('id', 'RANDOM')->limit(4)->find(),
 		'comments' => $commentmodel->orderBy('id', 'DESC')->where('pending', false)->find(),
@@ -44,7 +39,7 @@ class Package extends BaseController
 
 	if (empty($data['packages']))
 	{
-			throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the post: '. $slug);
+		throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the post: '. $slug);
 	}
 
 	$data['title'] = $data['packages']['title'];
@@ -55,29 +50,24 @@ class Package extends BaseController
 }
 
 function acceptComment(){
+
 	helper('url');
 
 	$comment_model = new Comment_package_model();
 	$link = $this->request->getPost('slug');
 	$pending = true;
-	$data = [
 
+	$data = [
 		'email' => $this->request->getPost('cmnt_email'),
 		'name' => $this->request->getPost('cmnt_name'),
 		'body' => $this->request->getPost('cmnt'),
 		'package_id' => $this->request->getPost('package_id'),
 		'pending' => $pending,
 		'rating' => $this->request->getPost('rating')
-
 	];
 
 	$comment_model->insert($data);
 
 	return redirect()->to(previous_url());
 }
-
-
-
-	//--------------------------------------------------------------------
-
 }

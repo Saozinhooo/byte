@@ -19,10 +19,10 @@
 		<style>
 
 .star {
-  display: inline-block;
-  width: 20px;
-  cursor: pointer;
-  color:#ccc;
+display: inline-block;
+width: 20px;
+cursor: pointer;
+color:#ccc;
 }
 
 .star.selected {
@@ -36,31 +36,31 @@
 	<body>
 
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-		  <div class="container ">
-		    <a class="navbar-brand" href="/"><img src="<?= base_url('assets/sca/images/travel.jpg') ?>"
-		        style="width: 80px; padding-top: 0%;"></a>
-		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-		      aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-		      <span class="oi oi-menu"></span> Menu
-		    </button>
+		<div class="container ">
+		<a class="navbar-brand" href="/"><img src="<?= base_url('assets/sca/images/travel.jpg') ?>"
+		style="width: 80px; padding-top: 0%;"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+		aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="oi oi-menu"></span> Menu
+		</button>
 
-		    <div class="collapse navbar-collapse" id="ftco-nav" style="padding-top: -0%;">
-		      <ul class="navbar-nav ml-auto ">
-			  <li class="nav-item "><a href="/" class="nav-link">Home</a></li>
-		          </div>
-		      </ul>
-		    </div>
-		  </div>
+		<div class="collapse navbar-collapse" id="ftco-nav" style="padding-top: -0%;">
+		<ul class="navbar-nav ml-auto ">
+		<li class="nav-item "><a href="/" class="nav-link">Home</a></li>
+		</div>
+		</ul>
+		</div>
+		</div>
 		</nav>
 		<div class="hero-wrap js-fullheight" id="home"
-		  style="background-image: url('<?= base_url('assets/sca/images/Philippines_Tropics_Coast_Sea_Palma_Beach_513926_3840x2400.jpg') ?>');"><br><br>
-		  <section class="hero" id="hero">
-		    <div class="container">
-		      <div class="headline-description">
-		      <div class="single-animation">
-		      <h5>Bantayan Island</h5>
-		      </div>
-		      </div>
-		      <h1 class="headline">Packages</h1>
-		    </div>
+		style="background-image: url('<?= base_url('assets/sca/images/Philippines_Tropics_Coast_Sea_Palma_Beach_513926_3840x2400.jpg') ?>');"><br><br>
+		<section class="hero" id="hero">
+		<div class="container">
+		<div class="headline-description">
+		<div class="single-animation">
+		<h5>Bantayan Island</h5>
+		</div>
+		</div>
+		<h1 class="headline">Packages</h1>
+		</div>
 		</div>

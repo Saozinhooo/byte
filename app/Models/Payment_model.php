@@ -1,11 +1,12 @@
 <?php
+
 namespace App\Models;
+
 use CodeIgniter\Model;
 
 class Payment_model extends Model
 {
     protected $table = 'payment';
-
     protected $primaryKey = 'payment_id';
 
     protected $allowedFields = [

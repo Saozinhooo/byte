@@ -25,20 +25,9 @@ class Transaction extends BaseController{
 
     ];
 
-
-
-
     echo view('admin/templates/header');
     echo view('admin/transaction_history/index', $data);
     echo view('admin/templates/footer');
 
-
   }
-
-
-
-
-
-
-
 }

@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Controllers\Admin;
-use App\Controllers\BaseController;
 
+use App\Controllers\BaseController;
 use App\Models\Comment_model;
 use App\Models\Comment_package_model;
 
@@ -20,9 +20,6 @@ class Comments extends BaseController{
       'pager' => $commentmodel->pager
 
     ];
-
-
-
 
   echo view('admin/templates/header');
   echo view('admin/comments', $data);
@@ -42,7 +39,6 @@ function Package(){
 
   ];
 
-
 echo view('admin/templates/header');
 echo view('admin/package_comments', $data);
 echo view('admin/templates/footer');
@@ -50,16 +46,12 @@ echo view('admin/templates/footer');
 
 public function changeCommentStatus(){
 
-
-
   $comment_model = new Comment_model();
   $email = \Config\Services::email();
-
   $email->setFrom('dave@gmail.com', 'Travel and Tours');
   $email->setSubject('Comment Posted');
 	$body = "You're comment has been posted!";
 	$email->setMessage($body);
-
 
   $status = $this->request->getPost('option');
   $comment_id = $this->request->getPost('action_data');
@@ -81,7 +73,6 @@ public function changeCommentStatus(){
 
   }
 
-
   foreach($comment_id as $id){
 
     $comment_model->update($id,$data);
@@ -90,8 +81,6 @@ public function changeCommentStatus(){
   $email->send();
   echo "updated";
 }
-
-
 
 function changePackageCommentStatus(){
 
@@ -103,7 +92,6 @@ function changePackageCommentStatus(){
   $body = "Your comment has been posted!";
   $email->setMessage($body);
 
-
   $status = $this->request->getPost('option');
   $comment_id = $this->request->getPost('action_data');
   $commenterEmails = $this->request->getPost('emails');
@@ -118,22 +106,19 @@ function changePackageCommentStatus(){
     $sendTo = implode(",", $emails);
     $email->setTo($sendTo);
 
-  }elseif($status == "private"){
-
+    }elseif($status == "private")
+    {
     $data['pending'] = true;
-
-  }
-
+    }
 
   foreach($comment_id as $id){
 
     $comment_model->update($id,$data);
 
   }
+
   $email->send();
   echo "updated";
-
-
 }
 
 

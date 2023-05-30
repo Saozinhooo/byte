@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Controllers\Admin;
-use App\Controllers\BaseController;
 
+use App\Controllers\BaseController;
 use App\Models\Image_model;
 
 class Uploader extends BaseController{
@@ -25,13 +25,5 @@ class Uploader extends BaseController{
         echo $newName;
 			}
     }
-
   }
-
-
-
-
-
-
-
 }

@@ -10,6 +10,7 @@ use App\Models\Activities_model;
 class Packages extends BaseController{
 
   function index(){
+
     $packagemodel = new Package_model();
 		$data = [
             'packages' => $packagemodel->join('admin_login', 'packages.user_id = admin_login.user_id', 'left')->orderBy('id', 'DESC')->paginate(5,'group1'),
@@ -23,6 +24,7 @@ class Packages extends BaseController{
   }
 
   function active_packages(){
+
     $packagemodel = new Package_model();
     $data = [
             'packages' => $packagemodel->join('admin_login', 'admin_login.user_id = packages.user_id')->orderBy('id', 'DESC')->paginate(5,'group1'),
@@ -63,7 +65,6 @@ class Packages extends BaseController{
     echo view("admin/templates/footer");
   }
 
-
   public function insert_package(){
 
     $session = session();
@@ -101,7 +102,6 @@ class Packages extends BaseController{
                 'activity' => $act
 				];
 
-
 			}else{
 				$data = [
                 'title' => $this->request->getVar('package_title'),
@@ -126,7 +126,6 @@ class Packages extends BaseController{
 
   function update_package(){
 
-
     $session = session();
     $packagemodel = new Package_model();
     $updated = date('Y/m/d H:i:s',time());
@@ -146,7 +145,6 @@ class Packages extends BaseController{
 
 		if($img = $this->request->getPost('update_ft_img')){
 
-
 				$data = [
 								'title' => $this->request->getVar('package_title'),
 								'body'  => $this->request->getVar('ckeditor1'),
@@ -158,7 +156,6 @@ class Packages extends BaseController{
 							 	'package_img' => $img,
                 'featured' => $featured,
 				];
-
 
 			}else{
 				$data = [
@@ -201,6 +198,7 @@ class Packages extends BaseController{
 	}
 
   function activities(){
+
       $activitymodel = new Activities_model();
       $data = [
         'activities' => $activitymodel->orderBy('act_id', 'DESC')->paginate(20, 'activities'),
@@ -208,14 +206,17 @@ class Packages extends BaseController{
         'currentPage' => $activitymodel->pager->getCurrentPage('activities'), // The current page number
         'totalPages'  => $activitymodel->pager->getPageCount('activities'),   // The total page count
       ];
+
       echo view("admin/templates/header");
       echo view("admin/packages/activities", $data);
       echo view("admin/templates/footer");
   }
 
   function insert_activity(){
+
     $activitymodel = new Activities_model();
     $created = date('Y/m/d H:i:s',time());
+
 		$data = [
       'activity_name' => $this->request->getVar('act_name'),
       'user_id' => $this->request->getVar('user_id'),
@@ -227,6 +228,7 @@ class Packages extends BaseController{
   }
 
   function activity_status(){
+
     $activitymodel = new Activities_model();
     $status = $this->request->getPost('option');
     $act_id = $this->request->getPost('action_data');
@@ -238,17 +240,21 @@ class Packages extends BaseController{
     }elseif($status == "available"){
 
       $data['is_available'] = true;
+
     }elseif($status == "delete"){
 
       foreach($act_id as $id){
+
         $activitymodel->delete($id);
       }
+
       echo "deleted";
       exit();
     }
 
 
     foreach($act_id as $id){
+
       $activitymodel->update($id,$data);
     }
 
@@ -257,12 +263,12 @@ class Packages extends BaseController{
   }
 
   function delete_activity(){
+
     $activitymodel = new Activities_model();
     $option = $this->request->getPost('option');
     $act_id = $this->request->getPost('action_data');
 
     if($option == "delete"){
-
 
       foreach($act_id as $id){
         $activitymodel->delete($id);
@@ -270,17 +276,7 @@ class Packages extends BaseController{
 
     }
 
-
-
-
     echo "deleted";
 
   }
-
-
-
-
-
-
-
 }
