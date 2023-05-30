@@ -40,6 +40,7 @@ $routes->get('user/(:num)', 'User::index/$1');
 $routes->get('admin/transaction_history', 'Admin/Transaction::index');
 $routes->add('email/compose', 'Email::compose');
 $routes->post('email/send-email', 'Email::send_email');
+$routes->post('/send_email_faq', 'Main::send_email_faq');
 
 
 /**

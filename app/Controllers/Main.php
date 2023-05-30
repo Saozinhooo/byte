@@ -95,15 +95,9 @@ class Main extends BaseController
 	}
 
 	function savePayerDetails(){
-
 		$paymentmodel = new Payment_model();
-		$account_sid = 'AC6fa892fda30ed4702491d35048e8866c';
-		$auth_token = 'cadac9babf081246673da7cbd3b5d8ec';
-		$twilio_number = "+18565796109";
-		$client = new Client($account_sid, $auth_token);
 		$payer_email = $this->request->getPost('payer_email');
 		$payer_contact = $this->request->getPost('contact_no');
-		$payer_contact = '+639185476330'; // testing only
 		$packageData = $this->request->getPost('packageDetails');
 		$packageData = json_decode($packageData);
 		foreach($packageData as $packageInfo){
@@ -128,15 +122,19 @@ class Main extends BaseController
 
 
 		$result = $paymentmodel->insert($data);
+
 		if($result){
+			$payer_contact = '+639661409725'; // testing only
 			$sid    = "AC4865a3bae57f33fd3734f7cd5511551c";
-			$token  = "7d49e9c5d72081f83c2e4f1cfa694580";
+			$token  = "29bfcb28df45aa51630013510b47bd6d";
+			$twilio_number = "+13157125259";
 			$twilio = new Client($sid, $token);
 		
 			$message = $twilio->messages
 			->create($payer_contact, // to
 				array(
-						"body" => "Welcome to jamrock"
+						"from" => "+13157125259",
+						"body" => "Dave bayot"
 				)
 			);
 		
@@ -154,6 +152,24 @@ class Main extends BaseController
 			}
 		}
 		
+	}
+
+	public function send_email_faq(){
+		$set_from = $this->request->getPost('sender_email');
+		$body = $this->request->getPost('inquiry_body');
+		$email = \Config\Services::email();
+		$email->setFrom($set_from, 'inquiry@byte.com');
+		$email->setTo('davevincentoporto@gmail.com');
+		$email->setSubject('Inquiry');
+		$email->setMessage($body);
+		if ($email->send()) {
+			print('Email sent successfully.');
+			return redirect()->to('/');
+		} else {
+			$error = $email->printDebugger(['headers']);
+			print_r($error);
+		}
+
 	}
 
 	//--------------------------------------------------------------------

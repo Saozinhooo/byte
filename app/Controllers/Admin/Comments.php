@@ -98,9 +98,9 @@ function changePackageCommentStatus(){
   $comment_model = new Comment_package_model();
   $email = \Config\Services::email();
 
-  $email->setFrom('dave@gmail.com', 'Travel and Tours');
+  $email->setFrom('davevincentoporto@gmail.com', 'Travel and Tours');
   $email->setSubject('Comment Posted');
-  $body = "You're comment has been posted!";
+  $body = "Your comment has been posted!";
   $email->setMessage($body);
 
 

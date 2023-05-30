@@ -70,15 +70,15 @@
       this is privacy and policy
     </div>
     <div class="slide-body faq">
-      <form>
+      <form method="POST" action="/send_email_faq">
         <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <label for="sender_email">Email address</label>
+          <input type="email" class="form-control" name="sender_email" id="sender_email" aria-describedby="emailHelp" placeholder="Enter email">
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
-          <label for="exampleFormControlTextarea1">Example textarea</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <label for="inquiry_body"></label>
+          <textarea class="form-control" name="inquiry_body" id="inquiry_body" rows="3"></textarea>
           </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         </form>
