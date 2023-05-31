@@ -76,6 +76,7 @@
      <p>Total <span class="price" style="color:black"><b><?php if(isset($totalPrice)){ echo $totalPrice; } else { echo "Please select a package";  } ?></b></span></p>
      <input type="hidden" id="totalPrice" name="totalPrice" value="<?php if(isset($totalPrice)){ echo $totalPrice; } else { echo " ";  } ?>">
      <input type="hidden" id="contact_no" name="contact_no" value="<?php if(isset($contact_no)){ echo $contact_no; } else { echo " ";  } ?>">
+     <input type="hidden" id="checkin_date" name="checkin_date" value="<?php if(isset($checkin)){ echo $checkin; } else { echo " ";  } ?>">
      <input type="hidden" id="packageDetails" name="packageDetails" value='<?= json_encode($package_data) ?>'>
      <hr>
      <p>Downpayment <span class="price" style="color:black"><b>PHP 500</b></span></p>
@@ -144,8 +145,8 @@ $( document ).ready(function() {
   var totalPrice = $("#totalPrice").val();
   var contact_no = $("#contact_no").val();
   var packageDetails = $("#packageDetails").val();
-  console.log(packageDetails);
-  console.log(totalPrice);
+  var checkin_date = $("#checkin_date").val();
+  console.log(checkin_date);
   paypal.Buttons({
     createOrder: function(data, actions) {
       // This function sets up the details of the transaction, including the amount and line item details.
@@ -162,16 +163,12 @@ $( document ).ready(function() {
 
       return actions.order.capture().then(function(details) {
         // This function shows a transaction success message to your buyer.
-        console.log(details);
-        console.log("here");
         var fullname = [details.payer.name.given_name,details.payer.name.surname].join(" ");
         var payer_id = details.payer.payer_id;
         var payer_email = details.payer.email_address;
         var transaction_id = details.id;
         var status = details.status;
         var payment = totalPrice;
-        console.log(contact_no);
-        console.log(transaction_id);
         $.ajax({
           url: "<?= site_url('main/savePayerDetails') ?>",
           method: "POST",
@@ -183,10 +180,11 @@ $( document ).ready(function() {
             status: status,
             contact_no: contact_no,
             payment: payment,
-            packageDetails: packageDetails
+            packageDetails: packageDetails,
+            checkin_date: checkin_date
           },
           success: function(data){
-            //window.location.href = "/";
+            window.location.href = "/";
           },
         });
 

@@ -13,7 +13,7 @@ class Login extends BaseController
          $is_user = $session->is_user;
 
          if($is_user){
-            return redirect()->to('/user/'.$user_id.'');
+            return redirect()->to('/');
          }else{
              $this->logout();
          }
@@ -49,7 +49,7 @@ class Login extends BaseController
 
                 $session->set($ses_data);
 
-                return redirect()->to('/user/'.$data['id'].'');
+                return redirect()->to('/');
 
             }else{
 

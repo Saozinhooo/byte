@@ -398,6 +398,9 @@ $(function(){
 $(document).ready(function() {
     var table = $('#TransactionHistory').DataTable();
 });
+$(document).ready(function() {
+    var table = $('#GuestList').DataTable();
+});
 
 </script>
 

@@ -22,7 +22,7 @@
                   class="form-control checkin_date" placeholder="Date of Tour" name="checkin_date" required autocomplete="off">
               </div>
               <div class="form-group">
-                <input type="text" style="border-radius: 50px;" id="checkin_date" name="checkout_date"
+                <input type="text" style="border-radius: 50px;" id="checkin_date" name="arrival_date"
                   class="form-control checkout_date" placeholder="Time of Arrival" required autocomplete="off">
               </div>
               <div class="form-group">

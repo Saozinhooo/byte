@@ -19,6 +19,7 @@ class Payment_model extends Model
       'customer_contact',
       'status',
       'packageDetails',
-      'create_date'
+      'checkin_date',
+      'create_date',
     ];
 }

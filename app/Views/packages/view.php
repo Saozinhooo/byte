@@ -42,7 +42,25 @@
         <p>Name: <?= $comment['name'] ?></p>
         <p>Email: <?= $comment['email'] ?></p>
       </div>
-        <p><?= $comment['body'] ?></p>
+      <p> <?php
+        $badWords = array("yawa", "piste", "fuck"); // List of bad words
+
+        $commentBody = $comment['body']; // Assuming $comment['body'] contains the comment's body
+
+
+        $words = explode(" ", $commentBody); // Split the comment's body into individual words
+        foreach ($words as &$word) {
+            if (in_array(strtolower($word), $badWords)) {
+                // Replace bad word with a placeholder
+                $word = "***";
+            }
+        }
+        $filteredBody = implode(" ", $words); // Reconstruct the filtered comment body
+        $comment['body'] = $filteredBody;
+
+        echo "<p>" .  $comment['body'] . "</p>"; // Output the filtered comment body within <p> tags
+
+        ?>
       </div>
 
       <?php endif; ?>

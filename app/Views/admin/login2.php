@@ -17,7 +17,7 @@
 		</div>
 		<div class="login-content">
 			<form id="login_form" method="post" action="<?php echo site_url("admin/login/auth"); ?>">
-				<h2 class="title">Sign In</h2
+				<h2 class="title">Sign In</h2>
         <div class="input-div one">
         <div class="i">
         <i class="fas fa-user"></i>

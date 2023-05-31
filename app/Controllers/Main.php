@@ -53,7 +53,7 @@ class Main extends BaseController
 	}
 
 	function bookConfirm(){
-		$checkout = $this->request->getPost('checkout_date');
+		$checkout = $this->request->getPost('arrival_date');
 		$checkin = $this->request->getPost('checkin_date');
 		$datediff = strtotime($checkout) - strtotime($checkin);
 		$package_id = array();
@@ -88,6 +88,8 @@ class Main extends BaseController
 		$payer_email = $this->request->getPost('payer_email');
 		$payer_contact = $this->request->getPost('contact_no');
 		$packageData = $this->request->getPost('packageDetails');
+		$checkin_date = strtotime($this->request->getPost('checkin_date'));
+		$checkin_date = date('Y-m-d', $checkin_date);
 		$packageData = json_decode($packageData);
 
 		foreach($packageData as $packageInfo){
@@ -103,6 +105,7 @@ class Main extends BaseController
 			'status' => $this->request->getPost('status'),
 			'customer_id' => session()->id,
 			'packageDetails' => json_encode($package),
+			'checkin_date' => $checkin_date
 		];
 
 		$body = "You order has been confirmed." . "Transaction #" . $data['transaction_id'];
@@ -112,15 +115,14 @@ class Main extends BaseController
 
 		if($result){
 			$payer_contact = '+639661409725'; // testing only
-			$sid    = "AC4865a3bae57f33fd3734f7cd5511551c";
-			$token  = "29bfcb28df45aa51630013510b47bd6d";
+
 			$twilio_number = "+13157125259";
-			$twilio = new Client($sid, $token);
+			// $twilio = new Client($sid, $token);
 			$message = $twilio->messages
 			->create($payer_contact, // to
 				array(
 						"from" => "+13157125259",
-						"body" => "Dave bayot"
+						"body" => "Arigato"
 				)
 			);
 		

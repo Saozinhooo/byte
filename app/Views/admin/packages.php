@@ -38,8 +38,8 @@
                       ?><img src="<?php echo base_url('assets/sca/images/icons/unavail.png'); ?>" style="width: 10%;"><?php
                     } ?></td>
                     <td>
-                      <a href="packages/edit_package/<?= $package['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
-                      <a href="packages/delete_package/<?= $package['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                      <a href="/admin/packages/edit/<?= $package['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
+                      <a href="/admin/packages/delete/<?= $package['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
                       </td>
                   </tr>
                 <?php endforeach; ?>
