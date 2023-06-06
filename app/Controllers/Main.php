@@ -91,6 +91,8 @@ class Main extends BaseController
 		$checkin_date = strtotime($this->request->getPost('checkin_date'));
 		$checkin_date = date('Y-m-d', $checkin_date);
 		$packageData = json_decode($packageData);
+		$sid = "";
+		$token = null;
 
 		foreach($packageData as $packageInfo){
 			$package[] = explode(',', $packageInfo);
@@ -117,7 +119,7 @@ class Main extends BaseController
 			$payer_contact = '+639661409725'; // testing only
 
 			$twilio_number = "+13157125259";
-			// $twilio = new Client($sid, $token);
+			$twilio = new Client($sid, $token);
 			$message = $twilio->messages
 			->create($payer_contact, // to
 				array(
