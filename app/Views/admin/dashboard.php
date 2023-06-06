@@ -48,6 +48,7 @@
 
             <div class="row text-center pad-top">
 
+                <?php if(session()->user_type == 1): ?>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                     <div class="div-square">
                         <a href="admin/register" >
@@ -56,6 +57,7 @@
                     </a>
                     </div>
                 </div>
+                <?php endif; ?>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                     <div class="div-square">
                         <a href="admin/transaction_history" >

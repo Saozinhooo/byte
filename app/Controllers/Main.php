@@ -88,6 +88,7 @@ class Main extends BaseController
 		$payer_email = $this->request->getPost('payer_email');
 		$payer_contact = $this->request->getPost('contact_no');
 		$packageData = $this->request->getPost('packageDetails');
+		$names_included = $this->request->getPost('pax');
 		$checkin_date = strtotime($this->request->getPost('checkin_date'));
 		$checkin_date = date('Y-m-d', $checkin_date);
 		$packageData = json_decode($packageData);
@@ -107,7 +108,8 @@ class Main extends BaseController
 			'status' => $this->request->getPost('status'),
 			'customer_id' => session()->id,
 			'packageDetails' => json_encode($package),
-			'checkin_date' => $checkin_date
+			'checkin_date' => $checkin_date,
+			'names_included' => $names_included
 		];
 
 		$body = "You order has been confirmed." . "Transaction #" . $data['transaction_id'];

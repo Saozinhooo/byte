@@ -72,12 +72,17 @@
    <?php endforeach; ?>
    <?php endif; ?>
      <p>Pax <span class="price" style="color:black"><b><?= $pax ?></b></span></p>
+     <label for="pax_count">Please write the names of each person included in the package</label>
+     <?php for($i = 0; $i < $pax; $i++): ?>
+      <input id="pax_count" type="text" name="pax[]" class="form-control pax[] mb-2" required>
+     <?php endfor; ?>
      <hr>
      <p>Total <span class="price" style="color:black"><b><?php if(isset($totalPrice)){ echo $totalPrice; } else { echo "Please select a package";  } ?></b></span></p>
      <input type="hidden" id="totalPrice" name="totalPrice" value="<?php if(isset($totalPrice)){ echo $totalPrice; } else { echo " ";  } ?>">
      <input type="hidden" id="contact_no" name="contact_no" value="<?php if(isset($contact_no)){ echo $contact_no; } else { echo " ";  } ?>">
      <input type="hidden" id="checkin_date" name="checkin_date" value="<?php if(isset($checkin)){ echo $checkin; } else { echo " ";  } ?>">
      <input type="hidden" id="packageDetails" name="packageDetails" value='<?= json_encode($package_data) ?>'>
+     <input type="hidden" id="names_included" name="names_included" value=''>
      <hr>
      <p>Downpayment <span class="price" style="color:black"><b>PHP 500</b></span></p>
    </div>
@@ -141,13 +146,20 @@ $('[data-toggle="tooltip"]').tooltip()
 })</script>
 <script>
 $( document ).ready(function() {
-
   var totalPrice = $("#totalPrice").val();
   var contact_no = $("#contact_no").val();
   var packageDetails = $("#packageDetails").val();
   var checkin_date = $("#checkin_date").val();
   console.log(checkin_date);
   paypal.Buttons({
+    onClick(){
+      console.log("clicked");
+      var pax = $('input[name^=pax]').map(function(idx, elem) {
+        return $(elem).val();
+      }).get();
+      $("#names_included").val(pax);
+      console.log(pax);
+    },
     createOrder: function(data, actions) {
       // This function sets up the details of the transaction, including the amount and line item details.
       return actions.order.create({
@@ -160,9 +172,9 @@ $( document ).ready(function() {
     },
     onApprove: function(data, actions) {
       // This function captures the funds from the transaction.
-
       return actions.order.capture().then(function(details) {
         // This function shows a transaction success message to your buyer.
+        var pax = $("#names_included").val();
         var fullname = [details.payer.name.given_name,details.payer.name.surname].join(" ");
         var payer_id = details.payer.payer_id;
         var payer_email = details.payer.email_address;
@@ -181,7 +193,8 @@ $( document ).ready(function() {
             contact_no: contact_no,
             payment: payment,
             packageDetails: packageDetails,
-            checkin_date: checkin_date
+            checkin_date: checkin_date,
+            pax: pax
           },
           success: function(data){
             window.location.href = "/";

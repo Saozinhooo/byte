@@ -14,7 +14,7 @@ class Login extends BaseController
 
         // User type = admin
         $session = session();
-        $is_user = $session->is_admin;
+        $is_admin = $session->is_admin;
         if($is_admin){
             helper(['form']);
             echo view('admin/login2');
@@ -41,6 +41,7 @@ class Login extends BaseController
                     'fname' => $data['fname'],
 					'lname' => $data['lname'],
                     'user_email' => $data['user_email'],
+                    'user_type' => $data['user_type'],
                     'logged_in' => TRUE,
                     'is_admin' => TRUE
                 ];

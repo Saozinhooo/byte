@@ -15,6 +15,7 @@ class Payment_model extends Model
       'amount_paid',
       'customer_id',
       'customer_name',
+      'names_included',
       'customer_email',
       'customer_contact',
       'status',

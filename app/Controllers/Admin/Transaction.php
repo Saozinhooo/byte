@@ -15,9 +15,9 @@ class Transaction extends BaseController{
     $packageDetails = $payment_model->find();
     foreach($packageDetails as $i => $package){
 
-        // $packageDetails[$i]['packageInfo'] = json_decode($package['packageDetails']);
         array_push($packageDetails[$i], json_decode($package['packageDetails']));
     }
+
 
     $data = [
 

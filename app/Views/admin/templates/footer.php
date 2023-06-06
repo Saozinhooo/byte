@@ -323,17 +323,6 @@ $(function(){
 </script>
 
 <script type="text/javascript">
-  var loading_modal = new bootstrap.Modal(document.getElementById('sending_email_comment'), options);
-  $(document)
-  .ajaxStart(function () {
-    loading_modal.show();
-  })
-  .ajaxStop(function () {
-    loading_modal.hide();
-  });
-</script>
-
-<script type="text/javascript">
 $("#checkAllAct").click(function(){
   $('input:checkbox').not(this).prop('checked', this.checked);
 });

@@ -33,7 +33,8 @@ class Register extends Controller
                 'user_email' => $this->request->getVar('email'),
                 'fname' => $this->request->getVar('fname'),
                 'lname' => $this->request->getVar('lname'),
-                'user_pass' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
+                'user_pass' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+                'user_type' => 2
             ];
             $model->save($data);
             $session->setFlashdata('success', 'You have been registered!');

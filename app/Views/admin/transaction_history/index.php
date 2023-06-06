@@ -16,19 +16,30 @@
                         <th scope="col">Customer</th>
                         <th scope="col">Email</th>
                         <th scope="col">Status</th>
+                        <th scope="col">PAX</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($packageData as $i =>$packages): ?>
+                        <?php foreach($packageData as $i => $packages): ?>
                             <?php foreach($packages[0] as $row): ?>
                         <tr>
-                            <td><?= $row[1] ?></td>
-                            <td>P<?= number_format(floatval($row[2]), 2, '.', ',') ?></td>
-                            <td><?= ucwords($packages['customer_name']) ?></td>
-                            <td><?= $packages['customer_email'] ?></td>
-                            <td><?php if($packages['status'] == "COMPLETED"){
+                            <td class="align-middle"><?= $row[1] ?></td>
+                            <td class="align-middle">P<?= number_format(floatval($row[2]), 2, '.', ',') ?></td>
+                            <td class="align-middle"><?= ucwords($packages['customer_name']) ?></td>
+                            <td class="align-middle"><?= $packages['customer_email'] ?></td>
+                            <td class="align-middle"><?php if($packages['status'] == "COMPLETED"){
                                 echo "Paid";
                             } ?></td>
+                            <td class="align-middle">
+                                <?php
+
+                                $names = explode(",", $packages['names_included']);
+                                foreach($names as $name){
+                                    echo $name . "<br/>";
+                                }
+
+                                ?>
+                            </td>
                         </tr>
                             <?php endforeach ?>
                         <?php endforeach ?>
