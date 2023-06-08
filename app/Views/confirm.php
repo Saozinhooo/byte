@@ -61,14 +61,29 @@
 
      <h4>Packages <span class="price" style="color:black"><i class="fa fa-book"></i> </span></h4>
      <hr>
+     <p style="font-size: 21px; font-weight: bold;">Activities</p>
      <?php if($package_data): ?>
      <?php foreach($package_data as $v): ?>
      <?php
-         $packages = explode(",", $v);
+         $packages = explode("+", $v);
          $price += $packages[2];
          $totalPrice = $price * $pax;
        ?>
+       <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="activity" name="activity[]" value="Tour" checked disabled>
+          <label class="form-check-label" for="flexCheckDefault">Tour</label>
+          <br>
+       <?php foreach(explode(',',$packages[4]) as $activity): ?>
+
+          <input class="form-check-input" type="checkbox" id="activity" name="activity[]" value="<?= $activity ?>">
+          <label class="form-check-label" for="flexCheckDefault">
+          <?= $activity ?>
+          </label>
+          <br>
+        <?php endforeach; ?>
+       </div>
      <p><a href="#"><?= $packages[1] ?></a> <span class="price">₱<?= $packages[2] ?></span></p>
+
    <?php endforeach; ?>
    <?php endif; ?>
      <p>Pax <span class="price" style="color:black"><b><?= $pax ?></b></span></p>
@@ -83,6 +98,7 @@
      <input type="hidden" id="checkin_date" name="checkin_date" value="<?php if(isset($checkin)){ echo $checkin; } else { echo " ";  } ?>">
      <input type="hidden" id="packageDetails" name="packageDetails" value='<?= json_encode($package_data) ?>'>
      <input type="hidden" id="names_included" name="names_included" value=''>
+     <input type="hidden" id="activities" name="activities" value=''>
      <hr>
      <p>Downpayment <span class="price" style="color:black"><b>PHP 500</b></span></p>
    </div>
@@ -158,7 +174,11 @@ $( document ).ready(function() {
         return $(elem).val();
       }).get();
       $("#names_included").val(pax);
-      console.log(pax);
+      var activities = $(".form-check input:checked").map(function(){
+        return $(this).val();
+      }).get();
+      $("#activities").val(activities);
+      console.log(activities);
     },
     createOrder: function(data, actions) {
       // This function sets up the details of the transaction, including the amount and line item details.
@@ -175,6 +195,7 @@ $( document ).ready(function() {
       return actions.order.capture().then(function(details) {
         // This function shows a transaction success message to your buyer.
         var pax = $("#names_included").val();
+        var activities = $("#activities").val();
         var fullname = [details.payer.name.given_name,details.payer.name.surname].join(" ");
         var payer_id = details.payer.payer_id;
         var payer_email = details.payer.email_address;
@@ -194,10 +215,11 @@ $( document ).ready(function() {
             payment: payment,
             packageDetails: packageDetails,
             checkin_date: checkin_date,
-            pax: pax
+            pax: pax,
+            activities: activities
           },
           success: function(data){
-            window.location.href = "/";
+            // window.location.href = "/";
           },
         });
 

@@ -49,8 +49,8 @@
           <?php if($packages): ?>
           <?php foreach($packages as $package): ?>
           <label class="option_item" style="width: 100%;">
-            <input type="checkbox" class="checkbox package_checkbox" name="package_data[]" id="package_check" value="<?= $package['id'] ?>,<?= $package['title'] ?>,<?= $package['price'] ?>,<?= $package['package_img'] ?>">
-
+            <input type="checkbox" class="checkbox package_checkbox" name="package_data[]" id="package_check"
+            value="<?= $package['id'] ?>+<?= $package['title'] ?>+<?= $package['price'] ?>+<?= $package['package_img'] ?>+<?= $package['activity'] ?>">
             <div class="option_inner package">
               <div class="tickmark"></div>
           <div class="destination" id="package<?= $package['id'] ?>">
@@ -75,7 +75,6 @@
 
 
                   <?php } ?>
-
               <p class="days"><span>1 to 3 hours</span></p>
             </div>
           </div>

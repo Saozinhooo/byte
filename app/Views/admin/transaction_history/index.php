@@ -22,6 +22,7 @@
                     <tbody>
                         <?php foreach($packageData as $i => $packages): ?>
                             <?php foreach($packages[0] as $row): ?>
+                                <?php unset($packages[0]['activities']); ?>
                         <tr>
                             <td class="align-middle"><?= $row[1] ?></td>
                             <td class="align-middle">P<?= number_format(floatval($row[2]), 2, '.', ',') ?></td>

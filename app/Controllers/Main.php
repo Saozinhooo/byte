@@ -62,9 +62,7 @@ class Main extends BaseController
 		if($package_data){
 
 			foreach($package_data as $check) {
-				$package_id[] = $check; //echoes the value set in the HTML form for each checked checkbox.
-							 //so, if I were to check 1, 3, and 5 it would echo value 1, value 3, value 5.
-							 //in your case, it would echo whatever $row['Report ID'] is equivalent to.
+				$package_id[] = $check;
 			}
 		}
 
@@ -89,15 +87,21 @@ class Main extends BaseController
 		$payer_contact = $this->request->getPost('contact_no');
 		$packageData = $this->request->getPost('packageDetails');
 		$names_included = $this->request->getPost('pax');
+		$activities = $this->request->getPost('activities');
 		$checkin_date = strtotime($this->request->getPost('checkin_date'));
 		$checkin_date = date('Y-m-d', $checkin_date);
 		$packageData = json_decode($packageData);
 		$sid = "";
 		$token = null;
-
+		$activities = str_replace(' ','',$activities);
 		foreach($packageData as $packageInfo){
-			$package[] = explode(',', $packageInfo);
+			$package[] = explode('+', $packageInfo);
 		}
+		for($i = 0 ; $i < count($package) ; $i++){
+			unset($package[$i][4]);
+		}
+		$activities = implode(',',array_unique(explode(',', $activities)));
+		$package['activities'] = $activities;
 
 		$data = [
 			'transaction_id' => $this->request->getPost('transaction_id'),
