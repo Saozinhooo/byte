@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+require_once __DIR__ . '/vendor/autoload.php';
+
 use Twilio\Rest\Client;
 use App\Models\Package_model;
 use App\Models\Post_model;
@@ -151,7 +153,7 @@ class Main extends BaseController
 			$email->setMessage($body);
 
 			if ($email->send()) {
-				dd('Email sent successfully.');
+				print('Email sent successfully.');
 			} else {
 				$error = $email->printDebugger(['headers']);
 				print_r($error);
