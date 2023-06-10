@@ -85,7 +85,7 @@
                                     <br>
                                   <?php endforeach; ?>
                                 </div>
-                                <p><a href="#"><?= $packages[1] ?></a> <span class="price">₱<?= $packages[2] ?></span></p>
+                                <p><a href="#"><?= $packages[1] ?></a> <span class="price">₱<?= number_format($packages[2], 2, ",", "."); ?></span></p>
 
                               <?php endforeach; ?>
                             <?php endif; ?>
@@ -96,7 +96,7 @@
                             <?php endfor; ?>
                             <hr>
                             <p>Total <span class="price" style="color:black"><b><?php if (isset($totalPrice)) {
-                                                                                  echo $totalPrice;
+                                                                                  echo "₱" . number_format($totalPrice, 2, ".", ",");
                                                                                 } else {
                                                                                   echo "Please select a package";
                                                                                 } ?></b></span></p>
@@ -124,7 +124,7 @@
                             <input type="hidden" id="names_included" name="names_included" value=''>
                             <input type="hidden" id="activities" name="activities" value=''>
                             <hr>
-                            <p>Downpayment <span class="price" style="color:black"><b>PHP 500</b></span></p>
+                            <p>Downpayment <span class="price" style="color:black"><b>₱500.00</b></span></p>
                           </div>
                         </div>
                       </div>
