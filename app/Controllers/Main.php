@@ -12,27 +12,28 @@ use PHPMailer\PHPMailer\Exception;
 
 class Main extends BaseController
 {
-	public function index(){
-		
+	public function index()
+	{
+
 		$packagemodel = new Package_model();
 		$postmodel = new Post_model();
 		$session = session();
-		
+
 		$data = [
 			'packages' => $packagemodel
-			->orderBy('packages.id', 'DESC')
-			->limit(4)
-			->groupBy('packages.id')
-			->find(),
+				->orderBy('packages.id', 'DESC')
+				->limit(4)
+				->groupBy('packages.id')
+				->find(),
 			'featured' => $packagemodel->where('featured', '1')->limit(8)->find(),
 			'posts' => $postmodel->orderBy('id', 'DESC')->limit(8)->find(),
-			'packages_blog' => $packagemodel->join('package_comments', 'packages.id = package_comments.package_id','left')
-			->select('packages.*')
-			->selectAvg('package_comments.rating')
-			->orderBy('package_comments.rating', 'DESC')
-			->limit(4)
-			->groupBy('packages.id')
-			->find(),
+			'packages_blog' => $packagemodel->join('package_comments', 'packages.id = package_comments.package_id', 'left')
+				->select('packages.*')
+				->selectAvg('package_comments.rating')
+				->orderBy('package_comments.rating', 'DESC')
+				->limit(4)
+				->groupBy('packages.id')
+				->find(),
 		];
 
 		$ses_data = [
@@ -47,21 +48,22 @@ class Main extends BaseController
 		echo view('map');
 		echo view('packages', $data);
 		echo view('about');
-		echo view('book',$data);
+		echo view('book', $data);
 		echo view('templates/footer');
 		//echo view('blogs', $data);
 	}
 
-	function bookConfirm(){
-		$checkout = $this->request->getPost('arrival_date');
+	function bookConfirm()
+	{
+		$arrival = $this->request->getPost('arrival_date');
 		$checkin = $this->request->getPost('checkin_date');
-		$datediff = strtotime($checkout) - strtotime($checkin);
+		$datediff = strtotime($arrival) - strtotime($checkin);
 		$package_id = array();
 		$package_data = $this->request->getPost('package_data');
 
-		if($package_data){
+		if ($package_data) {
 
-			foreach($package_data as $check) {
+			foreach ($package_data as $check) {
 				$package_id[] = $check;
 			}
 		}
@@ -72,7 +74,7 @@ class Main extends BaseController
 			'price' => $this->request->getPost('package_price'),
 			'image' => $this->request->getPost('package_image'),
 			'checkin' => $checkin,
-			'checkout' => $checkout,
+			'arrival' => $arrival,
 			'package_data' => $package_id,
 			'contact_no' => $this->request->getPost('contact_no')
 		];
@@ -80,7 +82,8 @@ class Main extends BaseController
 		echo view('confirm', $data);
 	}
 
-	function savePayerDetails(){
+	function savePayerDetails()
+	{
 
 		$paymentmodel = new Payment_model();
 		$payer_email = $this->request->getPost('payer_email');
@@ -90,17 +93,19 @@ class Main extends BaseController
 		$activities = $this->request->getPost('activities');
 		$checkin_date = strtotime($this->request->getPost('checkin_date'));
 		$checkin_date = date('Y-m-d', $checkin_date);
+		$arrival_date = strtotime($this->request->getPost('arrival_date'));
+		$arrival_date = date('Y-m-d', $arrival_date);
 		$packageData = json_decode($packageData);
 		$sid = "";
 		$token = null;
-		$activities = str_replace(' ','',$activities);
-		foreach($packageData as $packageInfo){
+		$activities = str_replace(' ', '', $activities);
+		foreach ($packageData as $packageInfo) {
 			$package[] = explode('+', $packageInfo);
 		}
-		for($i = 0 ; $i < count($package) ; $i++){
+		for ($i = 0; $i < count($package); $i++) {
 			unset($package[$i][4]);
 		}
-		$activities = implode(',',array_unique(explode(',', $activities)));
+		$activities = implode(',', array_unique(explode(',', $activities)));
 		$package['activities'] = $activities;
 
 		$data = [
@@ -116,27 +121,31 @@ class Main extends BaseController
 			'names_included' => $names_included
 		];
 
-		$body = "You order has been confirmed." . "Transaction #" . $data['transaction_id'];
-		$body .= "<br/>Amount paid: ". $data['amount_paid'];
+		$body = "You order has been confirmed.";
+		$body .= "<br/>Amount paid: " . $data['amount_paid'];
+		$body .= "<br/>Arrival Date: " . $arrival_date;
+		$body .= "<br/>Transaction ID: " . $data['transaction_id'];
+		$body .= "<br/><small>Please show the transaction to the tour guide.</small>";
 
 		$result = $paymentmodel->insert($data);
 
-		if($result){
+		if ($result) {
 			$payer_contact = '+639661409725'; // testing only
 
 			$twilio_number = "+13157125259";
 			$twilio = new Client($sid, $token);
 			$message = $twilio->messages
-			->create($payer_contact, // to
-				array(
+				->create(
+					$payer_contact, // to
+					array(
 						"from" => "+13157125259",
-						"body" => "Arigato"
-				)
-			);
-		
+						"body" => $body
+					)
+				);
+
 			print($message->sid);
 			$email = \Config\Services::email();
-			$email->setFrom('clevermonteros9@gmail.com', 'Dave Oporto');
+			$email->setFrom('clevermonteros9@gmail.com', 'byte@donotreply');
 			$email->setTo($payer_email);
 			$email->setSubject('Confirmation');
 			$email->setMessage($body);
@@ -148,10 +157,10 @@ class Main extends BaseController
 				print_r($error);
 			}
 		}
-		
 	}
 
-	public function send_email_faq(){
+	public function send_email_faq()
+	{
 
 		$set_from = $this->request->getPost('sender_email');
 		$body = $this->request->getPost('inquiry_body');
