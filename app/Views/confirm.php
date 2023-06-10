@@ -250,7 +250,7 @@
               activities: activities
             },
             success: function(data) {
-              window.location.href = "/";
+              // window.location.href = "/";
             },
           });
 

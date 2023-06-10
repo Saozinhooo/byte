@@ -14,7 +14,7 @@
 		"laminas/laminas-escaper": "^2.6",
 		"psr/log": "^1.1",
 		"phpmailer/phpmailer": "^6.8",
-		"twilio/sdk": "*",
+		"twilio/sdk": "^7.4",
 		"vlucas/phpdotenv": "^5.5"
 	},
 	"require-dev": {

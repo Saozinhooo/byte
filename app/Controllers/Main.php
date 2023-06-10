@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-require_once __DIR__ . '/vendor/autoload.php';
 
 use Twilio\Rest\Client;
 use App\Models\Package_model;
@@ -98,8 +97,8 @@ class Main extends BaseController
 		$arrival_date = strtotime($this->request->getPost('arrival_date'));
 		$arrival_date = date('Y-m-d', $arrival_date);
 		$packageData = json_decode($packageData);
-		$sid = "";
-		$token = null;
+		$sid = "AC4865a3bae57f33fd3734f7cd5511551c";
+		$token = "6a755ff60ebe83223ed0365afc755ccc";
 		$activities = str_replace(' ', '', $activities);
 		foreach ($packageData as $packageInfo) {
 			$package[] = explode('+', $packageInfo);
