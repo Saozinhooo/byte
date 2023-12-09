@@ -33,9 +33,9 @@
                      <td><?= $package['fname']; ?></td>
                      <td><?php echo $package['price']; ?></td>
                      <td><?php echo $package['created']; ?></td>
-                     <td class=""><?php if($package['status'] == "Available"){ ?><img src="<?php echo base_url('assets/sca/images/icons/avail.png'); ?>" style="width: 10%;">
+                     <td class=""><?php if($package['status'] == "Available"){ ?><img src="<?php echo base_url('assets/sao/images/icons/avail.png'); ?>" style="width: 10%;">
                      <?php }elseif($package['status'] == "Unavailable"){
-                       ?><img src="<?php echo base_url('assets/sca/images/icons/unavail.png'); ?>" style="width: 10%;"><?php
+                       ?><img src="<?php echo base_url('assets/sao/images/icons/unavail.png'); ?>" style="width: 10%;"><?php
                      } ?></td>
                      <td>
                       <a href="/admin/packages/edit/<?= $package['id']; ?>" class="btn btn-primary btn-sm">Edit</a>

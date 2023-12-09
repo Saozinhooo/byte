@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-require_once __DIR__ . '/vendor/autoload.php';
 
 use Twilio\Rest\Client;
 use App\Models\Package_model;
@@ -98,8 +97,8 @@ class Main extends BaseController
 		$arrival_date = strtotime($this->request->getPost('arrival_date'));
 		$arrival_date = date('Y-m-d', $arrival_date);
 		$packageData = json_decode($packageData);
-		$sid = "";
-		$token = null;
+		$sid = "ACf0db64922788dbfdc5d8c8b597d14602";
+		$token = "2f8305a075d2b508b7ac89af7cc4331b";
 		$activities = str_replace(' ', '', $activities);
 		foreach ($packageData as $packageInfo) {
 			$package[] = explode('+', $packageInfo);
@@ -123,32 +122,37 @@ class Main extends BaseController
 			'names_included' => $names_included
 		];
 
-		$body = "You order has been confirmed.";
-		$body .= "<br/>Amount paid: " . $data['amount_paid'];
-		$body .= "<br/>Arrival Date: " . $arrival_date;
-		$body .= "<br/>Transaction ID: " . $data['transaction_id'];
-		$body .= "<br/><small>Please show the transaction to the tour guide.</small>";
-
 		$result = $paymentmodel->insert($data);
 
 		if ($result) {
-			$payer_contact = '+639661409725'; // testing only
+			$body = "You order has been confirmed.\n";
+			$body .= "Amount paid: " . $data['amount_paid'] . "\n";
+			$body .= "Arrival Date: " . $arrival_date . "\n";
+			$body .= "Transaction ID: " . $data['transaction_id'] . "\n";
+			$body .= "Please show the transaction to the tour guide.\n";
+			$body .= "Please message the time of arrival to this number 09661409725.";
+			$payer_contact = $payer_contact; // testing only (receiver)
 
-			$twilio_number = "+13157125259";
+			$twilio_number = "+12244123236";
 			$twilio = new Client($sid, $token);
 			$message = $twilio->messages
 				->create(
 					$payer_contact, // to
 					array(
-						"from" => "+13157125259",
+						"from" => "+12244123236",
 						"body" => $body
 					)
 				);
 
-			print($message->sid);
+			$body = "You order has been confirmed.";
+			$body .= "<br/>Amount paid: " . $data['amount_paid'];
+			$body .= "<br/>Arrival Date: " . $arrival_date;
+			$body .= "<br/>Transaction ID: " . $data['transaction_id'];
+			$body .= "<br/><small>Please show the transaction to the tour guide.</small>";
+			$body .= "<br><small>Please message the time of arrival to this number 09661409725.</small>";	
 			$email = \Config\Services::email();
-			$email->setFrom('clevermonteros9@gmail.com', 'byte@donotreply');
-			$email->setTo($payer_email);
+			$email->setFrom('davevincentoporto@gmail.com', 'byte@donotreply');
+			$email->setTo('davevincentoporto@gmail.com');    // receiver
 			$email->setSubject('Confirmation');
 			$email->setMessage($body);
 
@@ -167,8 +171,8 @@ class Main extends BaseController
 		$set_from = $this->request->getPost('sender_email');
 		$body = $this->request->getPost('inquiry_body');
 		$email = \Config\Services::email();
-		$email->setFrom($set_from, 'inquiry@byte.com');
-		$email->setTo('davevincentoporto@gmail.com');
+		$email->setFrom($set_from, 'inquiry@byte.com');   // from 
+		$email->setTo('davevincentoporto@gmail.com'); //receiver
 		$email->setSubject('Inquiry');
 		$email->setMessage($body);
 

@@ -36,6 +36,14 @@
 </script>
 <script>
   $(document).ready(function() {
+    var guestlist = $('#GuestList').DataTable({
+      aaSorting: [[0, 'desc']],
+      searching: false
+    });
+  });
+</script>
+<script>
+  $(document).ready(function() {
     // Initialize the DataTable
     var table = $('#TransactionHistory').DataTable({
       dateRangeField: 6, // Column index for the date range filter
@@ -69,10 +77,6 @@
         return false;
       }
     );
-  });
-
-  $(document).ready(function() {
-    var table = $('#GuestList').DataTable();
   });
 </script>
 <script type="text/javascript">
@@ -146,6 +150,7 @@
 
 
 <script type="text/javascript">
+  Dropzone.autoDiscover = false;
   $(document).ready(function() {
     Dropzone.autoDiscover = false;
     $('#uploadModal').on('shown.bs.modal', function(e) {

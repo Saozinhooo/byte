@@ -18,15 +18,19 @@ class GuestList extends BaseController{
     $packageDetails = $payment_model->orderBy('payment_id', 'desc')->find();
     foreach($packageDetails as $index => $package){
         $packageDetails[$index]['package_info'] = json_decode($package['packageDetails']);
+        unset($packageDetails[$index]['package_info']->activities);
     }
-
+    
+    
+    usort($packageDetails, function ($a, $b) {
+      return $b['payment_id'] - $a['payment_id'];
+    });
 
     $data = [
 
       'packageData' => $packageDetails,
 
     ];
-
     echo view('admin/templates/header');
     echo view('admin/guestList/index', $data);
     echo view('admin/templates/footer');

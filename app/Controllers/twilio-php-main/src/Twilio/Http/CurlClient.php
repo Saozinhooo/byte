@@ -6,23 +6,39 @@ namespace Twilio\Http;
 
 use Twilio\Exceptions\EnvironmentException;
 
-class CurlClient implements Client {
+class CurlClient implements Client
+{
     public const DEFAULT_TIMEOUT = 60;
     protected $curlOptions = [];
 
     public $lastRequest;
     public $lastResponse;
 
-    public function __construct(array $options = []) {
+    public function __construct(array $options = [])
+    {
         $this->curlOptions = $options;
     }
 
-    public function request(string $method, string $url,
-                            array $params = [], array $data = [], array $headers = [],
-                            string $user = null, string $password = null,
-                            int $timeout = null): Response {
-        $options = $this->options($method, $url, $params, $data, $headers,
-                                  $user, $password, $timeout);
+    public function request(
+        string $method,
+        string $url,
+        array $params = [],
+        array $data = [],
+        array $headers = [],
+        string $user = null,
+        string $password = null,
+        int $timeout = null
+    ): Response {
+        $options = $this->options(
+            $method,
+            $url,
+            $params,
+            $data,
+            $headers,
+            $user,
+            $password,
+            $timeout
+        );
 
         $this->lastRequest = $options;
         $this->lastResponse = null;
@@ -42,8 +58,7 @@ class CurlClient implements Client {
 
             $parts = \explode("\r\n\r\n", $response, 3);
 
-            list($head, $body) = (
-                \preg_match('/\AHTTP\/1.\d 100 Continue\Z/', $parts[0])
+            list($head, $body) = (\preg_match('/\AHTTP\/1.\d 100 Continue\Z/', $parts[0])
                 || \preg_match('/\AHTTP\/1.\d 200 Connection established\Z/', $parts[0])
                 || \preg_match('/\AHTTP\/1.\d 200 Tunnel established\Z/', $parts[0])
             )
@@ -82,10 +97,16 @@ class CurlClient implements Client {
         }
     }
 
-    public function options(string $method, string $url,
-                            array $params = [], array $data = [], array $headers = [],
-                            string $user = null, string $password = null,
-                            int $timeout = null): array {
+    public function options(
+        string $method,
+        string $url,
+        array $params = [],
+        array $data = [],
+        array $headers = [],
+        string $user = null,
+        string $password = null,
+        int $timeout = null
+    ): array {
         $timeout = $timeout ?? self::DEFAULT_TIMEOUT;
         $options = $this->curlOptions + [
             CURLOPT_URL => $url,
@@ -94,6 +115,7 @@ class CurlClient implements Client {
             CURLOPT_INFILESIZE => Null,
             CURLOPT_HTTPHEADER => [],
             CURLOPT_TIMEOUT => $timeout,
+            CURLOPT_SSL_VERIFYPEER => FALSE,
         ];
 
         foreach ($headers as $key => $value) {
@@ -142,7 +164,8 @@ class CurlClient implements Client {
         return $options;
     }
 
-    public function buildQuery(?array $params): string {
+    public function buildQuery(?array $params): string
+    {
         $parts = [];
         $params = $params ?: [];
 

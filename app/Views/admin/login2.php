@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>SCA Login Form</title>
+    <title>Admin Login Form</title>
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/final-login/css/style.css') ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
@@ -15,7 +15,7 @@
 <body>
     <div class="container">
         <div class="img">
-            <img src="<?= base_url('assets/final-login/img/sca.png') ?>">
+            <img src="<?= base_url('assets/final-login/img/travel.png') ?>">
         </div>
         <div class="login-content">
             <form id="login_form" method="post" action="<?php echo site_url("admin/login/auth"); ?>">
@@ -41,6 +41,7 @@
                         </span>
                     </div>
                 </div>
+                <a href="/admin/forgot_password">Forgot password</a>
                 <input type="submit" class="btn" value="Login">
                 <?php if (session()->getFlashdata('msg')) : ?>
                     <div class="alert alert-danger"><?= session()->getFlashdata('msg') ?></div>

@@ -11,10 +11,10 @@
               <table id="GuestList" class="table table-hover table-dark" style="width: 100%;">
                     <thead>
                         <tr>
-                        <th scope="col">Transaction ID</th>
-                        <th scope="col">Customer Name</th>
-                        <th scope="col">Package Name</th>
-                        <th scope="col">Status</th>
+                            <th>Transaction ID</th>
+                            <th>Customer Name</th>
+                            <th>Package Name</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,3 +42,4 @@
           </div>
     </div>
 </div>
+

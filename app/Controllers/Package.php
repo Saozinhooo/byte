@@ -13,13 +13,17 @@ class Package extends BaseController
 		$packagemodel = new Package_model();
 		helper('text');
 
-	$data = [
-		'packages' => $packagemodel->select('packages.*, package_comments.body as comment_body')->join('package_comments', 'packages.id = package_comments.package_id','left')->orderBy('packages.id', 'DESC')->paginate(10,'package_overview'),
-    	'currentPage' => $packagemodel->pager->getCurrentPage('package_overview'), // The current page number
-    	'totalPages'  => $packagemodel->pager->getPageCount('package_overview'),   // The total page count
-    	// 'pager' => $packagemodel->pager
-		];
-		
+		$data = [
+			'packages' => $packagemodel->select('packages.*, package_comments.body as comment_body')
+			->join('package_comments', 'packages.id = package_comments.package_id', 'left')
+			->orderBy('packages.id', 'DESC')
+			->distinct('packages.id')
+			->groupBy('packages.id')
+			->paginate(10,'package_overview'),
+			'currentPage' => $packagemodel->pager->getCurrentPage('package_overview'), // The current page number
+			'totalPages'  => $packagemodel->pager->getPageCount('package_overview'),   // The total page count
+			// 'pager' => $packagemodel->pager
+			];
 		$data['title'] = "Packages";
 
 		echo view('packages/templates/header', $data);

@@ -31,9 +31,9 @@
               <hr>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                 <p>Follow Us:</p>
-                <li class="ftco-animate"><a href="https://www.facebook.com/adventurecanyoneering/"><span
+                <li class="ftco-animate"><a href="https://www.facebook.com/"><span
                       class="icon-facebook"></span></a></li>
-                      <li class="ftco-animate"><a href="https://www.facebook.com/adventurecanyoneering/"><span
+                      <li class="ftco-animate"><a href="https://www.instagram.com/"><span
                         class="icon-instagram"></span></a></li>
               </ul>
             </div>

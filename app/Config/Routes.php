@@ -47,7 +47,12 @@ $routes->get('/admin/packages/delete/(:num)', 'Admin\Packages::delete_package/$1
 $routes->get('/admin/guest_list', 'Admin\GuestList::index');
 $routes->get('reset_password/token/(:any)', 'Login::reset_form/$1');
 $routes->get('/forgot_password', 'Login::reset_page');
+$routes->get('/admin/forgot_password', 'Admin\Login::reset_page');
+$routes->get('/admin/reset_password/token/(:any)', 'Admin\Login::reset_form/$1');
 $routes->post('/set_new_password', 'Login::reset');
+$routes->post('/admin/set_new_password', 'Admin\Login::reset');
+
+
 
 
 /**
