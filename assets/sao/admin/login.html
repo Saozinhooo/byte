@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SCA Admin | Dashboard</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="icon" href="img/travel.png" />
+    <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar"
+            aria-expanded="false"
+            aria-controls="navbar"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="">Travel and Tours</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse"></div>
+      </div>
+    </nav>
+
+    <header id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center">Sign In</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="main">
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-md-4 col-md-offset-4 login-form"
+            style="transform: translateY(-20px)"
+          >
+            <form id="login" action="index.html" class="well">
+              <img
+                src="img/travel.png"
+                style="width: 70%; padding-left: 30%"
+              />
+              <div class="form-group">
+                <label>Email Address</label>
+                <input
+                  type="@"
+                  style="border-radius: 50px"
+                  class="form-control"
+                  placeholder="Enter Email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input
+                  type="password"
+                  style="border-radius: 50px"
+                  class="form-control"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-default btn-block">
+                Login
+              </button>
+            </form>
+            <p class="text1">
+              &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; Don`t have an account yet?<a
+                class="text btn-register"
+                style="cursor: pointer; margin-left: 10px"
+                >Register</a
+              >
+            </p>
+          </div>
+          <div
+            class="col-md-4 col-md-offset-4 register-form"
+            style="display: none; transform: translateY(-20px)"
+          >
+            <form
+              class="well"
+              action="/action_page.php"
+              style="max-width: 500px; margin: auto"
+            >
+              <h2 class="text-center">Sign Up</h2>
+              <div class="input-container">
+                <i class="fa fa-user icon"></i>
+
+                <input
+                  class="input-field"
+                  type="text"
+                  placeholder="Username"
+                  name="usrnm"
+                  required
+                />
+              </div>
+
+              <div class="input-container">
+                <i class="fa fa-envelope icon"></i>
+                <input
+                  class="input-field"
+                  type="@"
+                  placeholder="Email"
+                  name="email"
+                  required
+                />
+              </div>
+
+              <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                <input
+                  class="input-field"
+                  type="password"
+                  placeholder="Password"
+                  name="psw"
+                  required
+                />
+              </div>
+
+              <button type="submit" class="btn">Login</button>
+            </form>
+            <p class="text1">
+              &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; Have an account?<a
+                class="text btn-login"
+                style="cursor: pointer; margin-left: 10px"
+                >Login</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer">
+      <br /><br /><br />
+      <img src="img/travel.png" style="width: 5%" />Copyright
+      SCA.Tours &copy; 2019 :T&T<br />
+      <img
+        src="img/logo_clean.png"
+        alt=""
+        style="
+          width: 50px;
+          top: 50%;
+          left: 50%;
+          transform: translate(380%, -120%);
+        "
+      />
+    </footer>
+    <script>
+      CKEDITOR.replace("editor1");
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+<script>
+  $(".btn-register").on("click", function () {
+    $(".login-form").css({
+      display: "none",
+      transform: "translateY(-20px)",
+    });
+
+    $(".register-form").css({
+      display: "block",
+    });
+    setTimeout(function () {
+      $(".register-form").css({
+        transform: "translateY(0px)",
+        transition: ".5s transform",
+      });
+    }, 0);
+  });
+
+  $(".btn-login").on("click", function () {
+    $(".register-form").css({
+      display: "none",
+      transform: "translateY(-20px)",
+    });
+    $(".login-form").css("display", "block");
+
+    setTimeout(function () {
+      $(".login-form").css({
+        transform: "translateY(0px)",
+        transition: ".5s transform",
+      });
+    }, 0);
+  });
+</script>

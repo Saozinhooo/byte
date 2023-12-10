@@ -43,7 +43,7 @@
         <div class="navbar-header">
 
           <a class="navbar-brand" href="#">
-            <img src="<?php echo base_url('assets/sca/images/output-onlinepngtools.png'); ?>" style="width: 70px;" />
+            <img src="<?php echo base_url('assets/sao/images/travel.png'); ?>" style="width: 70px;" />
           </a>
           <span class="float-end me-5">
             <div class="dropdown dropstart">

@@ -47,7 +47,7 @@
                   </div>
                 </div>
                 <div class="card-footer">
-                  <button class="btn float-end publish-btn" id="submit" type="submit" style="">Publish</button>
+                  <button class="btn float-end publish-btn" id="submit" type="submit">Publish</button>
                 </div>
               </div>
 
@@ -61,7 +61,7 @@
                 <?php foreach($activities as $activity): ?>
                 <div class="form-check" id="category_lists">
 
-                  <input class="form-check-input" type="checkbox" value="<?= $activity['activity_name'] ?>" name="activity[]" id="activity<?= $activity['act_id'] ?>">
+                  <input class="form-check-input" type="checkbox" value="<?= $activity['activity_name'] ?>" name="activity[]" id="activity<?= $activity['act_id'] ?>" >
                   <label class="form-check-label" style="font-weight: 100;" for="category<?= $activity['act_id'] ?>">
                       <?= $activity['activity_name'] ?>
                   </label>

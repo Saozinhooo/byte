@@ -11,8 +11,8 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="#"><?php echo session()->fname . " " . session()->fname;  ?></a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style= >
+            <a class="navbar-brand" href="/"><?php echo session()->fname;  ?></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -57,10 +57,8 @@
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="<?php echo base_url('assets/sca/js/bootstrap.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/sao/js/bootstrap.min.js'); ?>"></script>
     <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/r-2.4.1/sb-1.4.2/datatables.min.js"></script>
-
-
 
     <script>
         $(document).ready(function() {
@@ -68,15 +66,5 @@
         });
     </script>
 
-
-
-
-
-
-
-
-
-
 </body>
-
 </html>

@@ -43,8 +43,7 @@
 
 <div class="right-column">
   <div class="card">
-      <h2>About Canyoneering</h2>
-      <p>Canyoning is travelling in canyons using a variety of techniques that may include other outdoor activities such as walking, scrambling, climbing, jumping, abseiling, and swimming.</p><p style="font-weight: bold;"> Click home to get started</p>
+     
       <a class="btn cta-btn" href="">Home</a>
   </div>
   <div class="card">

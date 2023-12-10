@@ -4,7 +4,7 @@
     <div class="row justify-content-start mb-5 pb-3">
       <div class="col-md-7 heading-section ftco-animate">
 
-        <h2 class="mb-4"><strong>Most Featured</strong> in Southern Cebu</h2>
+        <h2 class="mb-4"><strong>Most Featured</strong> in Bantayan Cebu</h2>
       </div>
     </div>
   </div>

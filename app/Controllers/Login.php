@@ -127,7 +127,7 @@ class Login extends BaseController
         $model = new Customer_model();
         $email = $this->request->getVar('email');
         $email_exists = $model->where('email', $email)->first();
-        $id = $email_exists['id'];
+        $id = $email_exists ? $email_exists['id'] : false;
         if ($email_exists) {
             // Generate a unique token for password reset
             $token = bin2hex(random_bytes(32));
@@ -166,11 +166,12 @@ class Login extends BaseController
     {
 
         $set_from = 'davevincentoporto@gmail.com';
+        $set_to = $email;
         $body = "Here's your password reset link<br/>";
         $body .= $link;
         $email = \Config\Services::email();
         $email->setFrom($set_from, 'inquiry@byte.com');
-        $email->setTo('clevermonteros@gmail.com');
+        $email->setTo($set_to);    //receiver
         $email->setSubject('Password reset link');
         $email->setMessage($body);
 
@@ -184,7 +185,6 @@ class Login extends BaseController
 
     public function reset_form($token)
     {
-
         $data['token'] = $token;
         echo view('login/reset_form', $data);
     }

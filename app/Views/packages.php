@@ -10,9 +10,9 @@
 				<div class="row d-flex">
 					<?php if($packages_blog): ?>
 					<?php foreach($packages_blog as $package): ?>
-					<div class="col d-flex ftco-animate">
+					<div class="col-12 col-lg-4 d-flex ftco-animate">
 						<div class="blog-entry align-self-stretch">
-							<a href="#" class="block-20" style="width: 100%;">
+						<a href="/package/<?= esc($package['slug'], 'url'); ?>" class="block-20" style="width: 100%;">
 								<img src="public/uploads/images/<?= $package['package_img']; ?>" alt="" style="width: 100%; height: 100%; object-fit: cover;">
 							</a>
 							<div class="text p-5">
@@ -42,8 +42,9 @@
 								</div>
 								<p style="word-break: break-all;">
 								<?php 
-								if (mb_strlen($package['body']) > 20) {
-									$package['body'] = mb_substr($package['body'], 0, 20) . '<br/>...';
+								$body_no_tags = strip_tags($package['body']);
+								if (mb_strlen($body_no_tags) > 20) {
+									$package['body'] = mb_substr($body_no_tags, 0, 20) . '<br/>...';
 								}
 								echo $package['body'];
 								

@@ -18,7 +18,7 @@
         <div class="row" style="margin-top: 50px;">
             <div class="col-md-3 m-auto">
                 <div class="text-center">
-                    <img class="img-fluid" src="<?php echo base_url("assets/images/output-onlinepngtools.png"); ?>" alt="sca_logo" style="width: 40%;">
+                    <img class="img-fluid" src="<?php echo base_url("assets/images/travel.png"); ?>" style="width: 40%;">
                 </div>
                 <div class="card">
                     <div class="card-header text-light" style="background: #214761;">

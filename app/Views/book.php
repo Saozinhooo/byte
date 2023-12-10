@@ -2,7 +2,7 @@
 <!--Start Booking-->
 <div class="col-md-6 heading-section ftco-animate" id="destination">
   <h2 class="mb-4" style="padding-left: 30%; font-size: 25px;"><strong>SET</strong> Date & Package </h2>
-  <p style="padding-left: 30%;">Start your Adventure</p>
+  <p style="padding-left: 30%;">Start your Vacation</p>
 </div>
 <section class="ftco-section ftco-degree-bg section-body  set-date-package-section">
   <div class="container">
@@ -13,7 +13,7 @@
           <h4 class="heading mb-4">SET PAX & DATE</h4>
             <div class="fields">
               <div class="form-group">
-                <input type="text" style="border-radius: 50px;" class="form-control"
+                <input type="number" style="border-radius: 50px;" class="form-control"
                   placeholder="1 to 8 Pax" name="cust_qty" required autocomplete="off">
               </div>
 
@@ -23,7 +23,7 @@
               </div>
               <div class="form-group">
                 <input type="text" style="border-radius: 50px;" id="checkin_date" name="arrival_date"
-                  class="form-control checkout_date" placeholder="Time of Arrival" required autocomplete="off">
+                  class="form-control checkout_date" placeholder="Date of Arrival" required autocomplete="off">
               </div>
               <div class="form-group">
                 <input type="text" style="border-radius: 50px;" name="contact_no"
@@ -52,10 +52,14 @@
             <input type="checkbox" class="checkbox package_checkbox" name="package_data[]" id="package_check"
             value="<?= $package['id'] ?>+<?= $package['title'] ?>+<?= $package['price'] ?>+<?= $package['package_img'] ?>+<?= $package['activity'] ?>">
             <div class="option_inner package">
-              <div class="tickmark"></div>
+              <div class="tickmark" required></div>
           <div class="destination" id="package<?= $package['id'] ?>">
-            <a href="" class="img img-2 d-flex justify-content-center align-items-center"
-              style="background-image: url('public/uploads/images/<?= $package['package_img']; ?>');">
+            <a href="/package/<?= esc($package['slug'], 'url'); ?>" class="img img-2 d-flex justify-content-center align-items-center"
+              style="
+              background-image: url('public/uploads/images/<?= $package['package_img']; ?>'); 
+              background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;">
             </a>
             <div class="text p-3">
               <div class="d-flex">

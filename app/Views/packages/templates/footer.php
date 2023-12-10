@@ -12,7 +12,7 @@
             <p>Life was meant for good friends and great adventures.</p>
             <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
               <p>Follow Us:</p>
-              <li class="ftco-animate"><a href="https://www.facebook.com/adventurecanyoneering/"><span
+              <li class="ftco-animate"><a href="https://www.facebook.com/"><span
                     class="icon-facebook"></span></a></li>
             </ul>
           </div>
@@ -45,12 +45,12 @@
             <h2 class="ftco-heading-2" style="color: white;">Have a Questions?</h2>
             <div class="block-23 mb-3">
               <ul class="contact-information-adresses">
-                <li><span class="icon icon-map-marker"></span><span class="text">7th district of Cebu,
-                    Poblacion, Badian</span></li>
+                <li><span class="icon icon-map-marker"></span><span class="text">4th district of Cebu, Central 
+                    Visayas, Santa Fe.</span></li>
                 <li><a href=""><span class="icon icon-phone"></span><span
                       class="text">+639951071492</span></a></li>
                 <li><a href=""><span class="icon icon-envelope"></span><span
-                      class="text">CCMJ</span></a></li>
+                      class="text">T&T</span></a></li>
               </ul>
             </div>
           </div>
@@ -62,16 +62,16 @@
   <div class="slider-modal">
     <div class="slide-header"></div>
     <div class="slide-body terms-conditions">
-      Travel and Tours customer needs to pay atleast 500php for booking reservation.<br>
-      Non refundable upon cancellation after 1 month.<br>
-      The full payment of the tour will take place in <strong>Badian</strong>.<br>
-      Failure to show up during the scheduled day of the tour will result in an automatic cancellation of the tour and no refund will occur.<br>
-      Customer pays the full payment during the first day of Tour.<br>
-      If there is indeed an unfortunate circumstances(Bad weather, Flood, Accidents etc.).<br>
-      During the tour, guest are obliged to listen and comply to the guide for instructions and safety measures. Otherwise, the guide or the company will not be held responsible of any unfortunate events.<br>
-    </div>
+    •Booking Reservation Customers are required to pay half of the total payment to confirm their reservation.<br>
+    <br> •Payment in Bantayan The full payment for the tour will be made upon arrival in Bantayan. <br>
+    <br> •Cancellation Policy No cancellation of booking and no refund once payment is done. <br>
+    <br> •No-show Policy: Failure to show up on the scheduled day of the tour will result in automatic cancellation without any refund. <br>
+    •Children Policy: Children must be accompanied by an adult during the tour and activities.<br>
+    •Unforeseen Circumstances: In case of unfortunate circumstances such as bad weather, floods, accidents, etc., the tour schedule will be adjusted to a suitable time for the guest. <br>
+    •Guest Responsibilities: During the tour, guests are expected to listen to and follow the instructions and safety measures provided by the guide/employee. The company will not be held responsible for any unfortunate events if the guest fails to comply.<br>
+ </div>
     <div class="slide-body privacy-policy">
-      this is privacy and policy
+      this is privacy and policy1
     </div>
 
     <div class="slide-body faq">
@@ -99,23 +99,23 @@
   </div>
 <!--footer end-->
 
-	<script src="<?php echo base_url('assets/sca/js/jquery.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery-migrate-3.0.1.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/popper.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/bootstrap.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.easing.1.3.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.waypoints.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.stellar.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/owl.carousel.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.magnific-popup.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/aos.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.animateNumber.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/bootstrap-datepicker.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/jquery.timepicker.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/scrollax.min.js'); ?>"></script>
-	<script>src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"</script>
-	<script src="<?php echo base_url('assets/sca/js/google-map.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/sca/js/main.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/sao/js/jquery.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/sao/js/jquery-migrate-3.0.1.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/sao/js/popper.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/sao/js/bootstrap.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/sao/js/jquery.easing.1.3.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/sao/js/jquery.waypoints.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/sao/js/jquery.stellar.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/sao/js/owl.carousel.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/sao/js/jquery.magnific-popup.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/sao/js/aos.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/sao/js/jquery.animateNumber.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/sao/js/bootstrap-datepicker.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/sao/js/jquery.timepicker.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/sao/js/scrollax.min.js'); ?>"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="<?php echo base_url('assets/sao/js/google-map.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/sao/js/main.js'); ?>"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 
   <script type="text/javascript">

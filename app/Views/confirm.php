@@ -4,7 +4,7 @@
 <head>
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <title>SCA Payment</title>
+  <title>Travel and Tours Payment</title>
   <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet'>
   <link href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' rel='stylesheet'>
   <link rel="stylesheet" href="style1.css">
@@ -148,11 +148,11 @@
                     <div class="form-group">
                       <label for="cardNumber">
                         <div class="img-padala">
-                          <img src="<?= base_url('assets/sca/img/palawan.jpg') ?>" alt="" style="width: 150px; height: 150px; margin: 0 2px;">
+                          <img src="<?= base_url('assets/sao/img/palawan.jpg') ?>" alt="" style="width: 150px; height: 150px; margin: 0 2px;">
                       </label>
-                      <img src="<?= base_url('assets/sca/img/m-lhuiller-logo.jpg') ?>" alt="" style="width: 150px; height: 150px; margin: 0 2px;">
+                      <img src="<?= base_url('assets/sao/img/m-lhuiller-logo.jpg') ?>" alt="" style="width: 150px; height: 150px; margin: 0 2px;">
                   </label>
-                  <img src="<?= base_url('assets/sca/img/Send-Money-to-Your-Loved-Ones-through-Cebuana-Lhuilliers-Authorized-Pera-Padala-Agents.png') ?>" alt="" style="width: 150px; height: 150px; margin: 0 10px;">
+                  <img src="<?= base_url('assets/sao/img/Send-Money-to-Your-Loved-Ones-through-Cebuana-Lhuilliers-Authorized-Pera-Padala-Agents.png') ?>" alt="" style="width: 150px; height: 150px; margin: 0 10px;">
                 </label>
               </div>
               </label>
@@ -250,7 +250,8 @@
               activities: activities
             },
             success: function(data) {
-              // window.location.href = "/";
+              console.log('ni agi nako');
+              window.location.href = "/";
             },
           });
 

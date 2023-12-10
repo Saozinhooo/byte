@@ -12,7 +12,7 @@
           <div class="monteros">
             <h1>Bantayan Island</h1>
 
-<div id="map"></div>
+<div id="map" style="height: 440px;"></div>
 
 <script>
 let map;
@@ -48,9 +48,6 @@ window.initMap = initMap;
       <div class="col-md-1"></div>
       <div class="col-md-6 heading-section ftco-animate">
         <h2 class="mb-4 pb-3">Address</h2>
-     <!--   <form>
-          <input class="russel" type="text" name="search" placeholder="Search..">
-        </form> -->
         </form><br>
         <div class="row ftco-animate">
           <div class="col-md-12">

@@ -74,9 +74,8 @@
 
 <div class="right-column">
   <div class="card">
-      <!-- <h2>About Canyoneering</h2>
-      <p>Canyoning is travelling in canyons using a variety of techniques that may include other outdoor activities such as walking, scrambling, climbing, jumping, abseiling, and swimming.</p><p style="font-weight: bold;"> Click home to get started</p> -->
-      <a class="btn cta-btn" href="">Home</a>
+     
+      <a class="btn cta-btn" href="/">Home</a>
   </div>
   <div class="card">
       <h3>Related Post</h3>
@@ -87,7 +86,7 @@
       <div class="campus-col">
       <img src="/public/uploads/images/<?= $relatePost['package_img'] ?>" style="height: 200px; width: 300px; object-fit: cover;"/>
       <div class="layer">
-              <h3><a href="/blog/<?= esc($relatePost['slug'], 'url'); ?>"><?= $relatePost['title'] ?></a></h3>
+              <h3><a href="<?= site_url("package/") ?><?= esc($relatePost['slug'], 'url'); ?>"><?= $relatePost['title'] ?></a></h3>
           </div>
     </div>
 
@@ -98,7 +97,7 @@
   <div class="card">
     <h3>BOOK NOW!</h3>
     <p>Click here get started</p>
-      <a class="btn cta-btn" href="">Home</a>
+      <a class="btn cta-btn" href="/#destination">Home</a>
   </div>
     <div class="card">
     <h3>Other Packages</h3>

@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo base_url("assets/css/login.css"); ?>">
-    <title>Registration</title>
+    <title>Registration for User</title>
   </head>
   <body style="background: #CCCCCC">
 
@@ -16,7 +16,7 @@
       <div class="row" style="margin-top: 50px;">
         <div class="col-md-3 m-auto">
           <div class="text-center">
-            <img class="img-fluid" src="<?php echo base_url("assets/images/output-onlinepngtools.png"); ?>" alt="sca_logo" style="width: 40%;">
+            <img class="img-fluid" src="<?php echo base_url("assets/images/travel.png"); ?>" alt="Travel and Tours" style="width: 40%;">
           </div>
           <div class="card">
             <div class="card-header text-light" style="background: #214761;"><h3 class="card-title">Register</h3></div>
@@ -28,7 +28,7 @@
               <form id="register_form" method="post" action="<?php echo site_url("login/save"); ?>">
                 <div class="form-floating mb-3">
                   <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required autofocus>
-                  <label for="fname">First Name#user</label>
+                  <label for="fname">First Name</label>
                 </div>
                 <div class="form-floating mb-3">
                   <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" required>
