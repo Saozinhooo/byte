@@ -39,7 +39,7 @@
                 <div class="div-square">
                     <a href="/admin/guest_list" >
                     <i class="fa fa-users fa-5x"></i>
-                <h4>See Users</h4>
+                <h4>See Guests</h4>
                 </a>
                 </div>
             </div>
@@ -66,6 +66,16 @@
                     </a>
                     </div>
                 </div>
+                <?php if(session()->user_type == 1): ?>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                    <div class="div-square">
+                        <a href="/admin/admin_list" >
+                        <i class="fa fa-user fa-5x"></i>
+                    <h4>Admin List</h4>
+                    </a>
+                    </div>
+                </div>
+                <?php endif; ?>
             </div>
     <div class="row">
                 <div class="col-lg-12 ">

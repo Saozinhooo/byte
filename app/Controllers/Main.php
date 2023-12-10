@@ -10,6 +10,7 @@ use App\Models\Comment_model;
 use App\Models\Payment_model;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use Config\DotEnv;
 
 class Main extends BaseController
 {
@@ -97,8 +98,8 @@ class Main extends BaseController
 		$arrival_date = strtotime($this->request->getPost('arrival_date'));
 		$arrival_date = date('Y-m-d', $arrival_date);
 		$packageData = json_decode($packageData);
-		$sid = "ACf0db64922788dbfdc5d8c8b597d14602";
-		$token = "2f8305a075d2b508b7ac89af7cc4331b";
+		$sid = env('twilio.sid');
+		$token = env('twilio.token');
 		$activities = str_replace(' ', '', $activities);
 		foreach ($packageData as $packageInfo) {
 			$package[] = explode('+', $packageInfo);

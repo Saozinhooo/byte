@@ -14,6 +14,7 @@
                             <th>Transaction ID</th>
                             <th>Customer Name</th>
                             <th>Package Name</th>
+                            <th>Check-in Date</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -24,6 +25,7 @@
                             <td><?= $packages['transaction_id'] ?></td>
                             <td><?= ucwords($packages['customer_name']) ?></td>
                             <td><?= $package_info[1] ?></td>
+                            <td><?= $packages['checkin_date'] ?></td>
                             <td><?php
                                     if($packages['checkin_date'] > date("Y-m-d")){
                                         echo "Incoming";

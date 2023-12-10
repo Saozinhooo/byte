@@ -36,48 +36,85 @@
 </script>
 <script>
   $(document).ready(function() {
-    var guestlist = $('#GuestList').DataTable({
-      aaSorting: [[0, 'desc']],
-      searching: false
+    var admin_list = $('#admin_list').DataTable({
+      order: [[0, 'desc']],
+      searching: true
     });
   });
 </script>
 <script>
   $(document).ready(function() {
-    // Initialize the DataTable
-    var table = $('#TransactionHistory').DataTable({
-      dateRangeField: 6, // Column index for the date range filter
-      order: [
-        [6, 'desc']
-      ],
-    });
+    var guestlist = $('#GuestList').DataTable({
+      order: [[3, 'desc']],
+      searching: true,
+      paging: true,
 
-    // Add the date range filter input fields
-    $('<label>From: <input type="text" id="min-date"></label>').appendTo($('#TransactionHistory_filter'));
-    $('<label>To: <input type="text" id="max-date"></label>').appendTo($('#TransactionHistory_filter'));
+      initComplete: function () {
+      // Add the date range filter input fields
+      $('<label>From: <input type="text" id="min-date_guest"></label>').appendTo($('#GuestList_filter'));
+      $('<label>To: <input type="text" id="max-date_guest"></label>').appendTo($('#GuestList_filter'));
 
-    // Apply the date range filter on the DataTable
-    $('#min-date, #max-date').datepicker({
-      dateFormat: 'yy-mm-dd',
-      onSelect: function() {
-        table.draw();
-      }
-    });
-
-    $.fn.dataTable.ext.search.push(
-      function(settings, data, dataIndex) {
-        var min = $('#min-date').val();
-        var max = $('#max-date').val();
-        var date = data[6] || ''; // Column index for the date column
-
-        if ((min === '' || max === '') || (date >= min && date <= max)) {
-          return true;
+      // Apply the date range filter on the DataTable
+      $('#min-date_guest, #max-date_guest').datepicker({
+        dateFormat: 'yy-mm-dd',
+        onSelect: function() {
+          guestlist.draw(); // Use 'table' variable directly
         }
+      });
 
-        return false;
-      }
-    );
+      $.fn.dataTable.ext.search.push(
+        function(settings, data, dataIndex) {
+          var min = $('#min-date_guest').val();
+          var max = $('#max-date_guest').val();
+          var date = data[3] || ''; // Column index for the date column
+
+          if ((min === '' || max === '') || (date >= min && date <= max)) {
+            return true;
+          }
+
+          return false;
+        }
+      );
+    }
+    });
   });
+</script>
+<script>
+ $(document).ready(function() {
+  var table = $('#TransactionHistory').DataTable({
+    order: [
+      [6, 'desc']
+    ],
+    initComplete: function () {
+      // Add the date range filter input fields
+      $('<label>From: <input type="text" id="min-date"></label>').appendTo($('#TransactionHistory_filter'));
+      $('<label>To: <input type="text" id="max-date"></label>').appendTo($('#TransactionHistory_filter'));
+
+      // Apply the date range filter on the DataTable
+      $('#min-date, #max-date').datepicker({
+        dateFormat: 'yy-mm-dd',
+        onSelect: function() {
+          table.draw(); // Use 'table' variable directly
+        }
+      });
+
+      $.fn.dataTable.ext.search.push(
+        function(settings, data, dataIndex) {
+          var min = $('#min-date').val();
+          var max = $('#max-date').val();
+          var date = data[6] || ''; // Column index for the date column
+
+          if ((min === '' || max === '') || (date >= min && date <= max)) {
+            return true;
+          }
+
+          return false;
+        }
+      );
+    }
+  });
+});
+
 </script>
 <script type="text/javascript">
   $(document).ready(function() {

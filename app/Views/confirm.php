@@ -181,6 +181,39 @@
       </div>
     </div>
   </div>
+  <!-- Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="termsModalLabel">Terms & Conditions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Booking Reservation:</strong> Customers are required to pay half of the total payment to confirm their reservation.</p>
+        <p><strong>Payment in Bantayan:</strong> The full payment for the tour will be made upon arrival in Bantayan.</p>
+        <p><strong>Cancellation Policy:</strong> No cancellation of booking and no refund once payment is done.</p>
+        <p><strong>No-show Policy:</strong> Failure to show up on the scheduled day of the tour will result in automatic cancellation without any refund.</p>
+        <p><strong>Full Payment:</strong> Customers are required to pay the full payment on the first day of the tour.</p>
+        <p><strong>Children Policy:</strong> Children must be accompanied by an adult during the tour and activities.</p>
+        <p><strong>Unforeseen Circumstances:</strong> In case of unfortunate circumstances such as bad weather, floods, accidents, etc., the tour schedule will be adjusted to a suitable time for the guest.</p>
+        <p><strong>Guest Responsibilities:</strong> During the tour, guests are expected to listen to and follow the instructions and safety measures provided by the guide/employee. The company will not be held responsible for any unfortunate events if the guest fails to comply.</p>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="agreeCheckbox">
+          <label class="form-check-label" for="agreeCheckbox">
+            I agree to the terms and conditions
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <!-- Button hidden by default, will appear when checkbox is checked -->
+        <button type="button" class="btn btn-primary d-none" id="agreeButton" data-bs-dismiss="modal">Agree</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 
 </html>
@@ -250,7 +283,6 @@
               activities: activities
             },
             success: function(data) {
-              console.log('ni agi nako');
               window.location.href = "/";
             },
           });
@@ -274,6 +306,33 @@
          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
          -->
-</body>
+<script>
+  // JavaScript to trigger the modal on page load
+  document.addEventListener("DOMContentLoaded", function() {
+    var myModal = new bootstrap.Modal(document.getElementById('termsModal'), {
+      backdrop: 'static',
+      keyboard: false
+    });
+    myModal.show();
+  });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var agreeCheckbox = document.getElementById('agreeCheckbox');
+  var agreeButton = document.getElementById('agreeButton');
+  
+  // Show the button if the checkbox is checked
+  agreeCheckbox.addEventListener('change', function() {
+    if (agreeCheckbox.checked) {
+      agreeButton.classList.remove('d-none');
+    } else {
+      agreeButton.classList.add('d-none');
+    }
+  });
+});
+</script>
+
+
+        </body>
 
 </html>

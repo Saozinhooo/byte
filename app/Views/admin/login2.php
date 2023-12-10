@@ -41,6 +41,7 @@
                         </span>
                     </div>
                 </div>
+                <a href="/admin/register">Register</a>
                 <a href="/admin/forgot_password">Forgot password</a>
                 <input type="submit" class="btn" value="Login">
                 <?php if (session()->getFlashdata('msg')) : ?>

@@ -37,3 +37,16 @@
   color: #214761;
   background-color: #CCCCCC;
 }
+
+.hidden_action_btn {
+
+  display: none;
+
+}
+
+.hidden_action_hover_btn:hover .hidden_action_btn {
+
+  display: inline;
+  margin-left: 10px;
+  
+}

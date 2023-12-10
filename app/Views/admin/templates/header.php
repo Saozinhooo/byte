@@ -47,6 +47,7 @@
           </a>
           <span class="float-end me-5">
             <div class="dropdown dropstart">
+              <span class="text-white">Welcome, <?php echo session()->fname . " " . session()->lname; ?>!</span>
               <button class="btn mt-2" type="button" id="user_menu" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="text-light fas fa-user" style="font-size: 40px;"></i>
               </button>

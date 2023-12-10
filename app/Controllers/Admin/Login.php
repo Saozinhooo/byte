@@ -31,8 +31,8 @@ class Login extends BaseController
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
         $data = $model->where('user_email', $email)->first();
-
-        if($data){
+        $is_Active = $data['is_Active'] == 1 ? true : false;
+        if($data && $is_Active){
             $pass = $data['user_pass'];
             $verify_pass = password_verify($password, $pass);
             if($verify_pass){
@@ -55,7 +55,11 @@ class Login extends BaseController
                 return redirect()->to('/admin/login');
             }
 
-        }else{
+        }elseif ($is_Active == false) {
+            $session->setFlashdata('msg', 'Your account is inactive!');
+            return redirect()->to('/admin/login');
+
+        } else {
             $session->setFlashdata('msg', 'Email not Found');
             return redirect()->to('/admin/login');
         }
