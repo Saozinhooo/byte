@@ -46,6 +46,7 @@
                      <th scope="col"><input type="checkbox" id="checkAllAct"></th>
                      <th scope="col">Name</th>
                      <th scope="col">Description</th>
+                     <th scope="col">Price</th>
                      <th scope="col">Status</th>
                    </tr>
                  </thead>
@@ -56,6 +57,7 @@
                      <td><input type="checkbox" id="activity_<?= $activity['act_id'] ?>" name="selector[]" value="<?= $activity['act_id'] ?>" class="action-act-chkbox"></td>
                      <td><?= $activity['activity_name'] ?></td>
                      <td><?= $activity['activity_name'] ?></td>
+                     <td><?= $activity['price'] ?></td>
                      <td><?php if($activity['is_available'] == false){
                        echo "Unavailable";
                      }elseif($activity['is_available'] == true){

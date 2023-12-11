@@ -80,7 +80,6 @@ class Main extends BaseController
 			'package_data' => $package_id,
 			'contact_no' => $this->request->getPost('contact_no')
 		];
-
 		echo view('confirm', $data);
 	}
 

@@ -115,7 +115,7 @@
                                                                                               } else {
                                                                                                 echo " ";
                                                                                               } ?>">
-                            <input type="hidden" id="arrival_date" name="arrival_date" value="<?php if (isset($checkin)) {
+                            <input type="hidden" id="arrival_date" name="arrival_date" value="<?php if (isset($arrival)) {
                                                                                                 echo $arrival;
                                                                                               } else {
                                                                                                 echo " ";
@@ -230,7 +230,7 @@
     var contact_no = $("#contact_no").val();
     var packageDetails = $("#packageDetails").val();
     var checkin_date = $("#checkin_date").val();
-    console.log(checkin_date);
+    var arrival_date = $("#arrival_date").val();
     paypal.Buttons({
       onClick() {
         console.log("clicked");
@@ -242,7 +242,6 @@
           return $(this).val();
         }).get();
         $("#activities").val(activities);
-        console.log(activities);
       },
       createOrder: function(data, actions) {
         // This function sets up the details of the transaction, including the amount and line item details.
@@ -279,11 +278,12 @@
               payment: payment,
               packageDetails: packageDetails,
               checkin_date: checkin_date,
+              arrival_date: arrival_date,
               pax: pax,
               activities: activities
             },
             success: function(data) {
-              window.location.href = "/";
+              // window.location.href = "/";
             },
           });
 

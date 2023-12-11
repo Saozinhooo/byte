@@ -19,11 +19,11 @@
                     </thead>
                     <tbody>
                     <?php foreach($admin_list as $i => $admin): ?>
-                        <tr>
+                        <tr class="hidden_action_hover_btn">
                             <td><?= $admin['user_id'] ?></td>
                             <td><?= $admin['fname'].' '.$admin['lname'] ?></td>
                             <td><?= $admin['user_email'] ?></td>
-                            <td class="hidden_action_hover_btn">
+                            <td>
                                 <?php if ($admin['is_Active']): ?>
                                     Active
                                 <?php else: ?>
