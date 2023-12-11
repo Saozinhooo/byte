@@ -17,8 +17,12 @@
               <h5>Add New Activity</h5>
               <form class="" action="<?= site_url('admin/packages/insert_activity') ?>" method="post">
                 <div class="mb-3">
-                  <label for="category_name" class="form-label">Name</label>
+                  <label for="category_n" class="form-label">Name</label>
                   <input class="form-control rounded w-50" type="text" id="category_n" name="act_name">
+                </div>
+                <div class="mb-3">
+                  <label for="activity_price" class="form-label">Price</label>
+                  <input class="form-control rounded w-50" type="number" id="activity_price" name="activity_price">
                 </div>
                 <div class="">
                   <button class="btn btn-primary btn-sm" type="submit" name="add">Add new activity</button>

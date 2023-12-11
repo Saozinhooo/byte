@@ -68,24 +68,33 @@
                             <?php if ($package_data) : ?>
                               <?php foreach ($package_data as $v) : ?>
                                 <?php
+
                                 $packages = explode("+", $v);
                                 $price += $packages[2];
                                 $totalPrice = $price * $pax;
+                                $activityArray = explode(",", $packages[4]);
+                                $priceArray = explode(",", $packages[5]);
+                                $slug = $packages[6];
                                 ?>
                                 <div class="form-check">
                                   <input class="form-check-input" type="checkbox" id="activity" name="activity[]" value="Tour" checked disabled>
                                   <label class="form-check-label" for="flexCheckDefault">Tour</label>
                                   <br>
-                                  <?php foreach (explode(',', $packages[4]) as $activity) : ?>
-
-                                    <input class="form-check-input" type="checkbox" id="activity" name="activity[]" value="<?= $activity ?>">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                      <?= $activity ?>
-                                    </label>
-                                    <br>
-                                  <?php endforeach; ?>
+                                  <?php
+                                    for ($i = 0; $i < count($activityArray); $i++) {
+                                        $activity = $activityArray[$i];
+                                        $activity_price = $priceArray[$i];
+                                    ?>
+                                        <input class="form-check-input activity-checkbox" type="checkbox" name="activity[]" value="<?= $activity ?>" data-price="<?= $activity_price ?>" checked>
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            <?= $activity; ?>
+                                        </label>
+                                        <br>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
-                                <p><a href="#"><?= $packages[1] ?></a> <span class="price">₱<?= number_format($packages[2], 2, ",", "."); ?></span></p>
+                                <p><a href="/package/<?= esc($slug, 'url'); ?>"><?= $packages[1] ?></a></p>
 
                               <?php endforeach; ?>
                             <?php endif; ?>
@@ -95,16 +104,16 @@
                               <input id="pax_count" type="text" name="pax[]" class="form-control pax[] mb-2" required>
                             <?php endfor; ?>
                             <hr>
-                            <p>Total <span class="price" style="color:black"><b><?php if (isset($totalPrice)) {
-                                                                                  echo "₱" . number_format($totalPrice, 2, ".", ",");
-                                                                                } else {
-                                                                                  echo "Please select a package";
-                                                                                } ?></b></span></p>
-                            <input type="hidden" id="totalPrice" name="totalPrice" value="<?php if (isset($totalPrice)) {
-                                                                                            echo $totalPrice;
-                                                                                          } else {
-                                                                                            echo " ";
-                                                                                          } ?>">
+                            <p>Total <span class="price activity-price" style="color:black"><b>
+                              <?php
+                              if (isset($totalPrice)) {
+                                  echo "₱" . number_format($totalPrice, 2, ".", ",");
+                              } else {
+                                  echo "Please select a package";
+                              }
+                              ?>
+                          </b></span></p>
+                            <input type="hidden" id="totalPrice" name="totalPrice" value="<?= $totalPrice ?>">
                             <input type="hidden" id="contact_no" name="contact_no" value="<?php if (isset($contact_no)) {
                                                                                             echo $contact_no;
                                                                                           } else {
@@ -224,9 +233,73 @@
     $('[data-toggle="tooltip"]').tooltip()
   })
 </script>
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+         -->
+         <script>
+    $(document).ready(function() {
+      var originalPrice = parseFloat($('#totalPrice').val());
+        // Function to calculate and update the total price
+        function updateTotalPrice() {
+            var totalPrice = originalPrice;
+
+            $('.activity-checkbox').each(function() {
+              var price = parseFloat($(this).data('price'));
+              if (!this.checked) {
+                  totalPrice -= price;
+              }
+            });
+
+            // Display the total price or a message if no package is selected
+            if (totalPrice > 0) {
+                $('.activity-price').html('<b>₱' + totalPrice.toFixed(2) + '</b>');
+                $('#totalPrice').val(totalPrice);
+            } else {
+                $('.activity-price').html('<b>Please select a package</b>');
+            }
+        }
+
+        // Attach change event to checkboxes
+        $('.activity-checkbox').change(function() {
+            updateTotalPrice(); // Update total price when checkboxes are changed
+        });
+    });
+</script>
+<script>
+  // JavaScript to trigger the modal on page load
+  document.addEventListener("DOMContentLoaded", function() {
+    var myModal = new bootstrap.Modal(document.getElementById('termsModal'), {
+      backdrop: 'static',
+      keyboard: false
+    });
+    myModal.show();
+  });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var agreeCheckbox = document.getElementById('agreeCheckbox');
+  var agreeButton = document.getElementById('agreeButton');
+  
+  // Show the button if the checkbox is checked
+  agreeCheckbox.addEventListener('change', function() {
+    if (agreeCheckbox.checked) {
+      agreeButton.classList.remove('d-none');
+    } else {
+      agreeButton.classList.add('d-none');
+    }
+  });
+});
+</script>
 <script>
   $(document).ready(function() {
-    var totalPrice = $("#totalPrice").val();
     var contact_no = $("#contact_no").val();
     var packageDetails = $("#packageDetails").val();
     var checkin_date = $("#checkin_date").val();
@@ -245,6 +318,7 @@
       },
       createOrder: function(data, actions) {
         // This function sets up the details of the transaction, including the amount and line item details.
+        var totalPrice = $("#totalPrice").val();
         return actions.order.create({
           purchase_units: [{
             amount: {
@@ -295,43 +369,6 @@
     //This function displays Smart Payment Buttons on your web page.
   });
 </script>
-
-<!-- Optional JavaScript; choose one of the two! -->
-
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
-         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-         -->
-<script>
-  // JavaScript to trigger the modal on page load
-  document.addEventListener("DOMContentLoaded", function() {
-    var myModal = new bootstrap.Modal(document.getElementById('termsModal'), {
-      backdrop: 'static',
-      keyboard: false
-    });
-    myModal.show();
-  });
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  var agreeCheckbox = document.getElementById('agreeCheckbox');
-  var agreeButton = document.getElementById('agreeButton');
-  
-  // Show the button if the checkbox is checked
-  agreeCheckbox.addEventListener('change', function() {
-    if (agreeCheckbox.checked) {
-      agreeButton.classList.remove('d-none');
-    } else {
-      agreeButton.classList.add('d-none');
-    }
-  });
-});
-</script>
-
 
         </body>
 

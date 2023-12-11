@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\Package_model;
 use App\Models\Image_model;
 use App\Models\Activities_model;
+use App\Models\PackageActivities_model;
 
 class Packages extends BaseController{
 
@@ -43,7 +44,7 @@ class Packages extends BaseController{
     $activitymodel = new Activities_model();
     $data = [
       'images' => $imagemodel->orderBy('id','DESC')->findAll(),
-      'activities' => $activitymodel->orderBy('act_id','DESC')->findAll(),
+      'activities' => $activitymodel->orderBy('act_id','DESC')->where('is_available', 1)->findAll(),
     ];
 
     echo view("admin/templates/header");
@@ -69,6 +70,7 @@ class Packages extends BaseController{
 
     $session = session();
     $packagemodel = new Package_model();
+    $package_activities_model = new PackageActivities_model();
     $created = date('Y/m/d H:i:s',time());
 		$title = $this->request->getVar('package_title');
 		$slug = $this->fixForUri($title);
@@ -99,7 +101,6 @@ class Packages extends BaseController{
 								'user_id' => $this->request->getVar('user_id'),
                 'created' => $created,
                 'featured' => $featured,
-                'activity' => $act
 				];
 
 			}else{
@@ -113,14 +114,21 @@ class Packages extends BaseController{
                 'user_id' => $this->request->getVar('user_id'),
                 'created' => $created,
                 'featured' => $featured,
-                'activity' => $act,
 								'package_img' => "no_img.png"
 				];
 			}
 
     $session->setFlashdata('package', 'Package added!');
-		$packagemodel->insert($data);
-
+		$new_package = $packagemodel->insert($data);
+    if (!empty($activities)) {
+      foreach ($activities as $activity) {
+        $activity_data = [
+          'activity_id' => $activity,
+          'package_id' => $new_package
+        ];
+        $package_activities_model->insert($activity_data);
+      }
+  }
 		return redirect()->to('/admin/packages');
   }
 
@@ -201,7 +209,9 @@ class Packages extends BaseController{
 
       $activitymodel = new Activities_model();
       $data = [
-        'activities' => $activitymodel->orderBy('act_id', 'DESC')->paginate(20, 'activities'),
+        'activities' => $activitymodel
+        ->orderBy('act_id', 'DESC')
+        ->paginate(20, 'activities'),
         'pager' => $activitymodel->pager,
         'currentPage' => $activitymodel->pager->getCurrentPage('activities'), // The current page number
         'totalPages'  => $activitymodel->pager->getPageCount('activities'),   // The total page count
@@ -219,6 +229,7 @@ class Packages extends BaseController{
 
 		$data = [
       'activity_name' => $this->request->getVar('act_name'),
+      'price' => $this->request->getVar('activity_price'),
       'user_id' => $this->request->getVar('user_id'),
       'created' => $created
     ];
@@ -277,6 +288,12 @@ class Packages extends BaseController{
     }
 
     echo "deleted";
+
+  }
+
+  public function create_package_activity() {
+
+
 
   }
 }

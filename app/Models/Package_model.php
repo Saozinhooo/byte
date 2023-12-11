@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Activities_model;
+
 use CodeIgniter\Model;
 
 class Package_model extends Model
@@ -25,6 +27,10 @@ class Package_model extends Model
       'activity'
     ];
 
+    public function activities() {
+
+        return $this->hasMany('App\Models\Activities_model', 'package_id');
+    }
     public function getPackage($slug = false){
 
       if ($slug === false){

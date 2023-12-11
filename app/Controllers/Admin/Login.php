@@ -31,7 +31,9 @@ class Login extends BaseController
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
         $data = $model->where('user_email', $email)->first();
-        $is_Active = $data['is_Active'] == 1 ? true : false;
+        if($data) {
+            $is_Active = $data['is_Active'] == 1 ? true : false;
+        }
         if($data && $is_Active){
             $pass = $data['user_pass'];
             $verify_pass = password_verify($password, $pass);

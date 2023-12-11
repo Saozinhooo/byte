@@ -8,6 +8,7 @@ use App\Models\Package_model;
 use App\Models\Post_model;
 use App\Models\Comment_model;
 use App\Models\Payment_model;
+use App\Models\PackageActivities_model;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use Config\DotEnv;
@@ -18,14 +19,15 @@ class Main extends BaseController
 	{
 
 		$packagemodel = new Package_model();
+		$package_activities_model = new PackageActivities_model();
 		$postmodel = new Post_model();
 		$session = session();
 
 		$data = [
 			'packages' => $packagemodel
 				->orderBy('packages.id', 'DESC')
-				->limit(4)
 				->groupBy('packages.id')
+				->asArray()
 				->find(),
 			'featured' => $packagemodel->where('featured', '1')->limit(8)->find(),
 			'posts' => $postmodel->orderBy('id', 'DESC')->limit(8)->find(),
@@ -37,6 +39,28 @@ class Main extends BaseController
 				->groupBy('packages.id')
 				->find(),
 		];
+		$package_activites = array();
+		foreach ($data['packages'] as $i => $package) {
+			$package_activity = $package_activities_model
+				->select('activities.activity_name, activities.price')
+				->join('activities', 'activities.act_id = package_activities.activity_id')
+				->where('package_activities.package_id', $package['id'])
+				->where('activities.is_available', 1)
+				->asArray()
+				->find();
+
+			$activity_list = [];
+			$activity_price = [];
+
+			foreach ($package_activity as $activity) {
+				$activity_list[] = $activity['activity_name'];
+				$activity_price[] = $activity['price'];
+			}
+
+			$data['packages'][$i]['activity_list'] = $activity_list;
+			$data['packages'][$i]['activity_price'] = $activity_price;
+		}
+
 
 		$ses_data = [
 			'id' => $session->id,

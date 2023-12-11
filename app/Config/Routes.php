@@ -45,8 +45,11 @@ $routes->get('admin/transaction_history', 'Admin/Transaction::index');
 $routes->add('email/compose', 'Email::compose');
 $routes->post('email/send-email', 'Email::send_email');
 $routes->post('/send_email_faq', 'Main::send_email_faq');
+
+$routes->get('/admin/packages/edit/(:num)', 'Admin\Packages::edit_package/$1');
 $routes->get('/admin/packages/edit/(:num)', 'Admin\Packages::edit_package/$1');
 $routes->get('/admin/packages/delete/(:num)', 'Admin\Packages::delete_package/$1');
+
 $routes->get('/admin/guest_list', 'Admin\GuestList::index');
 $routes->get('reset_password/token/(:any)', 'Login::reset_form/$1');
 $routes->get('/forgot_password', 'Login::reset_page');
