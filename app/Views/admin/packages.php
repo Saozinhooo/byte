@@ -22,6 +22,7 @@
                     <th scope="col">Price</th>
                     <th scope="col">Date</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Daily Limit</th>
                     <th scope="col">Actions</th>
                   </tr>
                 </thead>
@@ -37,6 +38,7 @@
                     <?php }elseif($package['status'] == "Unavailable"){
                       ?><img src="<?php echo base_url('assets/sao/images/icons/unavail.png'); ?>" style="width: 10%;"><?php
                     } ?></td>
+                    <td><?= $package['daily_limit']; ?></td>
                     <td>
                       <a href="/admin/packages/edit/<?= $package['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
                       <a href="/admin/packages/delete/<?= $package['id']; ?>" class="btn btn-danger btn-sm">Delete</a>

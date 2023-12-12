@@ -81,6 +81,7 @@ class Main extends BaseController
 
 	function bookConfirm()
 	{
+
 		$arrival = $this->request->getPost('arrival_date');
 		$checkin = $this->request->getPost('checkin_date');
 		$datediff = strtotime($arrival) - strtotime($checkin);
@@ -104,6 +105,11 @@ class Main extends BaseController
 			'package_data' => $package_id,
 			'contact_no' => $this->request->getPost('contact_no')
 		];
+		$checkin_date = strtotime($checkin);
+		if ($this->isBookingLimitExceeded($checkin_date)) {
+            dd('Booking limit exceeded for the day.');
+        }
+
 		echo view('confirm', $data);
 	}
 
@@ -111,6 +117,7 @@ class Main extends BaseController
 	{
 
 		$paymentmodel = new Payment_model();
+		$package_model = new Package_model();
 		$payer_email = $this->request->getPost('payer_email');
 		$payer_contact = $this->request->getPost('contact_no');
 		$packageData = $this->request->getPost('packageDetails');
@@ -121,6 +128,10 @@ class Main extends BaseController
 		$arrival_date = strtotime($this->request->getPost('arrival_date'));
 		$arrival_date = date('Y-m-d', $arrival_date);
 		$packageData = json_decode($packageData);
+		$package_ids = $this->request->getPost('package_id');
+		$package_id = json_decode($package_ids);
+		$decrementBy = 1;
+
 		$sid = env('TWILIO_ACCOUNT_SID');
 		$token = env('TWILIO_AUTH_TOKEN');
 		$activities = str_replace(' ', '', $activities);
@@ -147,7 +158,6 @@ class Main extends BaseController
 		];
 
 		$result = $paymentmodel->insert($data);
-
 		if ($result) {
 			$body = "You order has been confirmed.\n";
 			$body .= "Amount paid: " . $data['amount_paid'] . "\n";
@@ -188,6 +198,17 @@ class Main extends BaseController
 			}
 		}
 	}
+
+	private function isBookingLimitExceeded($bookingDate)
+    {
+        $paymentmodel = new Payment_model();
+        $maxBookingLimit = 10;
+        $bookingCount = $paymentmodel
+            ->where('checkin_date', $bookingDate)
+            ->countAllResults();
+
+        return $bookingCount >= $maxBookingLimit;
+    }
 
 	public function send_email_faq()
 	{

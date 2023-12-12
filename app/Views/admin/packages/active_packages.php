@@ -14,15 +14,14 @@
           <?php endif;?>
           <div class="row">
               <div class="col-md-12">
-                <table class="table table-hover table-borderless">
-                 <thead>
+                <table class="table table-hover table-bordered">
+                 <thead class="table-dark">
                    <tr>
                      <th scope="col">Title</th>
                      <th scope="col">Author</th>
                      <th scope="col">Price</th>
                      <th scope="col">Date</th>
                      <th scope="col">Status</th>
-                     <th scope="col">Actions</th>
                    </tr>
                  </thead>
                  <tbody>
@@ -37,10 +36,6 @@
                      <?php }elseif($package['status'] == "Unavailable"){
                        ?><img src="<?php echo base_url('assets/sao/images/icons/unavail.png'); ?>" style="width: 10%;"><?php
                      } ?></td>
-                     <td>
-                      <a href="/admin/packages/edit/<?= $package['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
-                      <a href="/admin/packages/delete/<?= $package['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
-                      </td>
                    </tr>
                  <?php endforeach; ?>
                  <?php endif; ?>

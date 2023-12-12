@@ -24,7 +24,8 @@ class Package_model extends Model
       'price',
       'updated',
       'featured',
-      'activity'
+      'activity',
+      'daily_limit'
     ];
 
     public function activities() {

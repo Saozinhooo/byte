@@ -52,7 +52,16 @@
             <?php $activityList = implode(',', $package['activity_list']); ?>
             <?php $activityPrice = implode(',', $package['activity_price']); ?>
             <input type="checkbox" class="checkbox package_checkbox" name="package_data[]" id="package_check"
-            value="<?= $package['id'] ?>+<?= $package['title'] ?>+<?= $package['price'] ?>+<?= $package['package_img'] ?>+<?= $activityList ?>+<?= $activityPrice ?>+<?= $package['slug'] ?>">
+            value="<?= $package['id'] ?>+<?= $package['title'] ?>+<?= $package['price'] ?>+<?= $package['package_img'] ?>+<?= $activityList ?>+<?= $activityPrice ?>+<?= $package['slug'] ?>"
+            <?php
+
+              if ($package['status'] == "Unavailable") {
+                echo "disabled";
+              }
+
+            ?>
+
+            >
             <div class="option_inner package">
               <div class="tickmark" required></div>
           <div class="destination" id="package<?= $package['id'] ?>">
@@ -88,6 +97,15 @@
                 <?php
                 }
                 ?>
+                <p style="color: red;">
+                  <?php
+
+                    if ($package['status'] == "Unavailable") {
+                      echo "Package unavailable!";
+                    }
+
+                    ?>
+                </p>
               <p class="days"><span>1 to 3 hours</span></p>
             </div>
           </div>

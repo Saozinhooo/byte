@@ -66,6 +66,7 @@
                             <hr>
                             <p style="font-size: 21px; font-weight: bold;">Activities</p>
                             <?php if ($package_data) : ?>
+                              <?php $package_ids = []; ?>
                               <?php foreach ($package_data as $v) : ?>
                                 <?php
 
@@ -75,6 +76,7 @@
                                 $activityArray = explode(",", $packages[4]);
                                 $priceArray = explode(",", $packages[5]);
                                 $slug = $packages[6];
+                                array_push($package_ids, $packages[0]);
                                 ?>
                                 <div class="form-check">
                                   <input class="form-check-input" type="checkbox" id="activity" name="activity[]" value="Tour" checked disabled>
@@ -132,6 +134,7 @@
                             <input type="hidden" id="packageDetails" name="packageDetails" value='<?= json_encode($package_data) ?>'>
                             <input type="hidden" id="names_included" name="names_included" value=''>
                             <input type="hidden" id="activities" name="activities" value=''>
+                            <input type="hidden" id="package_id" name="package_id" value='<?= json_encode($package_ids) ?>'>
                             <hr>
                             <p>Downpayment <span class="price" style="color:black"><b>₱500.00</b></span></p>
                           </div>
@@ -305,6 +308,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var packageDetails = $("#packageDetails").val();
     var checkin_date = $("#checkin_date").val();
     var arrival_date = $("#arrival_date").val();
+    var package_id = $("#package_id").val();
     paypal.Buttons({
       onClick() {
         console.log("clicked");
@@ -355,7 +359,8 @@ document.addEventListener("DOMContentLoaded", function() {
               checkin_date: checkin_date,
               arrival_date: arrival_date,
               pax: pax,
-              activities: activities
+              activities: activities,
+              package_id: package_id
             },
             success: function(data) {
               window.location.href = "/";
