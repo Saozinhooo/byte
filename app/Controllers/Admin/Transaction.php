@@ -34,4 +34,16 @@ class Transaction extends BaseController
     echo view('admin/transaction_history/index', $data);
     echo view('admin/templates/footer');
   }
+
+  public function edit_checkin_date()
+  {
+      $newDate = $this->request->getPost('newDate');
+      $payment_id = $this->request->getPost('payment_id');
+      $payment_model = new Payment_model();
+      $payment_model->set('checkin_date', $newDate)
+      ->where('payment_id', $payment_id)
+      ->update();
+      
+      return $this->response->setJSON(['message' => 'Check-in date updated successfully']);
+  }
 }

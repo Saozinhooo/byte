@@ -58,6 +58,7 @@ $routes->get('/admin/reset_password/token/(:any)', 'Admin\Login::reset_form/$1')
 $routes->post('/set_new_password', 'Login::reset');
 $routes->post('/admin/set_new_password', 'Admin\Login::reset');
 
+$routes->post('/admin/edit-checkin-date', 'Admin\Transaction::edit_checkin_date');
 
 
 

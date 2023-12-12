@@ -31,7 +31,6 @@
                                 <?php endif ?>
                                 <div class="hidden_action_btn" >
                                 <?php if ($admin['is_Active']): ?>
-                                    <!-- <a href="#" class="text-decoration-none text-white"><i class="far fa-edit"></i> </a> -->
                                     <a href="/admin/admin_list/delete/<?= $admin['user_id'] ?>" class="text-decoration-none text-white"><i class="far fa-trash-alt"></i></a>
                                 <?php else: ?>
                                     <a href="/admin/admin_list/reactivate/<?= $admin['user_id'] ?>" class="text-decoration-none text-white"><i class="fas fa-check"></i></a>

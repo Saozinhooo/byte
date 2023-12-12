@@ -35,6 +35,36 @@
   });
 </script>
 <script>
+    $(document).ready(function() {
+        $('.edit-btn').click(function() {
+            const row = $(this).closest('tr');
+
+            const checkinDateElement = row.find('.checkin_date');
+
+            const newDate = prompt('Enter a new check-in date (YYYY-MM-DD):', checkinDateElement.text());
+            const payment_id = $('#payment_id').val();
+
+            if (newDate !== null && newDate !== '') {
+                checkinDateElement.text(newDate);
+                $.ajax({
+                    type: 'POST',
+                    url: '/admin/edit-checkin-date',
+                    data: {
+                        newDate: newDate,
+                        payment_id: payment_id
+                    },
+                    success: function(response) {
+                        console.log('Date updated successfully!');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                    }
+                });
+            }
+        });
+    });
+</script>
+<script>
   $(document).ready(function() {
     var admin_list = $('#admin_list').DataTable({
       order: [[0, 'desc']],
@@ -51,8 +81,8 @@
 
       initComplete: function () {
       // Add the date range filter input fields
-      $('<label>From: <input type="text" id="min-date_guest"></label>').appendTo($('#GuestList_filter'));
-      $('<label>To: <input type="text" id="max-date_guest"></label>').appendTo($('#GuestList_filter'));
+      $('<label style="margin-left: 5px;">From: <input type="text"  id="min-date_guest"></label>').appendTo($('#GuestList_filter'));
+      $('<label style="margin-left: 5px;">To: <input type="text" id="max-date_guest"></label>').appendTo($('#GuestList_filter'));
 
       // Apply the date range filter on the DataTable
       $('#min-date_guest, #max-date_guest').datepicker({
@@ -451,24 +481,11 @@
               }
             });
           }
-
-          console.log(action_posted);
-
         },
       });
     });
   });
 </script>
-
-
-
-
-
-
-
-
-
-
 </body>
 
 </html>
