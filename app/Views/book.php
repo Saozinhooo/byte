@@ -40,6 +40,11 @@
                  <p class="text-center">You must login to book</p>
 
                 <?php endif ?>
+                <?php if (session()->has('error')): ?>
+                    <div class="alert alert-danger">
+                        <?= session('error') ?>
+                    </div>
+                <?php endif; ?>
               </div>
             </div>
         </div>

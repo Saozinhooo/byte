@@ -105,9 +105,14 @@ class Main extends BaseController
 			'package_data' => $package_id,
 			'contact_no' => $this->request->getPost('contact_no')
 		];
-		$checkin_date = strtotime($checkin);
-		if ($this->isBookingLimitExceeded($checkin_date)) {
-            dd('Booking limit exceeded for the day.');
+
+		$booking_count = $this->isBookingLimitExceeded($checkin);
+		if ($this->isBookingLimitExceeded($checkin)) {
+            $errorMessage = "No more available package on this day.";
+			$session = session();
+			$session->setFlashdata('error', $errorMessage);
+
+			return redirect()->to('/');
         }
 
 		echo view('confirm', $data);
@@ -199,14 +204,14 @@ class Main extends BaseController
 		}
 	}
 
-	private function isBookingLimitExceeded($bookingDate)
-    {
-        $paymentmodel = new Payment_model();
-        $maxBookingLimit = 10;
-        $bookingCount = $paymentmodel
-            ->where('checkin_date', $bookingDate)
-            ->countAllResults();
+	private function isBookingLimitExceeded($bookingDate) {
 
+		$checkin_date = date('Y-m-d', strtotime($bookingDate));
+        $paymentmodel = new Payment_model();
+        $maxBookingLimit = 1;
+        $bookingCount = $paymentmodel
+            ->where('checkin_date', $checkin_date)
+            ->countAllResults();
         return $bookingCount >= $maxBookingLimit;
     }
 
