@@ -26,7 +26,14 @@ class User extends BaseController
 
         foreach ($packageData as $package) {
             foreach ($package as $row) {
-                array_push($transactionHistory, $package_model->where('id', $row[0])->orderBy('id', 'desc')->find());
+                $row_data = json_decode(json_encode($row), true);
+                $id = $row_data[0];
+                array_push($transactionHistory, $package_model
+                ->where('packages.id', $id)
+                ->join('package_activities', 'package_activities.package_id = packages.id')
+                ->join('activities', 'activities.act_id = package_activities.activity_id')
+                ->orderBy('packages.id', 'desc')
+                ->find());
             }
         }
 

@@ -42,7 +42,7 @@
                             <tr>
                                 <td><?= $package[0]['title'] ?></td>
                                 <td>P<?= $package[0]['price'] ?></td>
-                                <td><?= $package[0]['activity'] ?></td>
+                                <td><?= $package[0]['activity_name'] ?></td>
                             </tr>
                         <?php endif; ?>
                     <?php endforeach ?>
