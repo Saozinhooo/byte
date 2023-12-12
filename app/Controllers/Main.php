@@ -121,8 +121,8 @@ class Main extends BaseController
 		$arrival_date = strtotime($this->request->getPost('arrival_date'));
 		$arrival_date = date('Y-m-d', $arrival_date);
 		$packageData = json_decode($packageData);
-		$sid = env('twilio.sid');
-		$token = env('twilio.token');
+		$sid = env('TWILIO_ACCOUNT_SID');
+		$token = env('TWILIO_AUTH_TOKEN');
 		$activities = str_replace(' ', '', $activities);
 		foreach ($packageData as $packageInfo) {
 			$package[] = explode('+', $packageInfo);

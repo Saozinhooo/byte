@@ -24,7 +24,7 @@
                         <tr class="hidden_action_hover_btn">
                             <td><?= $packages['transaction_id'] ?></td>
                             <td><?= ucwords($packages['customer_name']) ?></td>
-                            <td><?= $package_info[1] ?></td>
+                            <td><?= $package_info->{"1"} ?></td>
                             <td>
                                 <span class="checkin_date"><?= $packages['checkin_date'] ?></span>
                                 <div class="hidden_action_btn">

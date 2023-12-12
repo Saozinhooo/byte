@@ -244,7 +244,7 @@
          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
          -->
-         <script>
+<script>
     $(document).ready(function() {
       var originalPrice = parseFloat($('#totalPrice').val());
         // Function to calculate and update the total price
@@ -301,12 +301,14 @@ document.addEventListener("DOMContentLoaded", function() {
 <script>
   $(document).ready(function() {
     var contact_no = $("#contact_no").val();
+    var totalPrice = 0;
     var packageDetails = $("#packageDetails").val();
     var checkin_date = $("#checkin_date").val();
     var arrival_date = $("#arrival_date").val();
     paypal.Buttons({
       onClick() {
         console.log("clicked");
+        totalPrice = $("#totalPrice").val();
         var pax = $('input[name^=pax]').map(function(idx, elem) {
           return $(elem).val();
         }).get();
@@ -318,7 +320,6 @@ document.addEventListener("DOMContentLoaded", function() {
       },
       createOrder: function(data, actions) {
         // This function sets up the details of the transaction, including the amount and line item details.
-        var totalPrice = $("#totalPrice").val();
         return actions.order.create({
           purchase_units: [{
             amount: {
@@ -357,7 +358,7 @@ document.addEventListener("DOMContentLoaded", function() {
               activities: activities
             },
             success: function(data) {
-              // window.location.href = "/";
+              window.location.href = "/";
             },
           });
 

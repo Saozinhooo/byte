@@ -29,6 +29,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.21.1/jquery.daterangepicker.min.js"></script>
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+<script src="https://unpkg.com/jspdf-autotable@3.8.1/dist/jspdf.plugin.autotable.js"></script>
 <script>
   CKEDITOR.replace('ckeditor1', {
     height: 650,
@@ -119,6 +121,7 @@
       // Add the date range filter input fields
       $('<label>From: <input type="text" id="min-date"></label>').appendTo($('#TransactionHistory_filter'));
       $('<label>To: <input type="text" id="max-date"></label>').appendTo($('#TransactionHistory_filter'));
+      $('<button style="margin-left: 5px;" class="btn btn-primary" id="exportBtn"><i class="fas fa-file-pdf"></i></button>').appendTo($('#TransactionHistory_filter'));
 
       // Apply the date range filter on the DataTable
       $('#min-date, #max-date').datepicker({
@@ -143,6 +146,22 @@
       );
     }
   });
+
+  $('#exportBtn').on('click', function() {
+        exportToPDF(table);
+    });
+
+    function exportToPDF(table) {
+        const { jsPDF } = window.jspdf;
+        var doc = new jsPDF();
+        const date = new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        let currentDate = `${day}_${month}_${year}`;
+        doc.autoTable({ html: '#TransactionHistory' });
+        doc.save(`report_${currentDate}.pdf`);
+    }
 });
 
 </script>
