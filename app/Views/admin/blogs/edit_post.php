@@ -78,7 +78,7 @@
                           <img class="img-fluid" src="/public/uploads/images/<?= $post['post_image'] ?>" style="width: 250px; height:250px; object-fit: cover;"/>
                         </div>
                       <input type="hidden" id="update_ft_img" name="update_ft_img" value="<?= $post['post_image'] ?>">
-                      <input type="hidden" name="user_id" value="<?= session()->user_id; ?>">
+                      <input type="hidden" name="user_id" value="<?= session()->user_id_admin; ?>">
                       <input type="hidden" name="post_id" value="<?= $post['id']; ?>">
                         <!-- Button trigger modal -->
                         <a href="#set-img" data-bs-toggle="modal" data-bs-target="#updateModal">
@@ -147,7 +147,7 @@
                   </div>
             </div>
           </div>
-        <input type="hidden" name="user_id" value="<?= session()->user_id; ?>">
+        <input type="hidden" name="user_id" value="<?= session()->user_id_admin; ?>">
         <input type="hidden" name="post_id" value="<?= $post['id']; ?>">
       </form>
      <!-- /. PAGE INNER  -->

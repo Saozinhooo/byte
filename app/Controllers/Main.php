@@ -112,7 +112,7 @@ class Main extends BaseController
 			$session = session();
 			$session->setFlashdata('error', $errorMessage);
 
-			return redirect()->to('/');
+			return redirect()->to('/#destination');
         }
 
 		echo view('confirm', $data);
@@ -191,7 +191,7 @@ class Main extends BaseController
 			$body .= "<br><small>Please message the time of arrival to this number 09661409725.</small>";	
 			$email = \Config\Services::email();
 			$email->setFrom('davevincentoporto@gmail.com', 'byte@donotreply');
-			$email->setTo('davevincentoporto@gmail.com');    // receiver
+			$email->setTo($payer_email);    // receiver
 			$email->setSubject('Confirmation');
 			$email->setMessage($body);
 

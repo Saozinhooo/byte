@@ -179,7 +179,7 @@
           '<form action="" class="formName">' +
           '<div class="form-group">' +
           '<input type="text" class="category form-control" required />' +
-          '<input type="hidden" id="user_id" name="user_id" value="<?= session()->user_id; ?>">' +
+          '<input type="hidden" id="user_id" name="user_id" value="<?= session()->user_id_admin; ?>">' +
           '</div>' +
           '</form>',
         buttons: {

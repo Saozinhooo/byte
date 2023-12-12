@@ -157,7 +157,7 @@
                   </div>
                 </div>
               </div>
-              <input type="hidden" name="user_id" value="<?= session()->user_id; ?>">
+              <input type="hidden" name="user_id" value="<?= session()->user_id_admin; ?>">
             </form>
             </div>
         </div>

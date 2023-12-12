@@ -22,7 +22,7 @@
                 </div>
                 <div class="">
                   <button class="btn btn-primary btn-sm" type="submit" name="add">Add new category</button>
-                  <input type="hidden" name="user_id" value="<?= session()->user_id; ?>">
+                  <input type="hidden" name="user_id" value="<?= session()->user_id_admin; ?>">
                 </div>
               </form>
             </div>

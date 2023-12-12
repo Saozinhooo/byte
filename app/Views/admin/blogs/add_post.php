@@ -76,7 +76,7 @@
                         <div id="img-display">
 
                         </div>
-                      <input type="hidden" name="user_id" value="<?= session()->user_id; ?>">
+                      <input type="hidden" name="user_id" value="<?= session()->user_id_admin; ?>">
                         <!-- Button trigger modal -->
                         <a id="ft-img-trigger" href="#set-img" data-bs-toggle="modal" data-bs-target="#uploadModal">
                           <u id="triger-txt">Set featured image</u>

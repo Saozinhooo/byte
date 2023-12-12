@@ -144,7 +144,7 @@
                   </div>
             </div>
           </div>
-        <input type="hidden" name="user_id" value="<?= session()->user_id; ?>">
+        <input type="hidden" name="user_id" value="<?= session()->user_id_admin; ?>">
         <input type="hidden" name="package_id" value="<?= $package['id']; ?>">
       </form>
      <!-- /. PAGE INNER  -->

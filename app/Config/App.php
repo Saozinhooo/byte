@@ -21,7 +21,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://byte/';
+	public $baseURL = 'https://7af1-158-62-51-112.ngrok-free.app/';
 
 	/*
 	|--------------------------------------------------------------------------

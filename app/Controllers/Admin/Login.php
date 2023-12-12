@@ -39,13 +39,13 @@ class Login extends BaseController
             $verify_pass = password_verify($password, $pass);
             if($verify_pass){
                 $ses_data = [
-                    'user_id' => $data['user_id'],
-                    'fname' => $data['fname'],
-					'lname' => $data['lname'],
-                    'user_email' => $data['user_email'],
-                    'user_type' => $data['user_type'],
-                    'logged_in' => TRUE,
-                    'is_admin' => TRUE
+                    'user_id_admin' => $data['user_id'],
+                    'fname_admin' => $data['fname'],
+					'lname_admin' => $data['lname'],
+                    'user_email_admin' => $data['user_email'],
+                    'user_type_admin' => $data['user_type'],
+                    'logged_in_admin' => TRUE,
+                    'is_admin_admin' => TRUE
                 ];
 
                 $session->set($ses_data);
